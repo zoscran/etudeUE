@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>France Souveraine — Analyse Stratégique Frexit</title>
+<title>France Souveraine — Analyse Stratégique 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=JetBrains+Mono:wght@300;400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
@@ -18,8 +18,6 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:'Source Serif 4',Georgia,serif;background:var(--paper);color:var(--ink);line-height:1.8;overflow-x:hidden;font-size:17px;}
-
-/* ── HERO ── */
 .hero{min-height:100vh;background:var(--ink);color:var(--paper);display:flex;flex-direction:column;position:relative;overflow:hidden;}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 10% 65%,rgba(26,53,89,0.55) 0%,transparent 55%),radial-gradient(ellipse 45% 35% at 88% 18%,rgba(192,57,43,0.15) 0%,transparent 50%);}
 .hero-flag{position:absolute;right:0;top:0;bottom:0;width:36%;display:flex;opacity:.035;}
@@ -36,27 +34,20 @@ body{font-family:'Source Serif 4',Georgia,serif;background:var(--paper);color:va
 .hero-intro{font-size:1rem;font-weight:300;color:rgba(242,237,226,.58);line-height:1.72;max-width:580px;border-left:3px solid var(--red);padding-left:1.3rem;margin-bottom:3rem;}
 .hero-stats{display:flex;gap:3rem;flex-wrap:wrap;}
 .hs-val{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;line-height:1;}
-.hs-val.neg{color:#e74c3c;}.hs-val.pos{color:#2ecc71;}.hs-val.neu{color:var(--paper);}
+.hs-val.neg{color:#e74c3c;}.hs-val.pos{color:#2ecc71;}.hs-val.neu{color:var(--paper);}.hs-val.warn{color:#f39c12;}
 .hs-label{font-family:'JetBrains Mono',monospace;font-size:.53rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(242,237,226,.3);margin-top:.3rem;line-height:1.4;}
-
-/* ── NAV ── */
 nav{position:sticky;top:0;z-index:200;background:var(--ink);border-bottom:2px solid var(--red);height:50px;display:flex;align-items:stretch;overflow-x:auto;scrollbar-width:none;}
 nav::-webkit-scrollbar{display:none;}
 nav a{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.13em;text-transform:uppercase;color:rgba(242,237,226,.38);text-decoration:none;padding:0 1.1rem;border-bottom:2px solid transparent;margin-bottom:-2px;display:flex;align-items:center;white-space:nowrap;transition:all .18s;}
 nav a:hover{color:var(--paper);}
 nav a.active{color:var(--gold);border-bottom-color:var(--gold);}
-
-/* ── SECTIONS ── */
-section{padding:5rem 0;border-bottom:1px solid var(--border);}
+section{padding:5rem 0;border-bottom:1px solid var(--border);opacity:0;transform:translateY(10px);transition:opacity .5s,transform .5s;}
+section.vis{opacity:1;transform:translateY(0);}
 .pw{max-width:1240px;margin:0 auto;padding:0 3rem;}
 .col{max-width:var(--col);}
-
-/* En-têtes de section */
 .sec-ey{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--red);margin-bottom:.9rem;}
 .sec-h{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,2.9rem);font-weight:900;line-height:1.1;margin-bottom:1.4rem;}
 .sec-lead{font-size:1.05rem;font-weight:300;color:var(--steel);font-style:italic;line-height:1.7;max-width:620px;margin-bottom:3rem;}
-
-/* ── PROSE ── */
 .prose p{margin-bottom:1.4rem;max-width:var(--col);}
 .prose p:last-child{margin-bottom:0;}
 .prose h3{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;margin:2.5rem 0 .8rem;color:var(--blue);}
@@ -66,12 +57,10 @@ section{padding:5rem 0;border-bottom:1px solid var(--border);}
 .prose strong{color:var(--ink);}
 .nuance{background:rgba(201,150,42,.08);border-left:3px solid var(--gold);padding:1rem 1.4rem;margin:1.8rem 0;font-size:.95rem;color:var(--steel);border-radius:0 2px 2px 0;max-width:var(--col);}
 .nuance strong{color:#8a6a0a;}
-
-/* ── PULL QUOTE ── */
+.alert{background:rgba(192,57,43,.06);border-left:3px solid var(--red);padding:1rem 1.4rem;margin:1.8rem 0;font-size:.95rem;color:var(--steel);border-radius:0 2px 2px 0;max-width:var(--col);}
+.alert strong{color:var(--red);}
 .pq{border-left:4px solid var(--red);padding:1.5rem 2rem;margin:2.5rem 0;max-width:680px;font-family:'Playfair Display',serif;font-size:1.18rem;font-style:italic;line-height:1.55;color:var(--blue);}
 .pq cite{display:block;font-family:'JetBrains Mono',monospace;font-size:.53rem;letter-spacing:.17em;text-transform:uppercase;color:var(--light);margin-top:.8rem;font-style:normal;}
-
-/* ── METRICS ── */
 .mg{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);margin:2.5rem 0;}
 .mc{background:var(--paper);padding:1.6rem;position:relative;overflow:hidden;}
 .mc::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;}
@@ -80,16 +69,12 @@ section{padding:5rem 0;border-bottom:1px solid var(--border);}
 .mc-val.neg{color:var(--red);}.mc-val.pos{color:var(--green);}.mc-val.neu{color:var(--blue);}.mc-val.warn{color:var(--gold);}
 .mc-label{font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.18em;text-transform:uppercase;color:var(--light);margin-bottom:.5rem;}
 .mc-desc{font-size:.83rem;color:var(--steel);line-height:1.45;}
-
-/* ── TABLES ── */
 .dt-wrap{overflow-x:auto;margin:2rem 0;}
 .dt{width:100%;border-collapse:collapse;font-size:.85rem;}
 .dt th{font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.13em;text-transform:uppercase;color:var(--paper);background:var(--ink);padding:.85rem 1rem;text-align:left;white-space:nowrap;}
 .dt td{padding:.7rem 1rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.4;}
 .dt tr:nth-child(even) td{background:rgba(0,0,0,.025);}
 .dt td:first-child{font-weight:600;color:var(--blue);}
-
-/* ── CHARTS ── */
 .cb{margin:2.5rem 0 3.5rem;}
 .cb-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem;padding-bottom:.7rem;border-bottom:1px solid var(--border);}
 .cb-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;}
@@ -97,8 +82,6 @@ section{padding:5rem 0;border-bottom:1px solid var(--border);}
 .cb-wrap{background:#fff;border:1px solid var(--border);padding:1.5rem;}
 canvas{max-height:320px;}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin:2rem 0;}
-
-/* ── TIMELINE ── */
 .tl{position:relative;padding-left:2rem;margin:2rem 0;}
 .tl::before{content:'';position:absolute;left:0;top:.4rem;bottom:0;width:2px;background:linear-gradient(to bottom,var(--red),var(--blue),var(--gold));}
 .tl-item{position:relative;padding:0 0 2rem 2.5rem;}
@@ -106,14 +89,10 @@ canvas{max-height:320px;}
 .tl-yr{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.3rem;}
 .tl-ev{font-weight:700;margin-bottom:.3rem;font-size:1rem;}
 .tl-txt{font-size:.9rem;color:var(--steel);line-height:1.6;max-width:560px;}
-
-/* ── TAGS ── */
 .tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.5rem;letter-spacing:.1em;padding:.2em .55em;border-radius:2px;text-transform:uppercase;}
 .tok{background:rgba(45,106,79,.1);color:var(--green);}
 .tko{background:rgba(192,57,43,.1);color:var(--red);}
 .twarn{background:rgba(201,150,42,.12);color:#a07020;}
-
-/* ── CITATIONS ── */
 .cite{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.1em;padding:.13em .42em;border-radius:2px;cursor:pointer;vertical-align:middle;margin-left:2px;transition:all .15s;text-transform:uppercase;border:1px solid transparent;}
 .cite:hover{opacity:.75;transform:translateY(-1px);}
 .cite.s5{background:rgba(26,107,60,.1);color:var(--s5);border-color:rgba(26,107,60,.28);}
@@ -121,8 +100,6 @@ canvas{max-height:320px;}
 .cite.s3{background:rgba(201,150,42,.1);color:#a07020;border-color:rgba(201,150,42,.28);}
 .cite.s2{background:rgba(224,123,57,.1);color:#c06020;border-color:rgba(224,123,57,.22);}
 .cite.s1{background:rgba(160,174,192,.1);color:#718096;border-color:rgba(160,174,192,.28);}
-
-/* ── PANEL SOURCE ── */
 #sp{position:fixed;right:0;top:0;bottom:0;width:420px;background:var(--ink);color:var(--paper);z-index:500;transform:translateX(100%);transition:transform .3s cubic-bezier(.25,.46,.45,.94);overflow-y:auto;padding:2.5rem;border-left:3px solid var(--gold);}
 #sp.open{transform:translateX(0);}
 #sp-close{position:absolute;top:1.4rem;right:1.4rem;background:none;border:none;color:rgba(242,237,226,.45);font-size:1.3rem;cursor:pointer;}
@@ -136,8 +113,6 @@ canvas{max-height:320px;}
 .sp-data{margin-top:1rem;background:rgba(255,255,255,.04);border-left:3px solid var(--gold);padding:.8rem 1rem;font-size:.82rem;line-height:1.6;color:rgba(242,237,226,.65);}
 #so{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:499;display:none;}
 #so.open{display:block;}
-
-/* ── SOURCES GRID ── */
 .src-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem;margin:2rem 0;}
 .sc{background:var(--ink);color:var(--paper);padding:1.5rem;border-radius:2px;}
 .sc-code{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:.5rem;}
@@ -145,16 +120,10 @@ canvas{max-height:320px;}
 .sc-meta{font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.08em;color:rgba(242,237,226,.38);text-transform:uppercase;margin-bottom:.5rem;}
 .sc-desc{font-size:.78rem;color:rgba(242,237,226,.58);line-height:1.5;}
 .sc a{color:var(--gold);font-size:.72rem;word-break:break-all;}
-
-/* ── LEGEND FIAB ── */
 .fl{display:flex;gap:1.5rem;flex-wrap:wrap;margin:0 0 2rem;padding:1.1rem 1.5rem;background:var(--cream);border:1px solid var(--border);font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;}
 .fl-i{display:flex;align-items:center;gap:.5rem;}
 .fl-dot{width:9px;height:9px;border-radius:50%;}
-
-/* ── DIVIDER ── */
 .sdiv{height:3px;background:linear-gradient(90deg,var(--red),var(--blue),var(--gold));}
-
-/* ── SCENARIO CARDS ── */
 .sc-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin:2rem 0;}
 .sc-card{border:1px solid var(--border);padding:1.8rem;position:relative;}
 .sc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
@@ -162,11 +131,10 @@ canvas{max-height:320px;}
 .sc-card.red::before{background:var(--red);}
 .sc-card.gold::before{background:var(--gold);}
 .sc-card.green::before{background:var(--green);}
+.sc-card.purple::before{background:#7c3aed;}
 .sc-prob{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;color:var(--light);margin-bottom:.5rem;}
 .sc-card h4{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:.8rem;}
 .sc-card p{font-size:.88rem;color:var(--steel);line-height:1.55;}
-
-/* ── BILAN POUR/CONTRE ── */
 .bi-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);border:1px solid var(--border);margin:2rem 0;}
 .bi-col{background:var(--paper);padding:2rem;}
 .bi-col.pour{border-top:3px solid var(--green);}
@@ -176,39 +144,106 @@ canvas{max-height:320px;}
 .bi-col.contre h4{color:var(--red);}
 .bi-item{display:flex;gap:.7rem;margin-bottom:.8rem;font-size:.9rem;line-height:1.5;align-items:flex-start;}
 .bi-item::before{content:'→';color:var(--light);flex-shrink:0;margin-top:.1rem;}
-
+/* ─ CONCLUSIONS ─ */
+.concl-banner{background:var(--ink);color:var(--paper);padding:3.5rem;margin:0 0 3rem;border-left:6px solid var(--gold);}
+.concl-banner h2{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--gold);margin-bottom:1rem;}
+.concl-banner p{font-size:.95rem;line-height:1.8;color:rgba(242,237,226,.75);max-width:780px;margin-bottom:.8rem;}
+.concl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin:2.5rem 0;}
+.concl-card{border:1px solid var(--border);padding:1.8rem;background:var(--paper);}
+.concl-card.urgent{border-left:4px solid var(--gold);}
+.concl-card.warning{border-left:4px solid var(--red);}
+.concl-card.positive{border-left:4px solid var(--green);}
+.concl-icon{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--light);margin-bottom:.6rem;}
+.concl-card h4{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:.6rem;color:var(--blue);}
+.concl-card p{font-size:.88rem;color:var(--steel);line-height:1.6;}
+.urgence-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;background:var(--border);border:1px solid var(--border);margin:2rem 0;}
+.urgence-col{background:var(--paper);padding:1.8rem;}
+.urgence-col.u1{border-top:4px solid var(--gold);}
+.urgence-col.u2{border-top:4px solid var(--blue);}
+.urgence-col.u3{border-top:4px solid var(--red);}
+.urgence-col h4{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;margin-bottom:1rem;}
+.urgence-col.u1 h4{color:var(--gold);}
+.urgence-col.u2 h4{color:var(--blue);}
+.urgence-col.u3 h4{color:var(--red);}
+.urgence-item{font-size:.85rem;color:var(--steel);padding:.35rem 0;border-bottom:1px solid var(--border);display:flex;gap:.5rem;align-items:flex-start;}
+.urgence-item::before{content:'›';color:var(--gold);font-weight:700;flex-shrink:0;}
+/* ─ PLANS QUINQUENNAUX ─ */
+.plan-header{padding:2.5rem 3rem;margin:0 0 2rem;}
+.plan-header.pa{background:rgba(192,57,43,.06);border-left:6px solid var(--red);}
+.plan-header.pb{background:rgba(26,53,89,.06);border-left:6px solid var(--blue);}
+.plan-header h3{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;margin-bottom:.5rem;}
+.plan-header.pa h3{color:var(--red);}
+.plan-header.pb h3{color:var(--blue);}
+.plan-header p{font-size:.92rem;color:var(--steel);max-width:680px;}
+.plan-phases{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin:2rem 0;}
+.phase-card{border:1px solid var(--border);padding:1.6rem;background:var(--paper);}
+.phase-yr{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.5rem;}
+.phase-card.pa .phase-yr{color:var(--red);}
+.phase-card.pb .phase-yr{color:var(--blue);}
+.phase-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:.8rem;color:var(--blue);}
+.phase-items{list-style:none;padding:0;}
+.phase-items li{font-size:.84rem;color:var(--steel);padding:.28rem 0;border-bottom:1px solid var(--border);display:flex;gap:.5rem;align-items:flex-start;line-height:1.45;}
+.phase-items li::before{content:'›';color:var(--gold);font-weight:700;flex-shrink:0;}
+/* ─ COMPARAISON ─ */
+.comp-row-full{display:grid;grid-template-columns:200px 1fr 1fr;gap:1px;background:var(--border);margin-bottom:1px;}
+.comp-dim{background:var(--cream);padding:.9rem 1rem;font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--steel);display:flex;align-items:center;}
+.comp-a{background:rgba(192,57,43,.04);padding:.9rem 1rem;font-size:.85rem;color:var(--ink);}
+.comp-b{background:rgba(26,53,89,.04);padding:.9rem 1rem;font-size:.85rem;color:var(--ink);}
+.pill{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.46rem;letter-spacing:.08em;padding:.15em .45em;border-radius:2px;text-transform:uppercase;margin-bottom:.3rem;display:block;}
+.pill-win{background:rgba(45,106,79,.12);color:var(--green);}
+.pill-ok{background:rgba(201,150,42,.12);color:#a07020;}
+.pill-block{background:rgba(192,57,43,.1);color:var(--red);}
+.pill-eq{background:rgba(74,85,104,.1);color:var(--steel);}
+/* ─ FÉDÉRALISME ─ */
+.fed-intro{background:var(--blue);color:var(--paper);padding:3rem;margin:0 0 2.5rem;}
+.fed-intro h3{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--gold);margin-bottom:1rem;}
+.fed-intro p{font-size:.92rem;line-height:1.8;color:rgba(242,237,226,.8);max-width:720px;}
+.fed-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin:2rem 0;}
+.fed-card{border:1px solid var(--border);padding:1.6rem;background:var(--paper);}
+.fed-card h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:.8rem;color:var(--blue);}
+.fed-card p{font-size:.85rem;color:var(--steel);line-height:1.6;}
+.fed-model{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);border:1px solid var(--border);margin:2rem 0;}
+.fed-model-col{background:var(--paper);padding:1.8rem;}
+.fed-model-col h4{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:1rem;}
+.fed-region{background:var(--cream);border:1px solid var(--border);padding:1.5rem;margin-bottom:1rem;}
+.fed-region h5{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;color:var(--blue);margin-bottom:.5rem;}
+.fed-region p{font-size:.82rem;color:var(--steel);line-height:1.5;}
 footer{background:var(--ink);color:rgba(242,237,226,.3);padding:2.5rem 3.5rem;font-family:'JetBrains Mono',monospace;font-size:.56rem;letter-spacing:.1em;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-top:2rem;}
 footer span{color:var(--gold);}
-section{opacity:0;transform:translateY(10px);transition:opacity .5s,transform .5s;}
-section.vis{opacity:1;transform:translateY(0);}
-@media(max-width:900px){.two{grid-template-columns:1fr;}.bi-grid{grid-template-columns:1fr;}.pw{padding:0 1.5rem;}.hero-top,.hero-body{padding:1.5rem;}.hero-stats{gap:1.5rem;}#sp{width:100%;}.sc-cards{grid-template-columns:1fr;}}
+@media(max-width:900px){
+.two,.bi-grid,.fed-model,.urgence-grid{grid-template-columns:1fr;}
+.plan-phases,.fed-grid,.sc-cards{grid-template-columns:1fr;}
+.comp-row-full{grid-template-columns:1fr;}
+.pw{padding:0 1.5rem;}
+.hero-top,.hero-body{padding:1.5rem;}
+.hero-stats{gap:1.5rem;}
+#sp{width:100%;}
+.concl-grid{grid-template-columns:1fr;}
+}
 </style>
 </head>
 <body>
-
-<!-- PANEL SOURCE -->
 <div id="so" onclick="closePanel()"></div>
 <div id="sp">
   <button id="sp-close" onclick="closePanel()">✕</button>
   <div id="sp-content"></div>
 </div>
-
 <!-- ════ HERO ════ -->
 <div class="hero">
   <div class="hero-bg"></div>
   <div class="hero-flag"><div class="hf-bl"></div><div class="hf-wh"></div><div class="hf-rd"></div></div>
   <div class="hero-top">
     <div class="flag-pill"><div class="fp-bl"></div><div class="fp-wh"></div><div class="fp-rd"></div></div>
-    <div class="hero-date">Analyse stratégique sourcée — Décembre 2025 — 80+ sources vérifiées</div>
+    <div class="hero-date">Analyse stratégique sourcée — Mars 2026 — Mise à jour complète — 100+ sources vérifiées</div>
   </div>
   <div class="hero-body">
-    <div class="hero-kicker">Étude prospective objective — 8 parties analytiques</div>
+    <div class="hero-kicker">Étude prospective objective — 10 parties analytiques + plans quinquennaux + fédéralisme</div>
     <h1 class="hero-title">France<br><em>Souveraine</em></h1>
-    <p class="hero-intro">Une projection rigoureuse d'un Frexit — ni plaidoyer pour, ni plaidoyer contre. Chaque affirmation est sourcée, chaque conclusion est questionnée. L'analyse examine les modèles qui fonctionnent ailleurs, le déclin industriel français documenté, les contraintes réelles de l'UE, et les conditions d'une transition viable. Cliquez sur tout badge <strong>[source]</strong> pour accéder à la référence complète.</p>
+    <p class="hero-intro">Une projection rigoureuse — ni plaidoyer pour, ni plaidoyer contre. Intègre les élections municipales 2026, la guerre commerciale Trump, le choc pétrolier de mars 2026 (114 $/baril), et propose deux plans quinquennaux concrets pour 2027–2032 ainsi qu'un modèle de fédéralisme régional comme levier de relance territoriale.</p>
     <div class="hero-stats">
       <div><div class="hs-val neg">−61%</div><div class="hs-label">Part manufacturière<br>1980 → 2024</div></div>
-      <div><div class="hs-val neg">−2,1M</div><div class="hs-label">Emplois industriels<br>perdus en 40 ans</div></div>
-      <div><div class="hs-val neg">−81Md€</div><div class="hs-label">Balance commerciale<br>déficit 2024</div></div>
+      <div><div class="hs-val neg">117%</div><div class="hs-label">Dette/PIB<br>mars 2026</div></div>
+      <div><div class="hs-val warn">114 $</div><div class="hs-label">Pétrole Brent<br>mars 2026</div></div>
       <div><div class="hs-val pos">95%</div><div class="hs-label">Électricité<br>bas-carbone</div></div>
     </div>
   </div>
@@ -217,14 +252,18 @@ section.vis{opacity:1;transform:translateY(0);}
 <!-- ════ NAV ════ -->
 <nav id="main-nav">
   <a href="#modeles">Modèles alt.</a>
-  <a href="#historique">Diagnostic France</a>
+  <a href="#historique">Diagnostic</a>
   <a href="#ue">Analyse UE</a>
-  <a href="#scenarios">Scénarios</a>
-  <a href="#industrie">Réindustrialisation</a>
+  <a href="#blocages">Blocages UE</a>
+  <a href="#scenarios">Scénarios 2026</a>
+  <a href="#conclusions">Conclusions</a>
+  <a href="#plan-a">Plan A — Frexit</a>
+  <a href="#plan-b">Plan B — Réforme</a>
+  <a href="#comparaison">Comparaison A/B</a>
   <a href="#energie">Énergie</a>
-  <a href="#monetaire">Architecture</a>
-  <a href="#transition">Transition</a>
-  <a href="#conclusion">Conclusion</a>
+  <a href="#industrie">Industrie</a>
+  <a href="#sante">Santé</a>
+  <a href="#federalisme">Fédéralisme</a>
   <a href="#sources">Sources</a>
 </nav>
 
@@ -233,7 +272,7 @@ section.vis{opacity:1;transform:translateY(0);}
 <div class="pw">
   <div class="sec-ey">Partie A — Benchmarks internationaux</div>
   <h2 class="sec-h">Modèles économiques alternatifs</h2>
-  <p class="sec-lead">Avant d'évaluer les options françaises, il est essentiel de comprendre quels modèles fonctionnent ailleurs, pourquoi, et dans quelle mesure leurs succès sont transposables.</p>
+  <p class="sec-lead">Avant d'évaluer les options françaises, comprendre ce qui fonctionne ailleurs, pourquoi, et dans quelle mesure c'est transposable. Le paradoxe de 2026 : Trump fait exactement ce que cette étude recommande à la France.</p>
 
   <div class="fl">
     <div class="fl-i"><div class="fl-dot" style="background:var(--s5)"></div>★★★★★ Source primaire officielle</div>
@@ -244,51 +283,28 @@ section.vis{opacity:1;transform:translateY(0);}
   </div>
 
   <div class="prose">
-    <h3>A.1 — Le modèle chinois : la planification qui fonctionne</h3>
-    <p>La Chine pratique une <strong>économie mixte socialiste de marché</strong> : planification stratégique quinquennale, secteur privé dynamique, entreprises d'État dans les secteurs stratégiques, politique industrielle active. En 2024, la croissance atteint 5,0% avec une accélération à 5,4% au dernier trimestre — l'objectif gouvernemental est atteint. <span class="cite s4" onclick="showSrc('CN-NBS-2025-01')">CN-NBS-2025-01</span></p>
+    <h3>A.1 — Le paradoxe Trump : il valide les arguments souverainistes</h3>
+    <p>La période 2025-2026 est marquée par une révolution idéologique paradoxale : Trump applique exactement ce que cette étude recommandait à la France. Il protège son marché intérieur, impose des préférences nationales, subventionne ses industries stratégiques, utilise la politique commerciale comme levier de pouvoir — et il le fait dans une démocratie, sans rupture institutionnelle. Buy American Act à 75% de contenu national, CHIPS Act (52,7 Mds$ pour les semi-conducteurs), IRA (~400 Mds$ pour l'énergie). <span class="cite s5" onclick="showSrc('US-CHIPS-2022')">US-CHIPS-2022</span> <span class="cite s5" onclick="showSrc('US-IRA-2022')">US-IRA-2022</span></p>
+    <p>La réaction européenne est révélatrice : l'UE, seule à pouvoir négocier commercialement au nom de ses membres, peine à construire une réponse cohérente. L'accord de Turnberry (juillet 2025, 15 % de tarifs) est déjà fragilisé avant ratification. La France, individuellement, n'a aucun levier — elle est derrière la Commission, dont les intérêts allemands et néerlandais ne sont pas nécessairement alignés sur les siens.</p>
 
-    <p>Mais ce qui est véritablement instructif, ce ne sont pas les chiffres bruts du PIB, c'est la <strong>performance sectorielle ciblée</strong> : véhicules électriques +38,7%, circuits intégrés +22,2%, robots industriels +14,2%. Ces secteurs ont été identifiés dans le plan "Made in China 2025", puis irrigués de subventions massives, d'achats publics et de protections tarifaires. Le résultat : BYD leader mondial de l'électrique, domination >80% des panneaux solaires, 80% de la production mondiale de batteries. <span class="cite s4" onclick="showSrc('CN-NBS-2025-01')">CN-NBS-2025-01</span></p>
+    <h3>A.2 — Le modèle chinois : la planification qui fonctionne</h3>
+    <p>En 2024, la croissance atteint 5,0% avec secteur high-tech : VE +38,7%, circuits intégrés +22,2%, robots industriels +14,2%. <span class="cite s4" onclick="showSrc('CN-NBS-2025-01')">CN-NBS-2025-01</span> Ce qui est instructif n'est pas le chiffre brut mais la performance sectorielle ciblée via le plan "Made in China 2025" — irrigation de subventions massives, achats publics, protections tarifaires. Ce que la Chine peut faire et que la France ne peut pas dans l'UE : contrôle des capitaux, politique monétaire autonome, subventions industrielles illimitées, préférence nationale systématique.</p>
 
-    <p><strong>Ce que la Chine peut faire et que la France ne peut pas dans l'UE :</strong> contrôle des capitaux, politique monétaire autonome (Yuan géré par la PBOC), subventions industrielles illimitées, préférence nationale systématique dans les marchés publics, quotas d'importation. Aucun de ces outils n'est disponible à la France sous le TFUE.</p>
+    <div class="nuance"><strong>⚠ Nuance critique :</strong> Le système autoritaire est évidemment non transposable. Les données officielles chinoises font l'objet de débats (Rhodium Group). Ce qui est transposable : le <em>principe</em> de planification industrielle ciblée et d'investissement massif dans des filières stratégiques identifiées.</div>
 
-    <div class="nuance"><strong>⚠ Nuance critique :</strong> Les données officielles chinoises font l'objet de débats sur leur fiabilité (Rhodium Group). La crise immobilière est profonde (investissement -10,6%, ventes -12,9%). La démographie se détériore (-1,39M en 2024). Le système autoritaire est évidemment <strong>non transposable</strong>. Ce qui est transposable : le <em>principe</em> de planification industrielle ciblée, pas ses modalités autoritaires.</div>
-
-    <h3>A.2 — Le modèle américain : le retour assumé de l'État industriel</h3>
-    <p>Ce qui s'est passé aux États-Unis depuis 2022 constitue un <strong>revirement idéologique majeur</strong> : la nation libérale par excellence a adopté la politique industrielle la plus massive de son histoire en temps de paix. Le CHIPS and Science Act (280 Mds$), l'Inflation Reduction Act (~370-400 Mds$ pour la transition énergétique), et l'Infrastructure Act (1 200 Mds$) totalisent un effort d'environ <strong>1 900 milliards de dollars</strong>. <span class="cite s5" onclick="showSrc('US-CHIPS-2022')">US-CHIPS-2022</span> <span class="cite s5" onclick="showSrc('US-IRA-2022')">US-IRA-2022</span></p>
-
-    <p>Le résultat du reshoring en 2024 : 244 000 emplois annoncés, 88% dans des secteurs high-tech ou medium-high tech, avec une accélération des relocalisations d'entreprises américaines (66% du total) devant les investissements étrangers (34%). Depuis 2010, c'est plus de 2 millions d'emplois industriels revenus sur le sol américain. <span class="cite s3" onclick="showSrc('RI-2025')">RI-2025</span></p>
-
-    <p>Mais il faut noter une nuance importante : en 2025, les emplois annoncés baissent à ~174 000. Les tarifs douaniers sont désormais cités comme principal moteur, 454% plus souvent qu'un an plus tôt. Les subventions gouvernementales sont citées 49% moins — la politique Trump change de méthode sans changer l'objectif.</p>
-
-    <div class="nuance"><strong>⚠ Leçon principale :</strong> Les USA ont prouvé qu'une grande démocratie développée peut mener une politique industrielle interventionniste <em>sans</em> abandonner l'économie de marché. Le Buy American Act monte ses seuils à 75% en 2029 — ce que l'UE interdit formellement à ses membres. Ce que la France récupérerait en sortant : la capacité de faire pareil.</div>
-
-    <h3>A.3 — Le modèle suisse : prospérité hors UE, sans autarcie</h3>
-    <p>La Suisse est l'argument empirique le plus fort pour ceux qui affirment qu'on peut prospérer à côté de l'UE sans en faire partie. PIB par habitant ~104 500$ <span class="cite s4" onclick="showSrc('IMF-2025')">IMF-2025</span>, part manufacturière 17,69% <span class="cite s4" onclick="showSrc('WB-2024')">WB-2024</span>, chômage ~4%, dette publique ~17% du PIB. Ces chiffres sont spectaculairement meilleurs que la moyenne européenne.</p>
-
-    <p>Comment ? Par des <strong>accords bilatéraux construits sur 50 ans</strong>. Les Bilatérales I (1999), II (2004), et maintenant les Bilatérales III (négociées en décembre 2024, paraphées en mai 2025) <span class="cite s5" onclick="showSrc('CH-FDFA-2025')">CH-FDFA-2025</span> — soit plus d'un demi-siècle de négociations progressives. La Suisse contribue 130M CHF/an jusqu'en 2029, puis 350M CHF/an jusqu'en 2036 pour maintenir l'accès au marché unique sur certains secteurs. <span class="cite s5" onclick="showSrc('CH-FC-2025')">CH-FC-2025</span></p>
-
-    <div class="nuance"><strong>⚠ La vraie leçon suisse :</strong> La prospérité hors UE est possible — mais elle s'est construite sur 50 ans, dans un contexte géopolitique stable, avec une économie de niche (finance, pharma, mécanique de précision) très différente de la France. La France ne serait pas confrontée à la même négociation. Elle est 15x plus grande, membre fondateur, 3e économie de l'UE. Ce poids est une vulnérabilité (les marchés la guettent) mais aussi un levier de négociation que la Suisse n'a jamais eu.</div>
-  </div>
-
-  <div class="cb">
-    <div class="cb-head"><div class="cb-title">PIB par habitant 2024 (USD) — hors vs dans l'UE</div><div class="cb-src">Source : <span class="cite s4" onclick="showSrc('IMF-2025')">IMF-2025</span></div></div>
-    <div class="cb-wrap"><canvas id="cPIB"></canvas></div>
+    <h3>A.3 — Le modèle suisse : prospérité hors UE, construite sur 50 ans</h3>
+    <p>PIB/habitant ~104 500$ <span class="cite s4" onclick="showSrc('IMF-2025')">IMF-2025</span>, part manufacturière 17,69% — soit 1,9 fois celle de la France <span class="cite s4" onclick="showSrc('WB-2024')">WB-2024</span>, dette publique ~17% du PIB. Les Bilatérales III (négociées décembre 2024, paraphées mai 2025) confirment que la relation hors-UE est viable. <span class="cite s5" onclick="showSrc('CH-FDFA-2025')">CH-FDFA-2025</span> Mais cette prospérité s'est construite sur 50 ans de négociations progressives dans un contexte géopolitique stable.</p>
   </div>
 
   <div class="two">
     <div class="cb">
+      <div class="cb-head"><div class="cb-title">PIB/habitant 2024 (USD) — hors vs dans l'UE</div><div class="cb-src"><span class="cite s4" onclick="showSrc('IMF-2025')">IMF-2025</span></div></div>
+      <div class="cb-wrap"><canvas id="cPIB"></canvas></div>
+    </div>
+    <div class="cb">
       <div class="cb-head"><div class="cb-title">Part manufacturière du PIB (%)</div><div class="cb-src"><span class="cite s4" onclick="showSrc('WB-2024')">WB-2024</span></div></div>
       <div class="cb-wrap"><canvas id="cManuf"></canvas></div>
     </div>
-    <div class="cb">
-      <div class="cb-head"><div class="cb-title">Secteurs high-tech chinois — Croissance 2024</div><div class="cb-src"><span class="cite s4" onclick="showSrc('CN-NBS-2025-01')">CN-NBS-2025-01</span></div></div>
-      <div class="cb-wrap"><canvas id="cChine"></canvas></div>
-    </div>
-  </div>
-
-  <div class="prose">
-    <h4>Invariants de réussite — Ce que tous ces modèles partagent</h4>
-    <p>L'analyse comparative des modèles suisse, américain, chinois, coréen et singapourien fait apparaître <strong>cinq invariants</strong> : (1) souveraineté monétaire ou capacité d'ajustement, (2) politique industrielle active et ciblée avec investissement public massif, (3) protection du marché intérieur sur les secteurs stratégiques, (4) vision de long terme (5-10 ans minimum), (5) préférence nationale dans les marchés publics. Aucun de ces invariants n'est pleinement disponible à la France dans le cadre actuel de l'UE.</p>
   </div>
 
   <div class="dt-wrap">
@@ -300,92 +316,63 @@ section.vis{opacity:1;transform:translateY(0);}
         <tr><td>Préférence nationale marchés publics</td><td><span class="tag tok">✓ Autorisée</span></td><td><span class="tag tko">✗ Interdite</span></td><td>Dir. 2014/24/UE</td></tr>
         <tr><td>Tarifs douaniers ciblés</td><td><span class="tag tok">✓ Autonomes</span></td><td><span class="tag tko">✗ Compétence exclusive UE</span></td><td>Art. 207 TFUE</td></tr>
         <tr><td>Contrôle des capitaux</td><td><span class="tag tok">✓ Possible</span></td><td><span class="tag tko">✗ Interdit</span></td><td>Art. 63 TFUE</td></tr>
-        <tr><td>Accords commerciaux bilatéraux</td><td><span class="tag tok">✓ Autonomes</span></td><td><span class="tag tko">✗ Délégués à l'UE</span></td><td>Art. 207 TFUE</td></tr>
+        <tr><td>Sortie Mercosur agricole</td><td><span class="tag tok">✓ Immédiate</span></td><td><span class="tag tko">✗ Coalition blocage seulement</span></td><td>Art. 207 TFUE</td></tr>
+        <tr><td>Prix électricité administré</td><td><span class="tag tok">✓ Complet</span></td><td><span class="tag twarn">⚠ Arguable concurrence pure</span></td><td>Dir. 2019/944</td></tr>
       </tbody>
     </table>
   </div>
 </div>
 </section>
 <div class="sdiv"></div>
-
 <!-- ════ B — HISTORIQUE ════ -->
 <section id="historique">
 <div class="pw">
-  <div class="sec-ey">Partie B — Diagnostic historique</div>
-  <h2 class="sec-h">La France : du modèle au déclin</h2>
-  <p class="sec-lead">Comprendre ce qui a fonctionné entre 1945 et 1975, pourquoi ça s'est effondré, et quels outils ont été perdus en route — c'est la condition pour identifier ce qu'il faudrait récupérer.</p>
+  <div class="sec-ey">Partie B + Mise à jour mars 2026 — Diagnostic historique</div>
+  <h2 class="sec-h">La France en 2026 : déclin structurel et nouveaux chocs</h2>
+  <p class="sec-lead">40 ans de désindustrialisation documentée, une dette qui s'emballe, un choc pétrolier de 114 $/baril, et une fracture territoriale qui se cristallise. L'état des lieux avant de choisir.</p>
 
   <div class="prose">
-    <h3>B.1 — Les Trente Glorieuses : les outils du succès</h3>
-    <p>En 1945, le PIB français est à 40% de son niveau d'avant-guerre. En 30 ans, il quintuple. Le taux de croissance moyen est de <strong>~5% par an</strong>, atteignant parfois 7%. La part de l'industrie dans le PIB passe de ~25% à <strong>35% en 1975</strong>. Comment ?</p>
+    <h3>B.1 — 40 ans de désindustrialisation : les données</h3>
+    <p>La part manufacturière du PIB français est passée de <strong>~24% en 1980 à 9,43% en 2024</strong> <span class="cite s4" onclick="showSrc('WB-2024')">WB-2024</span> — une chute de 61%. L'emploi industriel a perdu 2,1 millions de postes. Pourtant, l'Allemagne, dans le même cadre UE, maintient ~19% — ce qui prouve que le déclin n'est pas une fatalité européenne. Il résulte aussi de choix politiques nationaux : fiscalité de production, formation professionnelle, taille des ETI. <span class="cite s2" onclick="showSrc('CE-2024')">CE-2024</span> <span class="cite s5" onclick="showSrc('BDF-2017')">BDF-2017</span></p>
 
-    <p>Pas par le marché libre. Par un État stratège qui dispose de tous ses outils : <strong>souveraineté monétaire</strong> (Banque de France nationalisée, dévaluations compétitives possibles), <strong>planification indicative</strong> par le Commissariat général au Plan fondé par Jean Monnet en 1946, <strong>secteur public puissant</strong> (Renault, EDF, GDF, Air France, Banque de France nationalisés en 1945-1946), <strong>contrôle des capitaux</strong>, <strong>protection commerciale</strong> et préférence nationale.</p>
+    <h3>B.2 — La spirale de la dette s'accélère en 2026</h3>
+    <p>La dette publique dépasse <strong>115–119% du PIB</strong> en mars 2026. La charge d'intérêts bondit à <strong>59,3 Md€/an</strong> contre 36,2 Md€ en 2020 — l'Agence France Trésor doit émettre plus de 530 Md€ de dette en 2026, un record supérieur à l'année Covid. Plus inquiétant : les OAT françaises à 10 ans offrent des rendements supérieurs aux obligations italiennes, pourtant notées deux crans en dessous. Le marché commence à "pricer" un risque France spécifique. <span class="cite s5" onclick="showSrc('INSEE-2025')">INSEE-2025</span></p>
 
-    <div class="pq">Les Trente Glorieuses ne sont pas un miracle — elles sont le résultat d'une politique industrielle volontariste avec des outils que la France ne possède plus aujourd'hui.<cite>Synthèse Partie B</cite></div>
+    <div class="alert"><strong>Cercle vicieux documenté :</strong> L'euro empêche la dévaluation compétitive, donc la France ne peut corriger ses déséquilibres par la politique monétaire. Mais la protection implicite de la BCE retire l'incitation à réformer. La France accumule les déficits sans correction de marché — un "keynésianisme hémiplégique" qui donne l'illusion de la soutenabilité jusqu'à ce qu'elle ne soit plus soutenable.</div>
 
-    <h3>B.2 — Le tournant de la rigueur (1983) : le premier renoncement</h3>
-    <p>En 1981, Mitterrand tente une relance keynésienne et des nationalisations (la dernière vague). Face à la pression des marchés et à la fuite des capitaux, il doit choisir : dévaluer et sortir du SME, ou rester et pratiquer la "désinflation compétitive". Il choisit de rester. C'est <strong>le premier renoncement majeur à la souveraineté économique</strong>. L'industrie française entre dans une phase de compression salariale sans restaurer sa compétitivité réelle.</p>
+    <h3>B.3 — Nouveaux chocs externes de 2026</h3>
+    <p>Le pétrole Brent dépasse <strong>114 $/baril</strong> en mars 2026 suite aux tensions Trump-Iran sur le détroit d'Ormuz. La France, qui importe 100% de son gaz et la quasi-totalité de son pétrole, est directement exposée. Illustration concrète : 1 100 boulangeries ont fermé en 2022-2023 parce que le prix de l'électricité nucléaire française était indexé sur le prix du gaz russe — et le même mécanisme risque de se réactiver avec le pétrole à 114 $.</p>
 
-    <h3>B.3 — Les privatisations (1986-1997) : démantèlement des leviers</h3>
-    <p>Deux vagues successives : Saint-Gobain, Paribas, TF1, Société Générale sous Chirac (1986-88), puis BNP, Elf-Aquitaine, Renault (ouverture) sous Balladur-Juppé (1993-97). L'emploi salarié dans les entreprises publiques passe de <strong>2,35 millions à ~0,8 million</strong> entre 1985 et 2011. Ce ne sont pas que des emplois perdus — ce sont des leviers d'action industrielle abandonnés.</p>
-
-    <h3>B.4 — Maastricht puis l'euro : la souveraineté monétaire disparaît</h3>
-    <p>Le traité de Maastricht (1992) crée l'UEM, impose les critères de convergence (déficit &lt;3%, dette &lt;60%) et prépare l'abandon de la souveraineté monétaire. L'euro arrive en 2002. La Banque centrale européenne gère désormais un taux directeur unique pour 20 économies différentes — taux calibré principalement sur l'économie allemande, structurellement sous-évalué pour elle et sur-évalué pour la France.</p>
-  </div>
-
-  <div class="cb">
-    <div class="cb-head"><div class="cb-title">Emploi industriel français 1980–2024 (millions)</div><div class="cb-src"><span class="cite s2" onclick="showSrc('CE-2024')">CE-2024</span> / <span class="cite s5" onclick="showSrc('DGE-2024')">DGE-2024</span> / <span class="cite s3" onclick="showSrc('IM-2022')">IM-2022</span></div></div>
-    <div class="cb-wrap"><canvas id="cEmploi"></canvas></div>
-  </div>
-
-  <div class="prose">
-    <h3>B.5 — Le déclin industriel : données vérifiées</h3>
-    <p>La part manufacturière du PIB français passe de <strong>~24% en 1980 à 9,43% en 2024</strong> <span class="cite s4" onclick="showSrc('WB-2024')">WB-2024</span> — une chute de 61%. L'emploi industriel passe de <strong>5,3 millions (26% de l'emploi)</strong> à <strong>3,2 millions (13%)</strong>, soit -2,1 millions de postes en 40 ans. <span class="cite s2" onclick="showSrc('CE-2024')">CE-2024</span> <span class="cite s3" onclick="showSrc('IM-2022')">IM-2022</span></p>
-
-    <p>La balance commerciale est révélatrice : de l'équilibre dans les années 80, elle plonge à -162 Md€ en 2022 (record), -100 Md€ en 2023, et s'améliore à <strong>-81 Md€ en 2024</strong> notamment grâce à l'excédent électrique historique. <span class="cite s5" onclick="showSrc('DOF-2025')">DOF-2025</span></p>
-
-    <div class="nuance"><strong>⚠ L'argument contre-factuel essentiel :</strong> L'Allemagne, dans le <em>même</em> cadre UE, maintient ~19% de part manufacturière. Ce qui prouve que le déclin français n'est pas une fatalité européenne — il résulte aussi de choix politiques nationaux (fiscalité de production, formation professionnelle, taille des ETI, etc.). Mais l'euro, calibré sur l'économie allemande, a agi comme une monnaie sur-évaluée pour la France et sous-évaluée pour l'Allemagne — avantage structurel massif pour Berlin.</div>
-
-    <h3>B.6 — Signal de réindustrialisation récent — mais insuffisant</h3>
-    <p>Depuis 2017, une tendance s'inverse : +100 000 emplois manufacturiers créés, +57 ouvertures nettes de sites industriels en 2023. <span class="cite s5" onclick="showSrc('DGE-2024')">DGE-2024</span> C'est réel. Mais "ces 100 000 emplois sont marginaux comparés aux environ 2 millions perdus depuis 1980", comme le note le Cercle des économistes. <span class="cite s2" onclick="showSrc('CE-2024')">CE-2024</span> En 2024, le solde des ouvertures/fermetures de sites redevient négatif — "l'hiver est revenu", selon les Forces françaises de l'industrie.</p>
+    <h3>B.4 — Fracture territoriale et blocage politique</h3>
+    <p>Les municipales de mars 2026 cristallisent une fracture territoriale profonde : le RN triple ses conseillers (3 121 élus) dans les villes moyennes désindustrialisées, mais reste marginal dans les métropoles (1,61% à Paris). Paradoxe central : les électeurs les plus favorables à la récupération de souveraineté économique (France des territoires) votent RN ; les plus susceptibles de porter un projet de transformation industrielle (cadres, ingénieurs des métropoles) votent à gauche ou au centre. Cette division empêche la construction d'une coalition majoritaire pour toute transformation profonde.</p>
   </div>
 
   <div class="mg">
     <div class="mc cr">
-      <div class="mc-label">Part manufacturière/PIB <span class="cite s5" onclick="showSrc('BDF-2017')">BDF-2017</span></div>
-      <div class="mc-val neg">19% → 9,4%</div>
-      <div class="mc-desc">1975 → 2024. Pendant ce temps l'Allemagne maintient ~19%. L'écart est de 2 à 1.</div>
+      <div class="mc-label">Part manuf./PIB 2024 <span class="cite s4" onclick="showSrc('WB-2024')">WB-2024</span></div>
+      <div class="mc-val neg">9,4%</div>
+      <div class="mc-desc">Contre 19% en Allemagne. Chute de 61% depuis 1980. Signal de désindustrialisation structurelle.</div>
     </div>
     <div class="mc cr">
-      <div class="mc-label">Emplois industriels perdus <span class="cite s3" onclick="showSrc('IM-2022')">IM-2022</span></div>
-      <div class="mc-val neg">−2,1 millions</div>
-      <div class="mc-desc">De 1980 à 2024. +100 000 depuis 2017 : un début, pas un rattrapage.</div>
-    </div>
-    <div class="mc cb">
-      <div class="mc-label">Balance commerciale 2024 <span class="cite s5" onclick="showSrc('DOF-2025')">DOF-2025</span></div>
-      <div class="mc-val neg">−81 Md€</div>
-      <div class="mc-desc">Amélioration vs -162 Md€ en 2022, principalement grâce à l'excédent électrique.</div>
+      <div class="mc-label">Charge de la dette 2026</div>
+      <div class="mc-val neg">59,3 Md€</div>
+      <div class="mc-desc">Contre 36,2 Md€ en 2020. Émet 530 Md€ de dette en 2026 — record supérieur à 2020.</div>
     </div>
     <div class="mc cg">
-      <div class="mc-label">Causes désindustrialisation <span class="cite s5" onclick="showSrc('BDF-2017')">BDF-2017</span></div>
-      <div class="mc-val warn">Tripartites</div>
-      <div class="mc-desc">Progrès technique ~40% · Externalisation services ~25% · Commerce international ~35% (concentré 2000-2007)</div>
+      <div class="mc-label">Pétrole Brent mars 2026</div>
+      <div class="mc-val warn">114 $/b</div>
+      <div class="mc-desc">Tensions Iran-Trump. France 100% dépendante gaz importé. Réactivation du risque inflation importée.</div>
+    </div>
+    <div class="mc cb">
+      <div class="mc-label">OAT spread vs Allemagne</div>
+      <div class="mc-val neg">~80 pb</div>
+      <div class="mc-desc">OAT désormais plus chères que les BTP italiens. Risque France spécifique pricé par les marchés.</div>
     </div>
   </div>
 
-  <div class="dt-wrap">
-    <table class="dt">
-      <thead><tr><th>Outil des Trente Glorieuses</th><th>Disponible aujourd'hui</th><th>Raison</th></tr></thead>
-      <tbody>
-        <tr><td>Souveraineté monétaire</td><td><span class="tag tko">✗ Perdue</span></td><td>Euro, BCE</td></tr>
-        <tr><td>Planification indicative</td><td><span class="tag twarn">⚠ Affaiblie</span></td><td>Existe mais marginalisée</td></tr>
-        <tr><td>Secteur public stratégique</td><td><span class="tag twarn">⚠ Réduit</span></td><td>Privatisations 1986-2002</td></tr>
-        <tr><td>Préférence nationale</td><td><span class="tag tko">✗ Interdite</span></td><td>Droit UE des marchés publics</td></tr>
-        <tr><td>Contrôle des capitaux</td><td><span class="tag tko">✗ Interdit</span></td><td>Art. 63 TFUE</td></tr>
-        <tr><td>Protection commerciale</td><td><span class="tag tko">✗ Compétence UE</span></td><td>Art. 207 TFUE</td></tr>
-        <tr><td>Politique de filières</td><td><span class="tag twarn">⚠ Partielle</span></td><td>Possible mais encadrée (CISAF)</td></tr>
-      </tbody>
-    </table>
+  <div class="cb">
+    <div class="cb-head"><div class="cb-title">Tableau de bord indicateurs — déc. 2025 → mars 2026</div><div class="cb-src">Mise à jour mars 2026</div></div>
+    <div class="cb-wrap"><canvas id="cDashboard"></canvas></div>
   </div>
 </div>
 </section>
@@ -396,38 +383,25 @@ section.vis{opacity:1;transform:translateY(0);}
 <div class="pw">
   <div class="sec-ey">Partie C — Analyse institutionnelle</div>
   <h2 class="sec-h">L'Union européenne : forces, failles et lobbies</h2>
-  <p class="sec-lead">Une analyse factuelle et sans complaisance de l'architecture européenne en 2025 — ce qu'elle permet, ce qu'elle bloque, et comment les intérêts privés y pèsent.</p>
+  <p class="sec-lead">Ce que l'UE permet, ce qu'elle bloque structurellement, et comment les intérêts privés y pèsent — avec les données de 2025-2026.</p>
 
   <div class="prose">
     <h3>C.1 — La Commission et le monopole de l'initiative</h3>
-    <p>La Commission européenne détient le <strong>monopole de l'initiative législative</strong> (article 17 TUE). Le Parlement peut demander une proposition (article 225 TFUE) — mais cette demande n'est pas contraignante. Cela signifie qu'un député européen élu, contrairement à un député national, ne peut pas soumettre directement une loi. L'organe non élu (la Commission) initie ; l'organe élu (le Parlement) amende ou refuse.</p>
+    <p>La Commission détient le monopole de l'initiative législative (Art. 17 TUE). Le Parlement peut demander une proposition (Art. 225 TFUE) mais sans contrainte. Un député européen élu ne peut pas soumettre directement une loi — l'organe non élu initie, l'organe élu amende ou refuse. La participation aux européennes : 51,05% en 2024 <span class="cite s5" onclick="showSrc('EP-2024')">EP-2024</span> — en dessous des 68% de moyenne des élections nationales.</p>
 
-    <p>On peut discuter les mérites de ce système pour l'efficacité technique. Ce qui est incontestable : il <strong>éloigne structurellement la législation des électeurs</strong>. La participation aux élections européennes en témoigne : 42,61% en 2014 (minimum historique), remontée à 51,05% en 2024 <span class="cite s5" onclick="showSrc('EP-2024')">EP-2024</span> — mais toujours bien en dessous des 68% de moyenne des élections nationales dans l'UE.</p>
+    <h3>C.2 — Le lobbying : 343 M€/an déclarés</h3>
+    <p>En 2025, les 162 entités déclarant plus d'1 million d'euros par an totalisent <strong>343 M€/an — minimum</strong> (+13% en un an, +33% en cinq ans). <span class="cite s3" onclick="showSrc('CEO-LC-2025')">CEO-LC-2025</span> CEFIC (chimie) : 323 passes parlementaires ; BusinessEurope : 295 passes ; Insurance Europe : 268 passes — ces trois organisations ont collectivement plus de passes que de députés européens (720).</p>
 
-    <h3>C.2 — Le lobbying : des données vérifiées</h3>
-    <p>Le registre de transparence de l'UE recense les dépenses déclarées de lobbying. En 2025, les 162 entités déclarant plus d'1 million d'euros par an totalisent <strong>343 M€/an — minimum</strong> (+13% en un an, +33% en cinq ans). <span class="cite s3" onclick="showSrc('CEO-LC-2025')">CEO-LC-2025</span></p>
+    <h3>C.3 — La crise allemande : le moteur est en panne</h3>
+    <p>L'Allemagne connaît sa première récession d'après-guerre : -0,2% en 2024 après -0,3% en 2023, 27 mois consécutifs de contraction industrielle. <span class="cite s5" onclick="showSrc('EC-Germany-2025')">EC-Germany-2025</span> Réponse : fonds spécial infrastructure de 500 Md€ adopté en mars 2025 — qui confirme que même l'Allemagne reconnaît que les règles d'orthodoxie budgétaire sont un frein quand la situation l'exige.</p>
 
-    <p>Trois organisations — CEFIC (chimie, 323 passes parlementaires), BusinessEurope (295 passes), Insurance Europe (268 passes) — ont collectivement <strong>plus de passes que le nombre de députés européens (720)</strong>. Pour rappel, les ONG environnementales ou sociales disposent de quelques millions d'euros de budget de lobbying, contre des dizaines de millions pour les industriels. Ce déséquilibre structurel infléchit les politiques — c'est une réalité documentée, pas une théorie du complot.</p>
-
-    <div class="nuance"><strong>⚠ Nuance :</strong> Le lobbying existe partout — à Washington, à Paris, dans chaque capitale. Ce qui est spécifique à Bruxelles : l'éloignement de la décision du contrôle démocratique national, la complexité des procédures qui favorise les acteurs disposant de ressources pour les naviguer, et l'absence de vrai contre-pouvoir médiatique européen.</div>
-
-    <h3>C.3 — Les crises qui montrent les limites du système</h3>
-    <p>Quatre référendums ignorés ou contournés : France 2005 (54,68% Non à la Constitution européenne → Traité de Lisbonne par voie parlementaire), Pays-Bas 2005 (61,54% Non), Irlande 2008 (Non → revote 2009), Grèce 2015 (61% Non à l'austérité → austérité appliquée quand même). Ce pattern systématique n'est pas anodin : il indique une architecture institutionnelle qui peut structurellement surpasser les expressions démocratiques nationales.</p>
-
-    <h3>C.4 — La crise allemande : le moteur est en panne</h3>
-    <p>L'Allemagne, modèle industriel de l'UE, connaît sa <strong>première récession d'après-guerre</strong> : -0,2% en 2024 après -0,3% en 2023, 27 mois consécutifs de contraction industrielle (PMI manufacturier à 40,6 en septembre 2024). <span class="cite s5" onclick="showSrc('EC-Germany-2025')">EC-Germany-2025</span> Raisons : fin du gaz russe bon marché, transition énergétique coûteuse, concurrence chinoise sur l'automobile. Le modèle exportateur allemand qui calibrait l'UE est fragilisé.</p>
-
-    <p>Réponse : fonds spécial infrastructure de 500 Md€ adopté en mars 2025. Mais cet effort budgétaire massif aurait été impossible sans modification du "frein à la dette" constitutionnel allemand — ce qui montre que même l'Allemagne reconnaît que les règles d'orthodoxie budgétaire sont un frein quand la situation l'exige.</p>
-
-    <h3>C.5 — Le rapport Draghi : l'UE s'auto-diagnostique</h3>
-    <p>En septembre 2024, Mario Draghi (ex-président de la BCE) remet un rapport commandé par la Commission von der Leyen. Son diagnostic est sévère : l'UE a raté la révolution numérique, l'écart de PIB par habitant avec les États-Unis s'élargit, et combler le retard nécessiterait <strong>750-800 Md€ d'investissement supplémentaire par an</strong> (4-5% du PIB). <span class="cite s5" onclick="showSrc('Draghi-2024')">Draghi-2024</span></p>
-
-    <p>La réponse de la Commission est le "Clean Industrial Deal" et le CISAF (juin 2025) <span class="cite s5" onclick="showSrc('EC-CISAF-2025')">EC-CISAF-2025</span>. L'analyse de Bruegel est cinglante : c'est une "version low-cost" des prescriptions Draghi. <span class="cite s4" onclick="showSrc('Bruegel-2025')">Bruegel-2025</span> L'UE se diagnostique bien — mais peine à se soigner.</p>
+    <h3>C.4 — Le rapport Draghi : l'UE s'auto-diagnostique</h3>
+    <p>Septembre 2024 : besoin de 750-800 Md€/an d'investissements supplémentaires (4-5% du PIB). <span class="cite s5" onclick="showSrc('Draghi-2024')">Draghi-2024</span> La réponse de la Commission (CISAF, juin 2025) est qualifiée de "version low-cost" des prescriptions Draghi par Bruegel. <span class="cite s4" onclick="showSrc('Bruegel-2025')">Bruegel-2025</span> L'UE se diagnostique bien — mais peine à se soigner.</p>
   </div>
 
   <div class="two">
     <div class="cb">
-      <div class="cb-head"><div class="cb-title">Composition Parlement européen 2024</div><div class="cb-src"><span class="cite s5" onclick="showSrc('EP-2024')">EP-2024</span></div></div>
+      <div class="cb-head"><div class="cb-title">Parlement européen 2024 — composition</div><div class="cb-src"><span class="cite s5" onclick="showSrc('EP-2024')">EP-2024</span></div></div>
       <div class="cb-wrap"><canvas id="cPE"></canvas></div>
     </div>
     <div class="cb">
@@ -439,128 +413,497 @@ section.vis{opacity:1;transform:translateY(0);}
 </section>
 <div class="sdiv"></div>
 
-<!-- ════ D — SCÉNARIOS ════ -->
+<!-- ════ BLOCAGES UE ════ -->
+<section id="blocages">
+<div class="pw">
+  <div class="sec-ey">Analyse complémentaire — Droit européen</div>
+  <h2 class="sec-h">Ce que les traités européens permettent, limitent ou interdisent</h2>
+  <p class="sec-lead">Avant d'évaluer quelque option que ce soit, cartographier précisément les contraintes juridiques réelles du cadre européen. Certaines sont contournables par des instruments existants ; deux sont structurellement irréductibles sans sortir des traités.</p>
+
+  <div class="prose">
+    <h3>Le prix de l'électricité : une distorsion construite, pas une fatalité</h3>
+    <p>Le marché européen de l'électricité est fondé sur la règle du coût marginal : le prix de l'électron est fixé par la dernière centrale appelée sur le réseau — en pratique, une centrale à gaz. Résultat : l'électricité nucléaire française, produite à ~50 €/MWh, est facturée au prix du gaz allemand ou russe. C'est le mécanisme qui a tué 1 100 boulangeries en 2022-2023 et exposé l'agriculture française à des surcoûts GNR de +224 points d'indice depuis 2020.</p>
+    <p>Un argument juridique mérite d'être exploré : si EDF fixe un tarif identique pour <em>tous</em> les acheteurs — particuliers, industriels, revendeurs, collectivités — au coût de revient plus une marge normale, la concurrence n'est pas faussée. Elle se déplace simplement du prix vers les services. Un concurrent souhaitant vendre moins cher devrait construire ses propres centrales — c'est la concurrence sur la <em>production</em>, non plus sur l'accès à la rente nucléaire. La Commission pourrait contester cela (Art. 102 TFUE — abus de position dominante) mais l'argument symétrique est fort : c'était l'ARENH qui créait la distorsion.</p>
+
+    <h3>Les accords commerciaux : une compétence que la France ne peut pas récupérer seule</h3>
+    <p>La politique commerciale est une compétence exclusive de l'UE (Art. 207 TFUE). La France ne peut pas négocier ses propres tarifs douaniers ni sortir unilatéralement d'un accord comme Mercosur. Elle peut bloquer la ratification d'un accord en empêchant la majorité qualifiée au Conseil ou en s'appuyant sur un vote du Parlement national — mais c'est un levier de blocage, pas de construction. La réorientation des fonds PAC nationaux via le Plan Stratégique National est un substitut partiel : plafonner les aides à 100 k€/exploitation libère ~1,5 Md€/an vers les éleveurs directement exposés à la concurrence des importations.</p>
+
+    <h3>Ce qui peut être fait dans le cadre actuel</h3>
+    <p>Le Règlement général d'exemption par catégorie (RGEC) et le CISAF couvrent sans notification préalable les aides à la R&D, la formation, les PME et les technologies propres (dont le nucléaire depuis 2025). Les marchés publics peuvent intégrer des critères carbone sur le cycle de vie, des clauses d'exécution locale (Art. 70 Directive 2014/24/UE) et l'allotissement sous les seuils européens. Le Décret Montebourg peut filtrer les IDE dans les secteurs stratégiques. Le PSN agricole peut conditionner les aides aux pratiques agroécologiques.</p>
+  </div>
+
+  <div class="dt-wrap">
+    <table class="dt">
+      <thead><tr><th>Contrainte UE</th><th>Nature juridique</th><th>Marge de manœuvre dans les traités</th><th>Ce que la sortie des traités permettrait</th></tr></thead>
+      <tbody>
+        <tr><td>Prix électricité — marché marginal gaz</td><td><span class="tag twarn">Dir. 2019/944 — Arguable</span></td><td>Tarif unique EDF + CfD long terme légaux sous réforme 2024</td><td>Prix administré souverain ~60 €/MWh</td></tr>
+        <tr><td>Aides d'État — notification 12-18 mois</td><td><span class="tag twarn">Art. 107 TFUE — Contournable</span></td><td>CISAF + RGEC (R&D, formation, PME, environnement, nucléaire)</td><td>Subventions sans plafond ni délai</td></tr>
+        <tr><td>Marchés publics — non-discrimination</td><td><span class="tag twarn">Dir. 2014/24 — Partiellement</span></td><td>Critères carbone, clauses sociales Art. 70, allotissement sous seuils</td><td>Préférence nationale intégrale 150 Md€</td></tr>
+        <tr><td>Tarifs douaniers agricoles et industriels</td><td><span class="tag tko">Art. 207 TFUE — Irréductible</span></td><td>Coalition blocage ratification Mercosur seulement</td><td>Tarifs autonomes par secteur et origine</td></tr>
+        <tr><td>Politique monétaire — taux BCE</td><td><span class="tag tko">Art. 127 TFUE — Irréductible</span></td><td>BPI prêts bonifiés, politique budgétaire contra-cyclique</td><td>Taux adaptés au cycle économique français</td></tr>
+        <tr><td>Contrôle des investissements étrangers</td><td><span class="tag tok">Art. 63 TFUE — Contournable</span></td><td>Décret Montebourg étendu + Règl. UE 2019/452</td><td>Contrôle complet sans justification "sécurité"</td></tr>
+        <tr><td>PAC — allocation des aides agricoles</td><td><span class="tag tok">Compétence partagée — Contournable</span></td><td>PSN révisé : plafonnement, aides couplées, conditionnalité pratiques</td><td>PAC nationale souveraine, désindexation prix mondiaux</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="nuance"><strong>Les deux blocages structurels :</strong> Les tarifs douaniers (Art. 207 TFUE, compétence exclusive sans exception) et la politique monétaire (Art. 127 TFUE, BCE seule) ne peuvent pas être contournés dans le cadre des traités actuels. Si Mercosur est ratifié malgré une coalition d'opposition, la France n'a aucun recours. Si la zone euro nécessite des taux différents de ceux qu'exige le cycle économique français, aucun instrument national ne peut compenser. Ce constat est purement analytique — il appartient aux décideurs et aux citoyens d'en tirer les conséquences qu'ils jugent appropriées.</div>
+</div>
+</section>
+<div class="sdiv"></div>
+<!-- ════ D — SCÉNARIOS 2026 ════ -->
 <section id="scenarios">
 <div class="pw">
-  <div class="sec-ey">Partie D — Analyse prospective</div>
-  <h2 class="sec-h">Quatre scénarios pour l'UE à l'horizon 2035</h2>
-  <p class="sec-lead">L'UE n'est pas un bloc monolithique figé. Elle peut évoluer dans des directions très différentes selon les crises, les coalitions et les choix politiques. Ces scénarios ont des implications directes pour la France.</p>
+  <div class="sec-ey">Partie D — Mise à jour mars 2026 — Analyse prospective</div>
+  <h2 class="sec-h">Cinq scénarios pour l'UE à l'horizon 2035 — actualisés</h2>
+  <p class="sec-lead">La mise à jour de mars 2026 modifie significativement les probabilités. Le statu quo se dégrade plus vite qu'anticipé ; un cinquième scénario émerge.</p>
 
   <div class="sc-cards">
     <div class="sc-card gold">
-      <div class="sc-prob">Probabilité estimée : ~40%</div>
-      <h4>Statu quo et déclin graduel</h4>
-      <p>L'UE continue sans réforme majeure. La divergence économique entre membres s'accentue (Espagne +2,9% vs Allemagne +0,2% en 2025). La France s'appauvrit relativement. La légitimité démocratique se érode progressivement. Les eurosceptiques continuent de progresser sans jamais être suffisamment nombreux pour provoquer une rupture. C'est le scénario par défaut — probablement le plus plausible.</p>
+      <div class="sc-prob">Probabilité actualisée : ~35% (était 40-50%)</div>
+      <h4>Scénario 1 — Statu quo et déclin graduel</h4>
+      <p>L'UE continue sans réformes majeures. La divergence économique s'accentue (Espagne +2,9% vs France +0,7-0,9%). Mais le déclin est moins graduel qu'anticipé — la dette française dépasse désormais l'italienne dans la perception des marchés. L'instabilité politique française (gouvernements Bayrou, Lecornu) freine toute consolidation.</p>
     </div>
     <div class="sc-card blue">
-      <div class="sc-prob">Probabilité estimée : ~15%</div>
-      <h4>Intégration fédérale accélérée</h4>
-      <p>Face aux défis géopolitiques (USA, Chine), l'UE choisit l'union politique. Budget commun massif, eurobonds permanents, politique industrielle commune. Ce scénario répondrait aux besoins identifiés par Draghi. Mais il exige un consensus improbable : qui renonce à sa souveraineté fiscale ? L'Allemagne y est structurellement hostile.</p>
+      <div class="sc-prob">Probabilité : ~15%</div>
+      <h4>Scénario 2 — Intégration fédérale accélérée</h4>
+      <p>Face aux défis géopolitiques (USA, Chine), l'UE choisit l'union politique. Budget commun massif, eurobonds permanents. Ce scénario répondrait aux besoins Draghi. Mais il exige un consensus improbable : qui renonce à sa souveraineté fiscale ? L'Allemagne y est structurellement hostile.</p>
     </div>
     <div class="sc-card green">
-      <div class="sc-prob">Probabilité estimée : ~35%</div>
-      <h4>Europe à plusieurs vitesses</h4>
-      <p>Un noyau dur intégré autour de la zone euro, une périphérie associée avec des accords bilatéraux différenciés. C'est le scénario qui permettrait à la France de récupérer certains outils de politique industrielle sans quitter formellement l'UE. Scénario médiane entre le fédéralisme et le Frexit — mais il nécessite une coalition suffisamment forte pour imposer la renégociation des traités.</p>
+      <div class="sc-prob">Probabilité : ~25%</div>
+      <h4>Scénario 3 — Europe à plusieurs vitesses</h4>
+      <p>Un noyau dur intégré, une périphérie associée différenciée. Permettrait à la France de récupérer certains outils sans quitter formellement l'UE. Scénario médiane entre fédéralisme et Frexit. Nécessite une coalition suffisamment forte pour imposer la renégociation des traités.</p>
     </div>
     <div class="sc-card red">
-      <div class="sc-prob">Probabilité estimée : ~10%</div>
-      <h4>Désintégration progressive</h4>
-      <p>Une crise majeure — financière, géopolitique ou sociale — précipite la sortie de membres clés. L'UE se fragmente en plusieurs sous-ensembles. La France "subit" une sortie plutôt qu'elle ne la "choisit". C'est le pire scénario : sortie sans préparation, dans un contexte chaotique. Non négligeable à horizon 10-15 ans selon les données de la Partie D.</p>
+      <div class="sc-prob">Probabilité actualisée : ~15-20% (était 10-15%)</div>
+      <h4>Scénario 4 — Désintégration progressive</h4>
+      <p>La guerre commerciale Trump fragilise la cohésion européenne. L'accord de Turnberry déjà suspendu avant ratification illustre la fragilité des positions communes. La divergence économique s'accentue. La montée en probabilité de ce scénario est la principale évolution de mars 2026 — et c'est le pire cas : sortie subie sans préparation.</p>
+    </div>
+    <div class="sc-card purple">
+      <div class="sc-prob">Nouveau scénario — Probabilité : ~20-25%</div>
+      <h4>Scénario 5 — Réforme pragmatique sous pression</h4>
+      <p>Nouveau scénario absent de l'analyse de décembre 2025. Face à Trump et à la Chine, l'UE est contrainte de se réformer plus vite que prévu : CISAF (juin 2025), MACF (janvier 2026), rapport Draghi, fonds 500 Md€ allemand. Si l'UE se réforme suffisamment vite, le Frexit perd une partie de sa justification. À suivre en 2026-2027.</p>
     </div>
   </div>
 
   <div class="prose">
-    <h3>D.1 — La montée eurosceptique : données électorales</h3>
-    <p>En 2024, pour la première fois, les groupes Patriots for Europe (86 sièges) et ECR (78 sièges) totalisent <strong>164 eurodéputés</strong>, soit 23% du Parlement. Le RN est le premier parti français aux européennes avec 31,4%. <span class="cite s5" onclick="showSrc('EP-2024')">EP-2024</span> Les partis eurosceptiques gouvernent en Italie (FdI + Lega), aux Pays-Bas (Wilders), en Autriche (FPÖ premier parti). Ce signal politique est réel — mais il ne se traduit pas encore en majorité structurelle capable de changer les traités.</p>
-
-    <div class="nuance"><strong>Paradoxe central :</strong> La montée des eurosceptiques au Parlement européen n'empêche pas l'UE de fonctionner — elle la rend plus difficile à réformer, car toute réforme majeure des traités exige l'unanimité du Conseil. L'euroscepticisme sans majorité qualifiée est politiquement impuissant sur les textes fondamentaux.</div>
+    <h3>Implications pour la stratégie française</h3>
+    <p>La combinaison des chocs de 2026 — dette, pétrole, Trump, fracture territoriale — suggère que la France est dans une "zone grise" difficile : assez dégradée pour que l'immobilisme soit dangereux, pas assez en crise pour que les solutions radicales soient politiquement mobilisables. La montée du scénario 4 (désintégration subie) est le signal le plus urgent : se préparer à une sortie préparée est précisément ce qui permet d'éviter une sortie chaotique.</p>
   </div>
 </div>
 </section>
 <div class="sdiv"></div>
 
-<!-- ════ E — RÉINDUSTRIALISATION ════ -->
-<section id="industrie">
+<!-- ════ CONCLUSIONS ════ -->
+<section id="conclusions">
 <div class="pw">
-  <div class="sec-ey">Partie E — Politique industrielle post-Frexit</div>
-  <h2 class="sec-h">Réindustrialisation : le projet et ses moyens</h2>
-  <p class="sec-lead">Que peut faire une France souveraine que ne peut pas faire une France dans l'UE ? Quels secteurs prioriser, avec quels outils, pour quel montant ?</p>
+  <div class="sec-ey">Synthèse analytique — avant les plans</div>
+  <h2 class="sec-h">Ce que l'analyse établit — 6 constats et 3 niveaux d'urgence</h2>
+  <p class="sec-lead">Ces conclusions ne tranchent pas le débat Frexit — ce n'est pas leur objet. Elles cartographient honnêtement les enjeux pour permettre à chacun de forger sa propre réponse.</p>
 
-  <div class="prose">
-    <h3>E.1 — Ce que l'UE interdit, ce que la sortie permettrait</h3>
-    <p>La question n'est pas rhétorique. Il existe une asymétrie documentée entre ce que font les USA ou la Chine et ce que peut faire la France dans le cadre actuel. Le Buy American Act impose désormais 75% de contenu national dans les marchés publics fédéraux américains <span class="cite s3" onclick="showSrc('RI-2025')">RI-2025</span> — la France ne peut légalement pas faire pareil car le droit européen des marchés publics interdit toute préférence nationale. La Chine subventionne ses industries sans plafond ni notification préalable. La France doit notifier la Commission et respecter les cadres CISAF. <span class="cite s5" onclick="showSrc('EC-CISAF-2025')">EC-CISAF-2025</span></p>
+  <div class="concl-banner">
+    <h2>La vraie question, reformulée</h2>
+    <p>Le débat ne devrait pas être "pour ou contre l'UE" dans l'absolu. La question productive est : l'appartenance à l'UE permet-elle à la France d'atteindre ses objectifs de prospérité, de souveraineté et de justice sociale ? Si oui, y rester en pesant pour la réformer. Si non, préparer sérieusement une alternative.</p>
+    <p>Mais quelle que soit la réponse, certaines actions sont souhaitables dans tous les cas — et c'est peut-être l'enseignement le plus opérationnel de toute cette analyse.</p>
+  </div>
 
-    <p>CISAF est une avancée réelle par rapport à l'ancien TCTF (il inclut désormais les technologies nucléaires, a une durée de 5 ans). Mais il <strong>n'autorise toujours pas</strong> : la préférence nationale intégrale dans les marchés publics, les tarifs douaniers nationaux, les quotas d'importation, la politique monétaire autonome.</p>
+  <div class="concl-grid">
+    <div class="concl-card positive">
+      <div class="concl-icon">Constat 1 — Établi avec confiance</div>
+      <h4>Le déclin industriel est documenté et réel</h4>
+      <p>De 24% à 9,4% de part manufacturière, -2,1 millions d'emplois industriels, -81 Md€ de balance commerciale. Ce n'est pas une opinion — c'est une donnée vérifiée par des sources officielles multiples. <span class="cite s4" onclick="showSrc('WB-2024')">WB-2024</span></p>
+    </div>
+    <div class="concl-card warning">
+      <div class="concl-icon">Constat 2 — Établi avec confiance</div>
+      <h4>Les outils du redressement sont contraints par l'UE</h4>
+      <p>Préférence nationale, politique monétaire, tarifs douaniers, subventions illimitées, sortie du Mercosur — ces instruments utilisés par les USA, la Chine, la Suisse ne sont pas pleinement disponibles à la France dans les traités actuels. Deux blocages sont irréductibles.</p>
+    </div>
+    <div class="concl-card positive">
+      <div class="concl-icon">Constat 3 — Établi avec confiance</div>
+      <h4>Une sortie est techniquement faisable</h4>
+      <p>Des pays prospèrent hors UE (Suisse, Norvège). Le Brexit, malgré ses erreurs massives, a abouti à un accord. Affirmer qu'un Frexit est "impossible" est factuellement faux. La Suisse le démontre avec un PIB/hab 2,3 fois supérieur à celui de la France. <span class="cite s4" onclick="showSrc('IMF-2025')">IMF-2025</span></p>
+    </div>
+    <div class="concl-card warning">
+      <div class="concl-icon">Constat 4 — Établi avec confiance</div>
+      <h4>Elle comporte des risques réels et incompressibles</h4>
+      <p>Spéculation monétaire quasi-certaine, crise de la dette (58,5% détenue par non-résidents), récession transitoire probable. Aucune sortie de l'euro ne s'est jamais faite sans douleur à court terme. Les 2 437 t d'or et 359 Md€ de réserves atténuent mais n'éliminent pas le risque. <span class="cite s5" onclick="showSrc('BdF-2025')">BdF-2025</span></p>
+    </div>
+    <div class="concl-card urgent">
+      <div class="concl-icon">Constat 5 — Le paradoxe Trump</div>
+      <h4>La démondialisation valide les arguments souverainistes</h4>
+      <p>Trump, Biden avant lui avec l'IRA, la Chine, l'Inde — tous pratiquent un protectionnisme assumé. Ce n'est pas une idéologie, c'est une réponse à une réalité économique. L'UE elle-même l'admet avec le MACF (protectionnisme environnemental, jan. 2026). La question n'est plus "protectionnisme ou pas" mais "avec quels instruments et pour quels secteurs".</p>
+    </div>
+    <div class="concl-card urgent">
+      <div class="concl-icon">Constat 6 — Mars 2026</div>
+      <h4>La fenêtre pour une transition ordonnée se resserre</h4>
+      <p>Plus la France tarde, plus les conditions d'une éventuelle transition seront défavorables. La dette à 117% du PIB, les OAT au-dessus des BTP italiens, la charge d'intérêts à 59,3 Md€ — chaque année réduit l'espace de manœuvre. C'est un argument pour l'urgence — et paradoxalement aussi pour la prudence.</p>
+    </div>
+  </div>
 
-    <h3>E.2 — Les secteurs prioritaires et leur justification</h3>
-    <p>Une politique industrielle souveraine ne peut pas tout faire à la fois — elle doit prioriser selon deux critères : <strong>souveraineté</strong> (sans ce secteur, le pays est vulnérable) et <strong>levier économique</strong> (emplois, valeur ajoutée, dépendances en aval). L'analyse identifie quatre niveaux :</p>
+  <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;margin:3rem 0 1.5rem;color:var(--blue);">Les trois niveaux d'urgence — indépendants du choix A ou B</h3>
 
-    <p><strong>Tier 1 — Souveraineté absolue :</strong> Nucléaire civil (indépendance énergétique, savoir-faire maîtrisé), Défense (Dassault, Naval Group, MBDA — atout préservé), Santé/Pharma (80% des principes actifs médicaux viennent d'Asie — leçon COVID brutale), Alimentation (2e exportateur agroalimentaire mondial — atout à protéger).</p>
+  <div class="urgence-grid">
+    <div class="urgence-col u1">
+      <h4>Urgence immédiate — possible dans l'UE dès 2027</h4>
+      <div class="urgence-item">Argument "concurrence pure" pour découpler prix électricité du gaz (EDF prix unique)</div>
+      <div class="urgence-item">CfD long terme EDF à ~70 €/MWh pour industriels et artisans</div>
+      <div class="urgence-item">Stocks stratégiques : médicaments, composants, denrées essentielles (3 mois)</div>
+      <div class="urgence-item">Réforme taxes de production (-15 Md€ CVAE/CFE)</div>
+      <div class="urgence-item">PSN agricole révisé : plafonnement, aides couplées élevage extensif</div>
+      <div class="urgence-item">Extension durée vie réacteurs 50→70 ans (décision ASNR nationale)</div>
+      <div class="urgence-item">Plan permaculture national : haies, bocage, rotation sols</div>
+      <div class="urgence-item">Maisons de santé + télémédecine zones rurales</div>
+    </div>
+    <div class="urgence-col u2">
+      <h4>Urgence à moyen terme — nécessite réformes UE</h4>
+      <div class="urgence-item">Préférence européenne marchés publics (pas nationale — à négocier)</div>
+      <div class="urgence-item">Extension MACF à l'agroalimentaire (acier, ciment → alimentation)</div>
+      <div class="urgence-item">Politique industrielle commune coordonnée (vs concurrence inter-États)</div>
+      <div class="urgence-item">Prix de l'énergie reflétant coûts réels production nationale</div>
+      <div class="urgence-item">Coalition blocage ratification Mercosur (IT, PL, AT, IE, BE)</div>
+      <div class="urgence-item">Réforme PSN : clauses miroirs normes phytosanitaires</div>
+    </div>
+    <div class="urgence-col u3">
+      <h4>Question de fond — implique éventuellement une sortie des traités</h4>
+      <div class="urgence-item">Politique monétaire adaptée aux cycles français (taux, change)</div>
+      <div class="urgence-item">Préférence nationale intégrale dans 150 Md€ marchés publics</div>
+      <div class="urgence-item">Sortie Mercosur et tarifs douaniers agricoles autonomes</div>
+      <div class="urgence-item">Subventions industrielles illimitées sans notification Commission</div>
+      <div class="urgence-item">Contrôle des capitaux en cas de crise</div>
+      <div class="urgence-item">Accords commerciaux bilatéraux autonomes</div>
+      <div class="urgence-item">Prix administré électricité souverain (~60 €/MWh)</div>
+    </div>
+  </div>
 
-    <p><strong>Tier 2 — Réindustrialisation stratégique :</strong> Semi-conducteurs (>90% importés — dépendance critique pour tout le numérique), Batteries (la transition VE dépend de ~80% de batteries chinoises), Automobile (Renault partiellement public, filière en restructuration accélérée), Sidérurgie (base de toute industrie lourde).</p>
+  <div class="pq">L'analyse suggère que les actions de la première catégorie (urgences immédiates) doivent être entreprises sans attendre la décision sur la troisième. Ce n'est pas de l'attentisme — c'est de la stratégie séquentielle : construire la capacité d'autonomie pendant qu'on décide si on veut en user.<cite>Mise à jour mars 2026 — Conclusion actualisée</cite></div>
+</div>
+</section>
+<div class="sdiv"></div>
+<!-- ════ PLAN A ════ -->
+<section id="plan-a">
+<div class="pw">
+  <div class="sec-ey">Plan quinquennal A — 2027–2032</div>
+  <h2 class="sec-h">Plan A — Frexit souverain</h2>
+  <p class="sec-lead">Sortie préparée de l'UE et de la zone euro, reconstruction souveraine sur cinq ans. Repose sur un mandat démocratique explicite obtenu avant toute notification, suivi d'une préparation technique transparente et d'une exécution séquencée.</p>
 
-    <div class="nuance"><strong>La leçon médicaments :</strong> La COVID-19 a montré que la dépendance aux principes actifs asiatiques n'est pas une abstraction. Paracétamol, antibiotiques, anticoagulants — en situation de crise mondiale, les approvisionnements sont coupés. La relocalisation des capacités de production des médicaments essentiels est un impératif de souveraineté sanitaire, indépendamment de tout débat sur l'UE.</div>
+  <div class="plan-header pa">
+    <h3>Hypothèse centrale</h3>
+    <p>Le nouveau président dispose d'un mandat référendaire clair obtenu avant toute notification à l'UE — c'est la condition de légitimité démocratique indispensable. Le programme de sortie est public, détaillé et débattu pendant la campagne. La préparation technique qui suit est conduite de manière transparente par le gouvernement mandaté : les citoyens savent ce qui est en cours, les marchés aussi. Cette transparence est à la fois un principe démocratique et un avantage stratégique — elle évite les accusations de coup de force ou de manipulation qui fragiliseraient politiquement la transition. Le modèle n'est pas le Brexit (référendum sans plan) mais l'inverse : un plan détaillé d'abord, le vote ensuite, l'exécution enfin.</p>
+  </div>
 
-    <h3>E.3 — Les instruments disponibles hors UE</h3>
-    <p>Une France hors UE disposerait d'instruments que les pays les plus industrialisés du monde utilisent couramment : <strong>préférence nationale</strong> dans les ~150 Md€ de marchés publics annuels, <strong>tarifs douaniers ciblés</strong> (comme le font les USA et la Chine), <strong>subventions directes sans plafond</strong>, <strong>quotas d'importation</strong> sur les secteurs stratégiques, et si elle sort de l'euro : <strong>politique monétaire adaptée</strong> à sa situation.</p>
-
-    <h3>E.4 — L'ordre de grandeur de l'effort nécessaire</h3>
-    <p>Les estimations d'investissement sur 10-15 ans : nucléaire (6-14 EPR2) 50-100 Md€, semi-conducteurs 10-20 Md€, batteries/gigafactories 5-15 Md€, pharma/santé 5-10 Md€, sidérurgie 5-10 Md€, formation 10-20 Md€. <strong>Total : 85-175 Md€ sur 10-15 ans</strong> — soit 6-12 Md€/an. À titre de comparaison : l'Allemagne dédie 500 Md€ à ses seules infrastructures, les USA mobilisent ~1 900 Md$ sur leurs trois grandes lois. La France serait dans le bas de la fourchette des grands pays industriels.</p>
+  <div class="plan-phases">
+    <div class="phase-card pa">
+      <div class="phase-yr">Phase 0 — Avant l'élection (campagne)</div>
+      <h4>Mandat démocratique explicite</h4>
+      <ul class="phase-items">
+        <li>Programme de sortie présenté publiquement pendant la campagne présidentielle</li>
+        <li>Référendum de confirmation dans les 6 mois suivant l'élection</li>
+        <li>Commission nationale indépendante chargée du plan de transition (rapport public)</li>
+        <li>Audit public des dépendances critiques : médicaments, composants, énergie</li>
+        <li>Contacts officiels ouverts avec UK, Suisse, Canada, Japon sur la future relation</li>
+        <li>Loi de préparation votée au Parlement avant notification Article 50</li>
+      </ul>
+    </div>
+    <div class="phase-card pa">
+      <div class="phase-yr">Phase 0-bis — T−18 à T−6 mois (après référendum)</div>
+      <h4>Préparation technique transparente</h4>
+      <ul class="phase-items">
+        <li>Constitution réserves devises (objectif 100 Md€) — annoncée publiquement</li>
+        <li>Adaptation systèmes IT bancaires — calendrier public, banques informées</li>
+        <li>Stocks stratégiques constitués : médicaments 6 mois, composants critiques</li>
+        <li>Conception de la nouvelle monnaie — débat public sur le nom, le design</li>
+        <li>Négociations préliminaires officielles avec partenaires bilatéraux</li>
+        <li>Information et formation des agents économiques : entreprises, banques, collectivités</li>
+      </ul>
+    </div>
+    <div class="phase-card pa">
+      <div class="phase-yr">Phase 1 — 2027–2028</div>
+      <h4>Déclenchement et transition monétaire</h4>
+      <ul class="phase-items">
+        <li>Notification Article 50 — acte public et solennel</li>
+        <li>Introduction de la nouvelle monnaie (nom décidé par référendum) — parité 1:1 initiale</li>
+        <li>Contrôles capitaux 500 €/semaine (vs 60 €/j en Grèce)</li>
+        <li>Fermeture bancaire 3-5 jours (minimum technique)</li>
+        <li>Tarif électricité ~60 €/MWh pour tous — EDF prix unique</li>
+        <li>Accord-cadre UK prioritaire (Lancaster House 2.0)</li>
+        <li>Sortie Mercosur dès T+6 mois, tarifs bovins 30-50%</li>
+        <li>Gel prix produits première nécessité</li>
+      </ul>
+    </div>
+    <div class="phase-card pa">
+      <div class="phase-yr">Phase 2 — 2028–2030</div>
+      <h4>Réindustrialisation — secteurs stratégiques</h4>
+      <ul class="phase-items">
+        <li>Préférence nationale 150 Md€ marchés publics</li>
+        <li>Textile : tarifs ciblés Asie + commande publique réservée</li>
+        <li>Sidérurgie : H2 électro-nucléaire, décarbonation 5 Md€</li>
+        <li>Pharma : subventions 8 Md€/an, 80% principes actifs locaux 2032</li>
+        <li>Semi-conducteurs : 10-20 Md€ publics, accord Japon/Corée</li>
+        <li>Automobile : VE souverain, batteries franco-britanniques</li>
+        <li>Levée progressive contrôles capitaux à T+24 mois</li>
+      </ul>
+    </div>
+    <div class="phase-card pa">
+      <div class="phase-yr">Phase 3 — 2028–2032</div>
+      <h4>Agriculture, écologie et permaculture</h4>
+      <ul class="phase-items">
+        <li>PAC nationale souveraine — désindexation prix mondiaux</li>
+        <li>Stocks stratégiques blé, viande, légumes (3 mois)</li>
+        <li>Allègement GNR complet : -15 Md€ charges agricoles</li>
+        <li>Moratoire normes bâtiments agricoles 3 ans</li>
+        <li>Plan permaculture : 50% exploitations en agroécologie 2032</li>
+        <li>Haies et bocage : 1,5 Md€/an, captation CO2, -50% ruissellement</li>
+        <li>Réduction pesticides -40% par rotation obligatoire</li>
+        <li>Restauration scolaire 100% locale d'ici 2030</li>
+      </ul>
+    </div>
+    <div class="phase-card pa">
+      <div class="phase-yr">Phase 4 — 2027–2032</div>
+      <h4>Souveraineté énergétique nucléaire</h4>
+      <ul class="phase-items">
+        <li>EPR2 accéléré : 6 confirmés + 8 lancés sans contrainte UE</li>
+        <li>Extension 50→80 ans décision ASNR souveraine (précédent NRC US)</li>
+        <li>Gen IV relancé : 3 Md€/an CEA, démonstrateur 2038</li>
+        <li>320 000 t uranium appauvri = 3 000 ans Gen IV</li>
+        <li>H2 électro-nucléaire : substitution gaz industriel</li>
+        <li>Électrification transports accélérée</li>
+      </ul>
+    </div>
+    <div class="phase-card pa">
+      <div class="phase-yr">Santé — Parallel à toutes les phases</div>
+      <h4>Déserts médicaux et souveraineté sanitaire</h4>
+      <ul class="phase-items">
+        <li>5 000 médecins salariés État dans zones sous-dotées</li>
+        <li>500 maisons de santé pluridisciplinaires/an (800 M€/an)</li>
+        <li>Télémédecine : 10 000 bornes bureaux de poste et mairies</li>
+        <li>Régie nationale médicaments génériques (hors brevets)</li>
+        <li>Fin T2A : retour budget global par mission hospitalière</li>
+        <li>Réouverture 50 000 lits fermés 2010-2025 (priorité ruraux)</li>
+        <li>Taxe ultra-transformés → fonds prévention doublé (3→6 Md€)</li>
+      </ul>
+    </div>
   </div>
 
   <div class="mg">
     <div class="mc cr">
-      <div class="mc-label">Déficit textile 2024 <span class="cite s5" onclick="showSrc('DOF-2025')">DOF-2025</span></div>
-      <div class="mc-val neg">−15 Md€</div>
-      <div class="mc-desc">L'habillement est un besoin primaire — sa production quasi-totale est délocalisée.</div>
-    </div>
-    <div class="mc cr">
-      <div class="mc-label">Déficit électronique 2024 <span class="cite s5" onclick="showSrc('DOF-2025')">DOF-2025</span></div>
-      <div class="mc-val neg">−25 Md€</div>
-      <div class="mc-desc">Semi-conducteurs, équipements : dépendance critique sur les fondements du numérique.</div>
+      <div class="mc-label">Risque principal — T0 à T+24 mois</div>
+      <div class="mc-val neg">Choc monétaire</div>
+      <div class="mc-desc">58,5% dette hors-résidents. Spéculation quasi-certaine. 2 437 t or + 359 Md€ réserves atténuent mais n'éliminent pas.</div>
     </div>
     <div class="mc cv">
-      <div class="mc-label">Excédent aéronautique 2024 <span class="cite s5" onclick="showSrc('DOF-2025')">DOF-2025</span></div>
-      <div class="mc-val pos">+40 Md€</div>
-      <div class="mc-desc">Atout majeur préservé. Airbus, Safran, Thales — filière d'excellence à consolider.</div>
+      <div class="mc-label">Enveloppe transition</div>
+      <div class="mc-val warn">150–250 Md€</div>
+      <div class="mc-desc">Transition monétaire totale. Financé par : contribution UE récupérée (~12 Md€/an) + politique monétaire souveraine + dette nationale.</div>
     </div>
     <div class="mc cb">
-      <div class="mc-label">Principes actifs médicaments</div>
-      <div class="mc-val neg">80% Asie</div>
-      <div class="mc-desc">Paracétamol, antibiotiques — dépendance révélée brutalement par la COVID-19.</div>
+      <div class="mc-label">Indicateur cible 2032 — Industrie</div>
+      <div class="mc-val pos">13% PIB</div>
+      <div class="mc-desc">Contre 9,4% aujourd'hui. Soit une réindustrialisation partielle vers le niveau suisse (~18%).</div>
+    </div>
+    <div class="mc cb">
+      <div class="mc-label">Indicateur cible 2032 — Balance</div>
+      <div class="mc-val pos">&lt;−30 Md€</div>
+      <div class="mc-desc">Contre -81 Md€ aujourd'hui. Amélioration via protection tarifaire, réindustrialisation et excédent électrique.</div>
     </div>
   </div>
 </div>
 </section>
 <div class="sdiv"></div>
 
-<!-- ════ F — ÉNERGIE ════ -->
+<!-- ════ PLAN B ════ -->
+<section id="plan-b">
+<div class="pw">
+  <div class="sec-ey">Plan quinquennal B — 2027–2032</div>
+  <h2 class="sec-h">Plan B — Réforme pragmatique dans l'UE</h2>
+  <p class="sec-lead">Maintien dans l'UE, pression de réforme interne, activation maximale des instruments disponibles. Évite le choc monétaire mais bute sur deux blocages irréductibles.</p>
+
+  <div class="plan-header pb">
+    <h3>Hypothèse centrale</h3>
+    <p>La France reste dans l'UE et l'euro, mais conduit une politique industrielle et agricole ambitieuse en utilisant tous les instruments disponibles — CISAF, RGEC, PSN révisé, marchés publics critériés, CfD EDF. Elle construit simultanément la capacité d'autonomie que le Plan A utiliserait — ce qui permet de réviser vers le Plan A en 2030-2031 si les réformes UE s'avèrent insuffisantes. Principe : "agir immédiatement sur ce qui est possible, construire l'autonomie pendant qu'on décide".</p>
+  </div>
+
+  <div class="plan-phases">
+    <div class="phase-card pb">
+      <div class="phase-yr">Pilier 1 — 2027–2029</div>
+      <h4>Énergie — découplage partiel du marché UE</h4>
+      <ul class="phase-items">
+        <li>Argument "prix unique non-discriminatoire" EDF — même prix pour tous</li>
+        <li>CfD long terme 15-20 ans à ~70 €/MWh pour industriels et artisans</li>
+        <li>Bouclier énergétique permanent artisans &lt;36 kVA inclus</li>
+        <li>EPR2 : 6 en chantier + Gen IV 2 Md€/an CEA</li>
+        <li>Extension 50→70 ans ASNR — décision nationale (compétence partagée)</li>
+        <li>H2 électro-nucléaire substitution gaz industriel</li>
+        <li>Pression sur réforme marché électrique UE</li>
+      </ul>
+    </div>
+    <div class="phase-card pb">
+      <div class="phase-yr">Pilier 2 — 2027–2031</div>
+      <h4>Industrie — CISAF + RGEC maximisés</h4>
+      <ul class="phase-items">
+        <li>Activation maximale CISAF (nuclear inclus depuis 2025)</li>
+        <li>RGEC : R&D, formation, PME, environnement sans notification</li>
+        <li>Critères carbone/sociaux marchés publics (Art. 70 Dir. 2014/24)</li>
+        <li>Allotissement sous les seuils UE pour commandes locales</li>
+        <li>Décret Montebourg étendu : filtrage IDE secteurs stratégiques</li>
+        <li>Taxes production -15 Md€ CVAE/CFE sur 3 ans (ETI et PME)</li>
+        <li>BPI : prêts bonifiés hors taux BCE pour réindustrialisation</li>
+      </ul>
+    </div>
+    <div class="phase-card pb">
+      <div class="phase-yr">Pilier 3 — 2027–2032</div>
+      <h4>Agriculture — PSN révisé et protection</h4>
+      <ul class="phase-items">
+        <li>PSN révisé : plafonnement aides à 100 k€/exploit. → 1,5 Md€ redistribués</li>
+        <li>Aides couplées élevage extensif : compense viande Mercosur</li>
+        <li>Conditionnalité : aides liées aux pratiques permaculture/haies</li>
+        <li>Coalition blocage Mercosur : IT, PL, AT, IE, BE</li>
+        <li>Remboursement TICPE agricole étendu (-10 Md€ GNR)</li>
+        <li>Stocks stratégiques blé, viande, légumes 3 mois</li>
+        <li>Contrats État-agriculteurs : prix de référence sur 3-5 ans</li>
+        <li>Moratoire normes bâtiments agricoles (compétence nationale)</li>
+      </ul>
+    </div>
+    <div class="phase-card pb">
+      <div class="phase-yr">Pilier 4 — 2027–2032</div>
+      <h4>Écologie — permaculture et agroécologie</h4>
+      <ul class="phase-items">
+        <li>Plan permaculture : 30% exploitations en agroécologie 2032</li>
+        <li>Haies et bocage : 1,5 Md€/an, captation CO2, -50% ruissellement</li>
+        <li>Réduction pesticides -35% par rotation sols obligatoire</li>
+        <li>Restauration scolaire 100% locale 2030 (levier national)</li>
+        <li>Taxe ultra-transformés → fonds prévention doublé</li>
+        <li>Lien agriculture-santé : moins pesticides = moins cancers</li>
+      </ul>
+    </div>
+    <div class="phase-card pb">
+      <div class="phase-yr">Pilier 5 — Santé — Parallèle</div>
+      <h4>Déserts médicaux (identique Plan A)</h4>
+      <ul class="phase-items">
+        <li>5 000 médecins salariés État zones sous-dotées</li>
+        <li>500 maisons de santé/an (800 M€/an)</li>
+        <li>Télémédecine : 10 000 bornes bureaux de poste et mairies</li>
+        <li>CISAF : 3-5 Md€ relocalisation principes actifs essentiels</li>
+        <li>Stocks stratégiques médicaments 3 mois obligatoires</li>
+        <li>Fin T2A progressive, retour budget global</li>
+        <li>Avantage spécifique Plan B : reconnaissance diplômes UE (recrutement médecins européens facilité)</li>
+        <li>FEDER : fonds structurels hôpitaux ruraux</li>
+      </ul>
+    </div>
+    <div class="phase-card pb">
+      <div class="phase-yr">Point de révision — 2030-2031</div>
+      <h4>Go/No-Go vers Plan A</h4>
+      <ul class="phase-items">
+        <li>Si UE se réforme (scénario 5) : maintien dans le cadre</li>
+        <li>Si blocages persistent (tarifs, monnaie) : révision vers Plan A</li>
+        <li>Critère 1 : Mercosur ratifié malgré coalition → Plan A</li>
+        <li>Critère 2 : OAT spreads &gt;200 pb → préparation urgente Plan A</li>
+        <li>Critère 3 : Industrie &lt;10% PIB en 2030 → Plan A</li>
+        <li>Réserves et stocks constitués = Plan A praticable sans délai</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+<div class="sdiv"></div>
+<!-- ════ COMPARAISON ════ -->
+<section id="comparaison">
+<div class="pw">
+  <div class="sec-ey">Analyse comparative complète</div>
+  <h2 class="sec-h">Plan A vs Plan B — domaine par domaine</h2>
+  <p class="sec-lead">Le Plan A domine sur 8 domaines sur 12. Le Plan B a trois avantages réels : stabilité de transition, reconnaissance diplômes médicaux, fonds FEDER. Quatre domaines sont identiques.</p>
+
+  <div style="display:grid;grid-template-columns:200px 1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);margin:2rem 0;">
+    <div style="background:var(--ink);padding:.9rem 1rem;font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(242,237,226,.5);">Domaine</div>
+    <div style="background:rgba(192,57,43,.15);padding:.9rem 1rem;font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--red);">Plan A — Frexit souverain</div>
+    <div style="background:rgba(26,53,89,.15);padding:.9rem 1rem;font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);">Plan B — Réforme dans l'UE</div>
+
+    <div class="comp-dim">Prix électricité</div>
+    <div class="comp-a"><span class="pill pill-win">Avantage décisif</span>Prix administré ~60 €/MWh. EDF prix unique, pas d'ARENH. Rente nucléaire intégralement récupérée par l'économie française.</div>
+    <div class="comp-b"><span class="pill pill-ok">Partiel — arguable</span>Argument "concurrence pure" défendable. CfD long terme ~70 €/MWh légal. Mais Commission peut contester (Art. 102 TFUE abus pos. dominante).</div>
+
+    <div class="comp-dim">Mercosur / Agriculture</div>
+    <div class="comp-a"><span class="pill pill-win">Sortie immédiate</span>Dénonciation T+6 mois. Tarifs bovins 30-50%. Protection directe élevage extensif sans compensation.</div>
+    <div class="comp-b"><span class="pill pill-block">Levier indirect seulement</span>Impossible légalement (Art. 207 TFUE). Coalition blocage ratification. PSN compense partiellement les éleveurs via aides couplées.</div>
+
+    <div class="comp-dim">Marchés publics</div>
+    <div class="comp-a"><span class="pill pill-win">150 Md€ réservés</span>Préférence nationale intégrale. Buy American applicable immédiatement. Réindustrialisation via commande publique.</div>
+    <div class="comp-b"><span class="pill pill-ok">Préférence de fait légale</span>Critères carbone/sociaux, Art. 70 Dir. 2014/24, allotissement. Efficace sur 40-60% des achats. Pas de préférence nationale explicite.</div>
+
+    <div class="comp-dim">Politique monétaire</div>
+    <div class="comp-a"><span class="pill pill-win">Souveraineté totale</span>Taux adaptés au cycle français (déflation 0,8%). Dévaluation possible si compétitivité requise. Banque de France souveraine.</div>
+    <div class="comp-b"><span class="pill pill-block">Aucun levier</span>Art. 127 TFUE — BCE seule. Taux unique calibré zone euro, pas France. Seul substitut : BPI prêts bonifiés, politique budgétaire.</div>
+
+    <div class="comp-dim">Aides industrielles</div>
+    <div class="comp-a"><span class="pill pill-win">Sans plafond ni délai</span>Décision nationale immédiate. Modèle CHIPS Act réplicable. Réponse en semaines vs 12-18 mois Commission.</div>
+    <div class="comp-b"><span class="pill pill-ok">CISAF + RGEC solides</span>CISAF (nuclear inclus) + RGEC R&D/formation/PME/env. L'Allemagne a capté 77% des aides UE — la France sous-utilise ces instruments.</div>
+
+    <div class="comp-dim">Tarifs douaniers</div>
+    <div class="comp-a"><span class="pill pill-win">Totalement disponibles</span>Tarifs autonomes par secteur et pays. Protection textile Asie, acier, semi-conducteurs. Modèle Section 301 américaine applicable.</div>
+    <div class="comp-b"><span class="pill pill-block">Inexistants</span>Compétence exclusive UE. Seul levier indirect : MACF (acier, ciment, engrais) — pas textile, pas alimentation.</div>
+
+    <div class="comp-dim">Pharma — principes actifs</div>
+    <div class="comp-a"><span class="pill pill-win">Subventions illimitées</span>8 Md€/an directs. Régie nationale génériques possible. Tarification administrée complète. Objectif 80% locaux 2032.</div>
+    <div class="comp-b"><span class="pill pill-ok">CISAF + commande publique</span>3-5 Md€ CISAF. Préférence UE hôpitaux. Objectif réaliste 50% locaux 2032. Plafond limite l'ampleur mais pas la direction.</div>
+
+    <div class="comp-dim">Déserts médicaux</div>
+    <div class="comp-a"><span class="pill pill-eq">Identique aux deux plans</span>Compétence nationale. Mêmes outils disponibles : médecins salariés État, maisons de santé, télémédecine.</div>
+    <div class="comp-b"><span class="pill pill-win">Léger avantage</span>Reconnaissance diplômes UE facilite recrutement médecins européens. FEDER : fonds structurels hôpitaux ruraux zones sous-dotées.</div>
+
+    <div class="comp-dim">Hôpital public</div>
+    <div class="comp-a"><span class="pill pill-eq">Identique aux deux plans</span>Fin T2A, budget global, réouverture lits — aucune contrainte UE sur organisation hospitalière.</div>
+    <div class="comp-b"><span class="pill pill-eq">Identique aux deux plans</span>Idem. FEDER pour investissements hospitaliers zones sous-dotées.</div>
+
+    <div class="comp-dim">Permaculture / Écologie</div>
+    <div class="comp-a"><span class="pill pill-eq">Identique aux deux plans</span>Décision nationale. Plan permaculture, haies, bocage, réduction pesticides. Budget légèrement plus large (contribution UE récupérée).</div>
+    <div class="comp-b"><span class="pill pill-eq">Identique aux deux plans</span>PSN conditionné aux pratiques agroécologiques. EU Green Deal comme levier supplémentaire.</div>
+
+    <div class="comp-dim">Stabilité transition</div>
+    <div class="comp-a"><span class="pill pill-block">Choc T0 à T+24 mois</span>58,5% dette hors-résidents. Spéculation quasi-certaine. 150-250 Md€ de coût de transition. Récession probable.</div>
+    <div class="comp-b"><span class="pill pill-win">Risque quasi-nul</span>Pas de choc monétaire. Dégradation graduelle de la dette — préoccupante mais gérable. Le temps joue contre le Plan B si les réformes UE n'arrivent pas.</div>
+
+    <div class="comp-dim">Extension nucléaire</div>
+    <div class="comp-a"><span class="pill pill-eq">Identique aux deux plans</span>Décision ASNR nationale (compétence partagée). Même calendrier disponible dans les deux plans.</div>
+    <div class="comp-b"><span class="pill pill-eq">Identique aux deux plans</span>Idem. CISAF inclut désormais le nucléaire pour les aides d'État.</div>
+  </div>
+
+  <div class="two">
+    <div class="cb">
+      <div class="cb-head"><div class="cb-title">Scores par domaine — Plan A vs Plan B (sur 10)</div><div class="cb-src">Synthèse analytique complète</div></div>
+      <div class="cb-wrap" style="height:420px"><canvas id="cCompar"></canvas></div>
+    </div>
+    <div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin:1rem 0;color:var(--blue);">Ce que cette comparaison révèle</h3>
+      <div class="prose">
+        <p>Le Plan A domine nettement sur 8 domaines : tarifs commerciaux, politique monétaire, prix de l'électricité, rente nucléaire, marchés publics, aides industrielles, protection Mercosur, pharma. C'est une supériorité d'instruments — le plafond de ce que la France peut accomplir est structurellement plus haut.</p>
+        <p>Le Plan B a trois avantages réels : stabilité de la transition (pas de choc monétaire), reconnaissance mutuelle des diplômes médicaux, et FEDER pour les hôpitaux ruraux. Ces avantages sont réels mais mineurs au regard des blocages sur le commerce et la monnaie.</p>
+        <p>Quatre domaines sont strictement identiques : organisation hospitalière, déserts médicaux, permaculture, extension réacteurs. Ces décisions doivent être prises immédiatement — sans attendre la résolution du débat institutionnel.</p>
+        <div class="nuance"><strong>Le test révélateur :</strong> L'argument "EDF prix unique — concurrence non faussée" est le test politique le plus révélateur du Plan B. Si la France gagne ce bras de fer avec la Commission, elle prouve que la réforme interne est viable. Si elle le perd, elle démontre empiriquement que les contraintes sont irréductibles — et le Plan A s'impose.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<div class="sdiv"></div>
+<!-- ════ ÉNERGIE ════ -->
 <section id="energie">
 <div class="pw">
-  <div class="sec-ey">Partie F — Souveraineté énergétique</div>
-  <h2 class="sec-h">L'énergie nucléaire : l'atout stratégique majeur</h2>
-  <p class="sec-lead">La France possède un avantage structurel rare : 95% d'électricité bas-carbone. La vraie question est : cet atout est-il pleinement exploité dans le cadre européen actuel ?</p>
+  <div class="sec-ey">Partie F + Analyse énergie-agriculture-artisanat</div>
+  <h2 class="sec-h">L'atout nucléaire et le paradoxe du prix de l'électricité</h2>
+  <p class="sec-lead">95% d'électricité bas-carbone, 320 000 tonnes d'uranium appauvri = 3 000 ans d'autonomie Gen IV. Mais 1 100 boulangeries ont fermé parce que le prix de cette électricité est indexé sur le gaz russe.</p>
 
   <div class="prose">
-    <h3>F.1 — L'état du parc nucléaire en 2024</h3>
-    <p>En 2024, la production nucléaire française atteint <strong>361,7 TWh</strong>, soit 67% de la production électrique totale. C'est un retour à la normale après la crise de disponibilité de 2022 (282 TWh). L'intensité carbone de l'électricité française est de <strong>21,3 gCO2e/kWh</strong> — parmi les plus faibles au monde. La part bas-carbone totale (nucléaire + hydraulique + éolien + solaire) atteint 95%. <span class="cite s5" onclick="showSrc('GF-003-A')">GF-003-A (RTE)</span></p>
-
-    <p>Le parc comprend <strong>57 réacteurs pour 62,9 GWe</strong>. En juillet 2025, l'ASNR a approuvé l'extension à 50 ans des 20 réacteurs 1300 MWe <span class="cite s5" onclick="showSrc('GF-002-C')">GF-002-C</span>, après l'approbation similaire des 32 réacteurs 900 MWe en 2021. La durée de vie réelle pourrait dépasser 80 ans : le Département américain de l'énergie l'affirme explicitement ("no technical reason why nuclear plants can't operate for 80 years or more" <span class="cite s5" onclick="showSrc('GE-001-B')">GE-001-B</span>), et les réacteurs de Turkey Point ont obtenu une licence 80 ans de la NRC en décembre 2019. <span class="cite s5" onclick="showSrc('GE-002-B')">GE-002-B</span></p>
+    <h3>F.1 — Le paradoxe énergétique français</h3>
+    <p>La France produit 361,7 TWh d'électricité nucléaire en 2024 (67% du mix), avec une intensité carbone record de 21,3 gCO2e/kWh. <span class="cite s5" onclick="showSrc('GF-003-A')">GF-003-A (RTE)</span> Pourtant, le prix de cette électricité est indexé sur le coût marginal du gaz, en application du marché européen. Résultat : quand le gaz est cher (2022-2023), le boulanger français paie sa farine et son four au prix de l'énergie russe, alors que sa ville est à 50 km d'une centrale nucléaire. 1 100 boulangeries ont fermé entre novembre 2022 et octobre 2023. Taux de marge des énergéticiens : 80%. Taux de marge des boulangers : 8%.</p>
+    <p>L'exploitation agricole dépense en moyenne 38 000 €/an en énergie, soit ~20% de son chiffre d'affaires. Le GNR (gazole non routier) représente 53% de cette facture — et son indice a bondi de +224 points depuis 2020. Le choc pétrolier de mars 2026 (114 $/baril) réactive exactement ce mécanisme.</p>
 
     <h3>F.2 — L'autonomie uranifère : 3 000 ans potentiels</h3>
-    <p>Voici l'argument le plus sous-estimé du débat énergétique français. François Gauché, directeur du programme Gen IV au CEA, l'a formulé ainsi : "Il y a environ 250 000 tonnes d'uranium appauvri en France. Avec les niveaux de consommation actuels, cela couvrirait la production nucléaire pour <strong>5 000 ans</strong>." <span class="cite s5" onclick="showSrc('GF-001-C')">GF-001-C (CEA)</span></p>
+    <p>François Gauché, directeur du programme Gen IV au CEA : <em>"Il y a environ 250 000 tonnes d'uranium appauvri en France. Avec les niveaux de consommation actuels, cela couvrirait la production nucléaire pour 5 000 ans."</em> <span class="cite s5" onclick="showSrc('GF-001-C')">GF-001-C (CEA)</span> Les stocks actuels Orano dépassent 320 000 tonnes. <span class="cite s3" onclick="showSrc('OP-004-A')">OP-004-A</span> Les réacteurs Gen IV multiplient par 50 à 100 le potentiel énergétique de l'uranium. <span class="cite s3" onclick="showSrc('II-002-A')">II-002-A (GIF)</span></p>
 
-    <p>Ces stocks d'uranium appauvri (déchet des réacteurs actuels) deviendraient du <strong>carburant</strong> pour les réacteurs de Génération IV (réacteurs à neutrons rapides). Le GIF (Generation IV International Forum) confirme que ces réacteurs "multiplient par 50 à 100 le potentiel énergétique de l'uranium". <span class="cite s3" onclick="showSrc('II-002-A')">II-002-A (GIF)</span> En d'autres termes : ce que nous appelons "déchets" aujourd'hui est une réserve d'énergie gigantesque pour demain.</p>
+    <h3>F.3 — Durée de vie des réacteurs : 80 ans et plus</h3>
+    <p>Le Département américain de l'Énergie affirme : <em>"Research shows no technical reason why nuclear power plants can't operate for 80 years or more."</em> <span class="cite s5" onclick="showSrc('GE-001-B')">GE-001-B (DOE)</span> La NRC a approuvé Turkey Point pour 80 ans en décembre 2019. <span class="cite s5" onclick="showSrc('GE-002-B')">GE-002-B (NRC)</span> L'ASNR a approuvé l'extension des 20 réacteurs 1300 MWe à 50 ans en juillet 2025. <span class="cite s5" onclick="showSrc('GF-002-C')">GF-002-C</span> La décision d'aller vers 70-80 ans est techniquement fondée, légalement souveraine, et financièrement 3 fois moins coûteuse que des EPR2 neufs.</p>
 
-    <div class="nuance"><strong>Nuance importante :</strong> La Génération IV est encore en phase de R&D. Le programme ASTRID a été suspendu par le CEA en 2019 faute de financement suffisant. Les premiers réacteurs commerciaux Gen IV ne seraient pas avant 2040-2050. Cette autonomie théorique nécessite un investissement massif en R&D que le programme actuel ne garantit pas.</div>
-
-    <h3>F.3 — Le problème du marché européen de l'énergie</h3>
-    <p>Dans le cadre actuel, le prix de l'électricité en France est indexé sur le marché européen, qui lui-même est indexé sur le <strong>prix marginal du gaz</strong>. Concrètement : quand le gaz est cher (comme en 2022-2023), l'électricité française devient chère alors même qu'elle est produite à bas coût par le nucléaire. La rente nucléaire française profite ainsi aux consommateurs européens — pas proportionnellement aux consommateurs et industriels français qui, eux, supportent les coûts du programme EPR2.</p>
-
-    <p>Hors UE, la France fixerait souverainement le prix de l'électricité, pourrait protéger ses industries électro-intensives avec des tarifs préférentiels, et utiliserait l'avantage nucléaire comme levier de compétitivité industrielle directe. C'est ce que demandent depuis des années les industriels français.</p>
-
-    <h3>F.4 — Le programme EPR2 et au-delà</h3>
-    <p>6 EPR2 sont commandés (horizon opérationnel 2035-2045), 8 supplémentaires à l'étude. Ce programme est décidé — la question est son financement. La renationalisation d'EDF (réalisée en 2023 à 100% par l'État) est une condition nécessaire mais pas suffisante : EDF reste endettée à ~60 Md€ et dépend de l'accès aux marchés de capitaux.</p>
+    <h3>F.4 — La chaîne de transmission du prix du gaz</h3>
+    <p>Le mécanisme est le suivant : prix du gaz mondial → prix de l'électricité en France (règle du coût marginal UE) → facture des agriculteurs, boulangers, fromageries → coût de la farine et du pain → pouvoir d'achat des ménages. La France possède l'un des outils de production d'électricité les plus compétitifs au monde (~50 €/MWh de coût de revient nucléaire) — mais ses artisans et agriculteurs paient au prix du gaz russe ou du charbon allemand.</p>
   </div>
 
   <div class="two">
@@ -569,224 +912,223 @@ section.vis{opacity:1;transform:translateY(0);}
       <div class="cb-wrap"><canvas id="cMix"></canvas></div>
     </div>
     <div class="cb">
-      <div class="cb-head"><div class="cb-title">Autonomie uranifère selon technologie</div><div class="cb-src"><span class="cite s5" onclick="showSrc('GF-001-C')">GF-001-C (CEA)</span></div></div>
+      <div class="cb-head"><div class="cb-title">Autonomie uranium selon technologie (années)</div><div class="cb-src"><span class="cite s5" onclick="showSrc('GF-001-C')">GF-001-C (CEA)</span></div></div>
       <div class="cb-wrap"><canvas id="cUran"></canvas></div>
     </div>
-  </div>
-
-  <div class="dt-wrap">
-    <table class="dt">
-      <thead><tr><th>Type de stock</th><th>Quantité</th><th>Autonomie réacteurs actuels</th><th>Autonomie Gen IV</th><th>Source</th></tr></thead>
-      <tbody>
-        <tr><td>Uranium naturel</td><td>~2 ans de consommation</td><td>2 ans</td><td>200 ans</td><td><span class="cite s3" onclick="showSrc('OP-004-A')">OP-004-A</span></td></tr>
-        <tr><td>Uranium appauvri (Orano)</td><td>&gt;320 000 t</td><td>~8 ans</td><td>&gt;3 000 ans</td><td><span class="cite s5" onclick="showSrc('GF-001-A')">GF-001-A</span> <span class="cite s5" onclick="showSrc('GF-001-C')">GF-001-C</span></td></tr>
-        <tr><td>Plutonium retraité</td><td>~60 tonnes</td><td>MOX (limité)</td><td>Plusieurs décennies</td><td><span class="cite s5" onclick="showSrc('GF-001-B')">GF-001-B</span></td></tr>
-      </tbody>
-    </table>
   </div>
 </div>
 </section>
 <div class="sdiv"></div>
 
-<!-- ════ G — ARCHITECTURE ════ -->
-<section id="monetaire">
+<!-- ════ INDUSTRIE ════ -->
+<section id="industrie">
 <div class="pw">
-  <div class="sec-ey">Partie G — Architecture institutionnelle et monétaire</div>
-  <h2 class="sec-h">Sortir de l'euro : le défi technique majeur</h2>
-  <p class="sec-lead">La transition monétaire est le risque le plus documenté d'un Frexit. Elle est techniquement possible — les précédents historiques existent. Mais chacun enseigne qu'elle est douloureuse et que l'improvisation est catastrophique.</p>
+  <div class="sec-ey">Parties E + Mise à jour mars 2026</div>
+  <h2 class="sec-h">Réindustrialisation : le projet et les moyens</h2>
+  <p class="sec-lead">La dynamique de 2017-2023 s'est essoufflée. En 2024, le solde ouvertures/fermetures de sites industriels redevient négatif. "L'hiver est revenu." La guerre commerciale Trump crée paradoxalement une opportunité.</p>
 
   <div class="prose">
-    <h3>G.1 — Le problème structurel de l'euro pour la France</h3>
-    <p>L'euro a été conçu pour des économies convergentes. Elles ont divergé. En décembre 2025, la BCE maintient un taux de dépôt à 2,00% après 8 baisses de 25 pb depuis juin 2024 <span class="cite s5" onclick="showSrc('ECB-2024-2025')">ECB-2024-2025</span>. Ce taux unique est censé convenir à la fois à la France (+1,1% de croissance en 2024) et à l'Allemagne (-0,2% en 2024). <span class="cite s5" onclick="showSrc('EC-Forecast-2025')">EC-Forecast-2025</span> Ce n'est structurellement pas possible : une politique monétaire unique pour des économies asymétriques crée des gagnants et des perdants permanents.</p>
+    <h3>L'opportunité Trump</h3>
+    <p>La guerre commerciale Trump fragilise les chaînes d'approvisionnement mondiales. Les entreprises américaines et asiatiques qui délocalisent hors des États-Unis pour contourner les tarifs cherchent des destinations européennes. La France, avec son infrastructure, ses compétences, et ses coûts énergétiques potentiellement bas (si le prix de l'électricité est découplé), pourrait capter ces investissements — mais seulement si elle agit vite et offre les conditions de compétitivité nécessaires.</p>
 
-    <p>La France perd sur deux tableaux : elle ne peut pas dévaluer pour retrouver de la compétitivité exportatrice (comme le faisait le franc avant 1999), et elle ne peut pas moduler ses taux pour stimuler ou freiner son économie selon son propre cycle.</p>
-
-    <h3>G.2 — La vulnérabilité de la dette française</h3>
-    <p>La France est en <strong>procédure de déficit excessif</strong> depuis juillet 2024. Déficit 2024 : 5,8% du PIB, dette : 113% du PIB. <span class="cite s5" onclick="showSrc('INSEE-2025')">INSEE-2025</span> Surtout : <strong>58,5% des titres de dette long terme français sont détenus par des non-résidents.</strong> <span class="cite s5" onclick="showSrc('BdF-Securities-2024')">BdF-Securities-2024</span> C'est la vulnérabilité principale d'un Frexit : une fuite des détenteurs étrangers provoquerait une hausse brutale des taux d'intérêt sur la dette française, dans un contexte où l'État s'endette massivement (169,6 Md€ de déficit nominal en 2024). C'est le risque existentiel n°1.</p>
-
-    <h3>G.3 — Les précédents historiques : Grèce et Chypre</h3>
-    <p>La Grèce n'est jamais sortie de la zone euro — mais ses contrôles de capitaux (juin 2015 → septembre 2019, soit <strong>50 mois</strong>) montrent ce qu'implique une crise de confiance grave. 60€/jour de retrait maximum, autorisations pour les transferts internationaux, paralysie partielle de l'activité économique. <span class="cite s3" onclick="showSrc('Wikipedia-CC-Greece')">Wikipedia-CC-Greece</span></p>
-
-    <p>Chypre en 2013 : bail-in de 47% sur les dépôts supérieurs à 100 000€, fermeture bancaire de 12 jours, contrôles de capitaux maintenus 2 ans. Ce qui est instructif : ces deux pays avaient un avantage — ils restaient dans l'euro et bénéficiaient du soutien de la BCE. La France sortante n'aurait pas ce filet de sécurité.</p>
-
-    <h3>G.4 — Les atouts que n'avaient pas la Grèce ni Chypre</h3>
-    <p>La France dispose en revanche d'atouts structurels que ces pays n'avaient pas : <strong>2 436,8 tonnes d'or</strong> (4e réserves mondiales) et <strong>359 Md€ de réserves de change officielles</strong> (record en novembre 2025). <span class="cite s5" onclick="showSrc('BdF-2025')">BdF-2025</span> C'est un coussin qui permettrait de défendre la nouvelle monnaie et de rassurer les créanciers. De plus, la France est la <strong>7e économie mondiale</strong> — un défaut français serait une crise systémique mondiale, ce qui crée un pouvoir de négociation que la Grèce n'avait pas.</p>
-
-    <p>Mais ces atouts ne suppriment pas les risques — ils les modèrent. La spéculation sur une nouvelle monnaie française serait intense dès l'annonce d'une sortie. Les 6-18 premiers mois seraient critiques.</p>
+    <h3>Les secteurs prioritaires</h3>
+    <p><strong>Tier 1 — Souveraineté absolue :</strong> Nucléaire civil (indépendance énergétique), défense (Dassault, Naval Group, MBDA — déjà préservé), santé/pharma (80% principes actifs asiatiques — leçon COVID brutale), alimentation (2e exportateur mondial — atout à protéger).</p>
+    <p><strong>Tier 2 — Réindustrialisation stratégique :</strong> Semi-conducteurs (>90% importés), batteries (transition VE dépend à 80% de Chine), automobile (en restructuration accélérée), sidérurgie (base de toute industrie lourde), textile (−15 Md€ de déficit commercial).</p>
+    <p><strong>Le test électricité pour l'industrie :</strong> Les industries électro-intensives (aluminium, chimie, ciment) sont les premières bénéficiaires d'une électricité à ~60 €/MWh au lieu de ~160 €/MWh. Un différentiel de 100 €/MWh sur une consommation de 1 TWh représente 100 M€ de compétitivité supplémentaire. C'est le levier de réindustrialisation le plus immédiat et le moins coûteux pour les finances publiques.</p>
   </div>
 
   <div class="mg">
     <div class="mc cr">
-      <div class="mc-label">Dette détenue par non-résidents <span class="cite s5" onclick="showSrc('BdF-Securities-2024')">BdF-Securities-2024</span></div>
-      <div class="mc-val neg">58,5%</div>
-      <div class="mc-desc">Risque principal : une panique des détenteurs étrangers crée une crise des taux immédiate.</div>
-    </div>
-    <div class="mc cv">
-      <div class="mc-label">Réserves d'or <span class="cite s5" onclick="showSrc('BdF-2025')">BdF-2025</span></div>
-      <div class="mc-val pos">2 437 t</div>
-      <div class="mc-desc">4e mondial. Coussin de crédibilité pour défendre une nouvelle monnaie.</div>
-    </div>
-    <div class="mc cg">
-      <div class="mc-label">Réserves de change totales <span class="cite s5" onclick="showSrc('BdF-2025')">BdF-2025</span></div>
-      <div class="mc-val warn">359 Md€</div>
-      <div class="mc-desc">Record historique (novembre 2025). Instrument de stabilisation monétaire.</div>
+      <div class="mc-label">Déficit textile 2024 <span class="cite s5" onclick="showSrc('DOF-2025')">DOF-2025</span></div>
+      <div class="mc-val neg">−15 Md€</div>
+      <div class="mc-desc">Besoin primaire délocalisé à quasi 100%. Une protection tarifaire ciblée nécessite la souveraineté commerciale.</div>
     </div>
     <div class="mc cr">
-      <div class="mc-label">Contrôles capitaux Grèce <span class="cite s3" onclick="showSrc('Wikipedia-CC-Greece')">Wikipedia-CC-Greece</span></div>
-      <div class="mc-val neg">50 mois</div>
-      <div class="mc-desc">Durée des restrictions bancaires — et la Grèce <em>restait</em> dans l'euro.</div>
+      <div class="mc-label">Déficit électronique 2024 <span class="cite s5" onclick="showSrc('DOF-2025')">DOF-2025</span></div>
+      <div class="mc-val neg">−25 Md€</div>
+      <div class="mc-desc">Semi-conducteurs : >90% importés. Dépendance critique sur les fondements du numérique.</div>
     </div>
-  </div>
-
-  <div class="prose">
-    <h3>G.5 — La séquence d'une transition viable</h3>
-    <p>Le FMI a étudié les transitions monétaires historiques. Sa conclusion : une transition réussie nécessite une préparation secrète de 18-24 mois minimum, une impression de la nouvelle monnaie avant l'annonce, une adaptation des systèmes informatiques bancaires, et une constitution de réserves de change. <span class="cite s4" onclick="showSrc('IMF-WP-1993')">IMF-WP-1993</span> La leçon du Brexit — qui a duré 4,5 ans du référendum à l'accord final <span class="cite s5" onclick="showSrc('Consilium-Brexit')">Consilium-Brexit</span> — est que l'improvisation coûte très cher.</p>
-  </div>
-
-  <div class="tl">
-    <div class="tl-item">
-      <div class="tl-yr">T−24 à T−18 mois</div>
-      <div class="tl-ev">Préparation technique — Phase secrète</div>
-      <div class="tl-txt">Audit des dépendances critiques. Modélisation des scénarios économiques. Constitution groupe de travail restreint. Coordination discrète avec la Banque de France. <span class="cite s4" onclick="showSrc('IMF-WP-1993')">IMF-WP-1993</span></div>
+    <div class="mc cv">
+      <div class="mc-label">Excédent aéronautique 2024</div>
+      <div class="mc-val pos">+40 Md€</div>
+      <div class="mc-desc">Airbus, Safran, Thales — atout majeur à consolider. Exposé aux tarifs Trump sur composants.</div>
     </div>
-    <div class="tl-item">
-      <div class="tl-yr">T−18 à T−12 mois</div>
-      <div class="tl-ev">Constitution des réserves et stocks stratégiques</div>
-      <div class="tl-txt">Accumulation de réserves de change (objectif >100 Md€ en devises). Stockage stratégique : médicaments, composants critiques. Contacts discrets avec UK et Suisse.</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-yr">T−12 à T−6 mois</div>
-      <div class="tl-ev">Préparation opérationnelle</div>
-      <div class="tl-txt">Impression secrète de la nouvelle monnaie. Adaptation systèmes informatiques bancaires. Formation des agents. <span class="cite s4" onclick="showSrc('IMF-F&D-2013')">IMF-F&D-2013</span></div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-yr">T+0 — Semaine 1</div>
-      <div class="tl-ev">Annonce présidentielle et mesures d'urgence</div>
-      <div class="tl-txt">Notification Article 50 à l'UE. Fermeture bancaire temporaire (3-5 jours). Contrôles de capitaux activés (500€/semaine de retrait, versus 60€/jour en Grèce). Double affichage des prix. Garantie des dépôts maintenue.</div>
-    </div>
-    <div class="tl-item">
-      <div class="tl-yr">T+0 à T+24 mois</div>
-      <div class="tl-ev">Stabilisation et négociations bilatérales</div>
-      <div class="tl-txt">Accord-cadre UK prioritaire. Négociation sur modèle suisse avec UE. Assouplissement progressif contrôles. Levée complète à T+24 mois si stabilisation réussie. <span class="cite s5" onclick="showSrc('Gov-UK-2025')">Gov-UK-2025</span> <span class="cite s5" onclick="showSrc('CH-FDFA-2025')">CH-FDFA-2025</span></div>
+    <div class="mc cg">
+      <div class="mc-label">Emplois reshoring USA 2024 <span class="cite s3" onclick="showSrc('RI-2025')">RI-2025</span></div>
+      <div class="mc-val warn">244 000</div>
+      <div class="mc-desc">88% high-tech. +2M depuis 2010. Modèle réplicable si la France dispose d'instruments comparables — subventions, préférence nationale, tarifs.</div>
     </div>
   </div>
 </div>
 </section>
 <div class="sdiv"></div>
 
-<!-- ════ H — TRANSITION ════ -->
-<section id="transition">
+<!-- ════ SANTÉ ════ -->
+<section id="sante">
 <div class="pw">
-  <div class="sec-ey">Partie H — Stratégie de transition et gestion des risques</div>
-  <h2 class="sec-h">Le Brexit comme miroir : erreurs à ne pas reproduire</h2>
-  <p class="sec-lead">Le Brexit est à ce jour le seul précédent de sortie de l'UE. Son bilan à 5 ans est négatif — mais ses erreurs sont identifiables et évitables.</p>
+  <div class="sec-ey">Analyse complémentaire — Santé</div>
+  <h2 class="sec-h">Santé, déserts médicaux et souveraineté sanitaire</h2>
+  <p class="sec-lead">Organisation du système de santé = compétence nationale. Ces décisions peuvent être prises immédiatement dans les deux plans. Le lien agriculture-santé est le levier sous-exploité le plus efficace.</p>
 
   <div class="prose">
-    <h3>H.1 — Le bilan Brexit : convergence des études</h3>
-    <p>Dix ans après le référendum, les études académiques et gouvernementales convergent. L'Office for Budget Responsibility (gouvernement britannique) estime l'impact à long terme à <strong>-4% du PIB</strong> et -15% d'intensité commerciale. <span class="cite s5" onclick="showSrc('OBR-2025')">OBR-2025</span> L'étude NBER de 2025 (Nicholas Bloom et al.) est encore plus sévère : <strong>-6% à -8% du PIB</strong>, investissement réduit de 12-18%. <span class="cite s2" onclick="showSrc('NBER-2025')">NBER-2025</span> La livre a chuté de ~15% après le référendum. Aucun grand accord commercial n'a compensé la perte du marché unique.</p>
+    <h3>Le lien agriculture-santé : l'investissement à meilleur rendement</h3>
+    <p>La réduction des pesticides via la permaculture a un effet direct mesurable sur les cancers et pathologies endocriniennes — documenté par l'INSERM. Ce n'est pas un argument écologique abstrait : c'est une politique de santé publique qui réduit la charge sur l'hôpital à moyen terme. Le plan permaculture prévu dans les deux plans est simultanément une politique agricole, une politique environnementale, une politique anti-inondation et une politique de santé publique. C'est probablement l'investissement au meilleur rapport coût-bénéfice du quinquennat.</p>
 
-    <p>La durée du Brexit est révélatrice : 4,5 ans du référendum (juin 2016) à l'accord TCA (décembre 2020), avec 3 prolongations de l'Article 50 et un accord signé in extremis le 24 décembre 2020. <span class="cite s5" onclick="showSrc('Consilium-Brexit')">Consilium-Brexit</span></p>
+    <h3>Déserts médicaux : démographie avant tout</h3>
+    <p>La démographie médicale française souffre d'un problème de distribution géographique, pas seulement de nombre. La suppression du numerus clausus (2020) produira ses premiers effets vers 2030-2032. Les solutions à effet rapide : 5 000 médecins salariés de l'État dans les zones sous-dotées (sur modèle militaire adapté), 500 maisons de santé pluridisciplinaires par an, 10 000 bornes de télémédecine dans les bureaux de poste et mairies rurales, et extension du rôle des infirmières praticiennes.</p>
 
-    <h3>H.2 — Les erreurs spécifiques du Brexit</h3>
-    <p>Le Brexit a souffert de quatre défaillances majeures : (1) <strong>Absence totale de préparation avant le référendum</strong> — aucun plan n'existait au soir du 23 juin 2016, (2) <strong>Incertitude prolongée</strong> par les divisions politiques internes qui ont empêché tout accord rapide, (3) <strong>Objectifs contradictoires</strong> — les Brexiters voulaient simultanément la souveraineté totale ET l'accès au marché unique, ce qui est structurellement impossible, (4) <strong>Improvisation face à une UE unie</strong> qui a appliqué méthodiquement le principe "rien n'est convenu tant que tout n'est pas convenu".</p>
-
-    <div class="pq">Un Frexit préparé et cohérent produirait des résultats différents — dans quel sens, nul ne peut l'affirmer avec certitude. Ce qui est certain : l'improvisation garantit des résultats catastrophiques.<cite>Conclusion générale — CONCLUSION_GENERALE.md</cite></div>
-
-    <h3>H.3 — Matrice des risques</h3>
-    <p>Même avec une préparation optimale, certains risques sont incompressibles. La spéculation monétaire est quasi-certaine : toute annonce d'une sortie de l'euro entraînerait des ventes massives d'actifs français. La récession transitoire est probable mais modulable selon l'intensité des mesures sociales d'accompagnement. La perturbation des chaînes d'approvisionnement (approvisionnement en médicaments, composants) peut être anticipée par des stocks stratégiques. Les tensions sociales dépendent largement de la communication et du soutien populaire préalable.</p>
-  </div>
-
-  <div class="dt-wrap">
-    <table class="dt">
-      <thead><tr><th>Risque</th><th>Probabilité</th><th>Impact</th><th>Prévention</th><th>Source comparative</th></tr></thead>
-      <tbody>
-        <tr><td>Spéculation monétaire</td><td>Très élevée</td><td>Très élevé</td><td>Contrôles capitaux, réserves</td><td><span class="cite s4" onclick="showSrc('IMF-WP-1993')">IMF-WP-1993</span></td></tr>
-        <tr><td>Fuite des capitaux (58,5% dette hors-résidents)</td><td>Élevée</td><td>Très élevé</td><td>Gestion anticipée maturités</td><td><span class="cite s5" onclick="showSrc('BdF-Securities-2024')">BdF-Securities-2024</span></td></tr>
-        <tr><td>Récession transitoire (−2 à −5% PIB)</td><td>Élevée</td><td>Élevé</td><td>Stimulus budgétaire préparé</td><td><span class="cite s5" onclick="showSrc('OBR-2025')">OBR-2025</span></td></tr>
-        <tr><td>Perturbation chaînes approvisionnement</td><td>Moyenne</td><td>Moyen</td><td>Stocks stratégiques constitués</td><td>—</td></tr>
-        <tr><td>Hausse taux d'intérêt sur la dette</td><td>Élevée</td><td>Élevé</td><td>Allongement maturités, rachat</td><td><span class="cite s5" onclick="showSrc('INSEE-2025')">INSEE-2025</span></td></tr>
-        <tr><td>Tensions sociales</td><td>Moyenne</td><td>Moyen</td><td>Gel prix nécessités, dialogue</td><td>—</td></tr>
-        <tr><td>Défaut souverain</td><td>Faible</td><td>Catastrophique</td><td>Atouts : or, taille, puissance</td><td><span class="cite s5" onclick="showSrc('BdF-2025')">BdF-2025</span></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="prose">
-    <h3>H.4 — Lignes rouges : définir le succès et l'échec</h3>
-    <p>Une approche rigoureuse exige de définir <em>avant</em> les critères de succès et d'échec. Succès à T+2 ans : croissance ≥0%, chômage &lt;10%, inflation &lt;4%, déficit &lt;5% PIB. Succès à T+5 ans : croissance ≥2%/an, chômage &lt;8%, part manufacturière >12%, balance commerciale déficit &lt;30 Md€. Lignes rouges : récession >10% PIB cumulée, hyperinflation >50%/an, chômage >15% prolongé, effondrement monétaire >50% en 6 mois.</p>
-
-    <p>Le "Plan B" existe aussi : si les lignes rouges sont franchies, des scénarios de repli sont possibles — extension des délais, négociation de secours avec l'UE, pause stratégique. L'irréversibilité absolue concerne seulement la notification Article 50 et l'introduction de la nouvelle monnaie.</p>
-  </div>
-</div>
-</section>
-<div class="sdiv"></div>
-
-<!-- ════ CONCLUSION ════ -->
-<section id="conclusion">
-<div class="pw">
-  <div class="sec-ey">Conclusion générale</div>
-  <h2 class="sec-h">Synthèse objective : ce que l'analyse établit</h2>
-  <p class="sec-lead">Cette étude ne tranche pas le débat Frexit — ce n'est pas son objet. Elle cartographie honnêtement les enjeux, coûts et opportunités pour permettre à chacun de forger sa propre réponse.</p>
-
-  <div class="prose">
-    <h3>Ce que l'analyse établit avec confiance</h3>
-    <p><strong>1. Le déclin industriel est documenté et réel.</strong> De 24% à 9,4% de part manufacturière, -2,1 millions d'emplois industriels, -81 Md€ de balance commerciale. Ce n'est pas une opinion — c'est une donnée vérifiée par des sources officielles multiples.</p>
-
-    <p><strong>2. Les outils du redressement sont partiellement contraints par l'UE.</strong> La préférence nationale dans les marchés publics, la politique monétaire, les tarifs douaniers, les subventions illimitées — ces instruments utilisés par les USA, la Chine, la Suisse ou la Corée du Sud ne sont pas pleinement disponibles à la France dans le cadre des traités actuels.</p>
-
-    <p><strong>3. Une sortie est techniquement faisable.</strong> Des pays prospèrent hors UE (Suisse, Norvège). Le Brexit, malgré ses erreurs massives, a abouti à un accord. Les transitions monétaires ont été gérées dans l'histoire. Affirmer qu'un Frexit est "impossible" est factuellement faux.</p>
-
-    <p><strong>4. Elle comporte des risques réels et incompressibles.</strong> La spéculation monétaire, la crise de la dette (58,5% détenue par non-résidents), la récession transitoire, la perturbation des chaînes d'approvisionnement. "Aucune sortie de l'euro ne s'est jamais faite sans douleur à court terme."</p>
-
-    <p><strong>5. Elle exige une préparation considérable.</strong> 18-24 mois minimum de préparation secrète, un investissement de 150-250 Md€ pour la seule transition, un soutien populaire fort (référendum préalable indispensable), et des alliances alternatives prêtes avant l'annonce.</p>
-
-    <p><strong>6. Le Brexit est un précédent négatif — mais évitable.</strong> Ses erreurs spécifiques sont identifiées et évitables. Un Frexit préparé ne serait pas un Brexit. Dans quel sens ses résultats différeraient — mieux ou moins bien — dépend entièrement de la qualité de la préparation et de l'exécution.</p>
+    <h3>La pharma : 7 à 10 ans de délai réel</h3>
+    <p>La relocalisation des principes actifs est un objectif juste, mais la capacité industrielle a été démantelée sur 30 ans. Même avec des subventions massives, reconstruire une industrie chimique de précision prend 7 à 10 ans minimum, pas 5. Un objectif de 50% de principes actifs essentiels produits localement d'ici 2032 est réaliste ; 80% relève d'un horizon 2035-2040. La priorité immédiate, quelle que soit l'orientation politique choisie : constituer des stocks stratégiques de 3 à 6 mois pour les médicaments essentiels — décision praticable dès 2027 dans n'importe quel cadre institutionnel.</p>
   </div>
 
   <div class="bi-grid">
     <div class="bi-col pour">
-      <h4>✓ Arguments pour — Opportunités d'un Frexit réussi</h4>
-      <div class="bi-item">Politique monétaire adaptée à l'économie française (taux, changes)</div>
-      <div class="bi-item">Préférence nationale dans ~150 Md€ de marchés publics</div>
-      <div class="bi-item">Prix de l'électricité fixé souverainement (rente nucléaire récupérée)</div>
-      <div class="bi-item">Subventions industrielles illimitées (modèle USA, Chine)</div>
-      <div class="bi-item">Tarifs douaniers ciblés pour protéger les industries stratégiques</div>
-      <div class="bi-item">Accords commerciaux bilatéraux autonomes (modèle suisse)</div>
-      <div class="bi-item">Modèles hors UE prouvés : Suisse, Norvège, Singapour <span class="cite s4" onclick="showSrc('IMF-2025')">IMF-2025</span></div>
+      <h4>Actions immédiates — identiques dans les deux plans</h4>
+      <div class="bi-item">5 000 médecins salariés État zones rurales — décision nationale</div>
+      <div class="bi-item">500 maisons de santé pluridisciplinaires/an (800 M€/an)</div>
+      <div class="bi-item">10 000 bornes télémédecine bureaux de poste et mairies</div>
+      <div class="bi-item">Stocks stratégiques médicaments 3-6 mois obligatoires</div>
+      <div class="bi-item">Fin T2A progressive, retour au budget global par mission</div>
+      <div class="bi-item">Réouverture lits maternités rurales et urgences SMUR</div>
+      <div class="bi-item">Plan permaculture → réduction pesticides → santé publique</div>
+      <div class="bi-item">Taxe ultra-transformés → fonds prévention doublé (6 Md€)</div>
     </div>
     <div class="bi-col contre">
-      <h4>✗ Arguments contre — Risques d'un Frexit</h4>
-      <div class="bi-item">Perte accès marché unique 450 millions de consommateurs</div>
-      <div class="bi-item">Choc de transition monétaire quasi-certain <span class="cite s4" onclick="showSrc('IMF-WP-1993')">IMF-WP-1993</span></div>
-      <div class="bi-item">58,5% dette détenue hors-résidents — vulnérabilité critique <span class="cite s5" onclick="showSrc('BdF-Securities-2024')">BdF-Securities-2024</span></div>
-      <div class="bi-item">Bilan Brexit : -4% à -8% PIB (études concordantes) <span class="cite s5" onclick="showSrc('OBR-2025')">OBR-2025</span></div>
-      <div class="bi-item">Renégociation de 1 000+ accords internationaux</div>
-      <div class="bi-item">Durée minimale : 3-5 ans de période de transition</div>
-      <div class="bi-item">Sans préparation sérieuse : scénario pire que le Brexit</div>
+      <h4>Ce que le cadre institutionnel change sur la santé</h4>
+      <div class="bi-item">Hors du cadre des aides d'État UE : subventions pharma sans plafond, régie nationale de génériques possible</div>
+      <div class="bi-item">Dans le cadre des traités actuels : CISAF 3-5 Md€ disponibles, objectif 50% principes actifs locaux 2032 réaliste</div>
+      <div class="bi-item">Avantage du maintien dans l'UE : reconnaissance mutuelle des diplômes facilite le recrutement de médecins européens rapidement</div>
+      <div class="bi-item">Avantage du maintien dans l'UE : fonds structurels FEDER pour investissements hospitaliers en zones sous-dotées</div>
+      <div class="bi-item">Dans tous les cas : obligation d'installation post-diplôme constitutionnellement risquée — alternatives préférables (incitations, salariat d'État)</div>
     </div>
-  </div>
-
-  <div class="prose">
-    <h3>La vraie question — Au-delà du pour/contre</h3>
-    <p>Le débat ne devrait pas être "pour ou contre l'UE" dans l'absolu. La question productive est : <strong>"L'appartenance à l'UE permet-elle à la France d'atteindre ses objectifs de prospérité, de souveraineté et de justice sociale ?"</strong> Si oui, y rester en pesant pour la réformer. Si non, préparer sérieusement une alternative.</p>
-
-    <p>Quelle que soit la réponse, <strong>certaines actions sont souhaitables dans tous les cas</strong> : réindustrialisation (avec ou sans l'UE, la France doit reconstruire sa base industrielle), renouvellement du parc nucléaire (EPR2, SMR, Génération IV), diversification des partenariats (UK, Suisse, Francophonie), constitution de réserves et stocks stratégiques, préparation de plans de contingence en cas de crise européenne majeure.</p>
-
-    <div class="pq">Un Frexit ne produirait pas de résultats avant 5-10 ans. Une réforme de l'UE prendrait aussi longtemps. Il n'y a pas de solution rapide. La seule certitude est que l'immobilisme garantit la poursuite du déclin.<cite>Conclusion générale</cite></div>
-
-    <h3>Les limites de cette étude</h3>
-    <p>L'honnêteté intellectuelle oblige à nommer les limites : les projections économiques reposent sur des hypothèses contestables ; les exemples choisis (Suisse, Norvège) ne sont pas nécessairement transposables ; la dimension politique (rapports de force, opinion publique, aléas politiques) est difficile à modéliser ; et certaines données évoluent rapidement. Cette étude reflète la situation de décembre 2025 — une mise à jour sera nécessaire en fonction de l'évolution de la crise allemande, du résultat du référendum suisse sur les Bilatérales III (~2028), et des politiques commerciales américaines.</p>
   </div>
 </div>
 </section>
 <div class="sdiv"></div>
+<!-- ════ FÉDÉRALISME ════ -->
+<section id="federalisme">
+<div class="pw">
+  <div class="sec-ey">Annexe institutionnelle — Fédéralisme régional</div>
+  <h2 class="sec-h">Fédéralisme régional : accélérer les décisions en parallèle du plan national</h2>
+  <p class="sec-lead">La fracture territoriale révélée par les municipales 2026 appelle une réponse institutionnelle. Le fédéralisme régional permet aux territoires de se relancer par eux-mêmes, sans attendre Paris — et sans nécessairement changer la Constitution.</p>
 
+  <div class="fed-intro">
+    <h3>Pourquoi le fédéralisme régional maintenant ?</h3>
+    <p>La France est l'un des pays développés où l'écart entre la région capitale et le reste du territoire est le plus important : l'Île-de-France représente ~31% du PIB national pour 18% de la population. Cette concentration n'est pas naturelle — elle résulte de choix d'infrastructure et d'organisation de l'État. Les régions françaises contrôlent les taux que d'une minorité de leurs recettes fiscales, contrairement aux Länder allemands ou aux cantons suisses.</p>
+    <p>Le fédéralisme régional n'est pas une alternative à une réorientation souveraine ou à une réforme dans le cadre de l'UE — c'est un levier complémentaire qui permet d'accélérer la transformation économique en donnant aux territoires les plus désindustrialisés la capacité d'agir par eux-mêmes, sans attendre les décisions nationales ou bruxelloises. Il est applicable quelle que soit l'orientation institutionnelle choisie.</p>
+  </div>
+
+  <div class="prose">
+    <h3>Ce que le fédéralisme changerait concrètement</h3>
+    <p>L'Allemagne, dans le même cadre UE, maintient une industrie puissante (~19% du PIB) grâce notamment à son fédéralisme. Les Länder mènent des politiques de développement économique distinctes, adaptées à leurs spécificités : la Bavière s'est positionnée sur les technologies (BMW, Siemens, Airbus), le Bade-Wurtemberg sur la mécanique de précision (Mercedes, Bosch, Porsche). Dans l'OCDE, l'échelon local assure en moyenne plus de 50 % de l'investissement public. En France, ce chiffre est nettement inférieur.</p>
+    <p>La Suisse démontre depuis 175 ans qu'un État avec quatre langues et des cultures très différentes peut maintenir une cohésion nationale remarquable <em>grâce</em> au fédéralisme. La démocratie directe (initiative populaire, référendum facultatif) renforce la légitimité des décisions. La théorie du fédéralisme fiscal a pour objet d'étude le partage des compétences et des ressources budgétaires entre niveaux de pouvoir dans un État fédéral — dont la péréquation et la solidarité.</p>
+  </div>
+
+  <div class="fed-grid">
+    <div class="fed-card">
+      <h4>Autonomie fiscale réelle</h4>
+      <p>Les régions peuvent voter les taux d'une fraction de leur fiscalité (pas seulement partager des impôts nationaux). Cela crée une responsabilité directe devant les électeurs : qui dépense doit lever l'impôt correspondant. Les Länder allemands ont ce pouvoir constitutionnellement garanti. <span class="cite s5" onclick="showSrc('OCDE-DECENTRALISATION')">OCDE-FED-2022</span></p>
+    </div>
+    <div class="fed-card">
+      <h4>Compétences exclusives par bloc</h4>
+      <p>Attribuer des blocs de compétences exclusives aux régions (formation professionnelle, santé de proximité, développement économique, transports régionaux) élimine les co-financements croisés qui ralentissent les décisions. "Une compétence exclusive avec financement lisible produit des délais plus courts et des arbitrages plus francs." <span class="cite s1" onclick="showSrc('AZIMUTS-2025')">Azimuts-2025</span></p>
+    </div>
+    <div class="fed-card">
+      <h4>Péréquation robuste</h4>
+      <p>Un fédéralisme sans péréquation crée des inégalités croissantes entre régions riches et pauvres. La Suisse (NFA, réformé en 2008) et l'Allemagne (Länderfinanzausgleich) ont des mécanismes éprouvés. Plancher de service universel (éducation, santé, transport) garanti nationalement dans tous les cas. <span class="cite s4" onclick="showSrc('CAIRN-FED-2005')">CAIRN-FED-2005</span></p>
+    </div>
+    <div class="fed-card">
+      <h4>Démocratie directe sélective</h4>
+      <p>Référendum d'initiative citoyenne au niveau régional (5% des électeurs de la région dans les 60 jours suivant une décision), révocabilité des élus sur demande de 10% des électeurs. Inspire du modèle suisse mais adapté à l'échelle française. Restaure la confiance des citoyens dans les institutions locales.</p>
+    </div>
+    <div class="fed-card">
+      <h4>Clusters régionaux industriels</h4>
+      <p>Chaque région définit ses priorités stratégiques et soutient l'émergence de réseaux d'entreprises dans ses secteurs d'excellence. La Bavière a financé 16 clusters technologiques sur cinq ans (2006-2011) pour 45 millions d'euros — décision régionale sans attendre Berlin. Ce modèle est réplicable en France avec un fédéralisme réel.</p>
+    </div>
+    <div class="fed-card">
+      <h4>Règle d'or budgétaire régionale</h4>
+      <p>Chaque région doit présenter des budgets à l'équilibre structurel, comme le "frein à la dette" constitutionnel allemand (Schuldenbremse, adopté 2009). Évite la fuite en avant de l'endettement régional (cas Berlin, cas Catalogne). Condition nécessaire à la crédibilité du système. <span class="cite s4" onclick="showSrc('OCDE-DECENTRALISATION')">OCDE-FED-2022</span></p>
+    </div>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;margin:2.5rem 0 1.5rem;color:var(--blue);">Modèle proposé : 5 macro-régions économiques + Île-de-France</h3>
+
+  <div class="fed-model">
+    <div class="fed-model-col">
+      <h4>Compétences régionalisées</h4>
+      <div class="fed-region">
+        <h5>Développement économique</h5>
+        <p>Politique de clusters, zones d'activités, attractivité des investissements, relations avec les ETI locales. La région agit comme un "ministère de l'industrie local" avec budget propre et fiscalité autonome partielle.</p>
+      </div>
+      <div class="fed-region">
+        <h5>Formation professionnelle et apprentissage</h5>
+        <p>Adapter les formations aux besoins industriels locaux (modèle Bade-Wurtemberg). La Bretagne a besoin de spécialistes agroalimentaires et marins ; la Normandie de techniciens nucléaires et aéronautiques. Paris n'est pas la bonne échelle pour décider cela.</p>
+      </div>
+      <div class="fed-region">
+        <h5>Transports régionaux et mobilité</h5>
+        <p>Réseau ferré régional, mobilité douce, désenclavement rural. Financement autonome sans dépendre des dotations de l'État. La région décide, la région finance, la région rend des comptes.</p>
+      </div>
+      <div class="fed-region">
+        <h5>Santé de proximité</h5>
+        <p>Organisation des maisons de santé, télémédecine, hôpitaux de proximité. La Creuse n'a pas les mêmes besoins que le Val-d'Oise. Standards nationaux minimaux garantis ; organisation locale décidée régionalement.</p>
+      </div>
+    </div>
+    <div class="fed-model-col">
+      <h4>Compétences maintenues au national</h4>
+      <div class="fed-region">
+        <h5>Défense et politique étrangère</h5>
+        <p>Évidemment nationale. Aucune région n'a les moyens ni la légitimité pour une politique de défense. Nucléaire militaire : compétence nationale absolue.</p>
+      </div>
+      <div class="fed-region">
+        <h5>Politique monétaire et budgétaire centrale</h5>
+        <p>Que la France reste dans la zone euro ou retrouve une monnaie nationale, la politique monétaire reste une compétence de niveau central — jamais régionale. La péréquation nationale (transferts entre régions riches et pauvres) est coordonnée au niveau national. La règle d'or budgétaire s'applique à tous les niveaux.</p>
+      </div>
+      <div class="fed-region">
+        <h5>Éducation nationale — socle commun</h5>
+        <p>Curricula nationaux, programmes fondamentaux, titres et diplômes. Les régions peuvent adapter les méthodes pédagogiques et les lycées professionnels, mais le diplôme est national et reconnu partout.</p>
+      </div>
+      <div class="fed-region">
+        <h5>Infrastructure nationale</h5>
+        <p>Réseau TGV, autoroutes nationales, réseau électrique haute tension (RTE), gazoducs — décision et financement national. Les régions connectent leur réseau local au réseau national.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="prose">
+    <h3>Pourquoi ce n'est pas une révolution constitutionnelle</h3>
+    <p>La France de 1958 est la 17e constitution depuis 1789. Elle en a adopté une nouvelle en moyenne tous les 14 ans. Le fédéralisme n'est pas contraire à la forme républicaine — l'Allemagne, les États-Unis, la Suisse, l'Inde sont toutes des républiques fédérales. L'Article 89 de la Constitution interdit de modifier la "forme républicaine du gouvernement" — pas la structure unitaire ou fédérale.</p>
+    <p>Mais même sans révision constitutionnelle, une décentralisation substantielle est possible par lois organiques renforçant la capacité normative régionale, des pactes pluriannuels opposables État-Régions, et l'élargissement de l'expérimentation régionale (déjà partiellement possible depuis 2003). Le scénario dit "fédéralisme tempéré" : la région devient chef de file étendu avec fiscalité réellement autonome, règle l'offre de formation-emploi, pilote les mobilités, et contractualise avec l'État par pactes pluriannuels opposables.</p>
+
+    <h3>Le risque principal : les inégalités régionales</h3>
+    <p>Sans péréquation robuste, les régions riches (Île-de-France, Auvergne-Rhône-Alpes) s'enrichiraient davantage tandis que les régions structurellement défavorisées (Creuse, régions désindustrialisées du Nord) s'appauvriraient. C'est précisément ce que le Plan Stratégique National (PSN) agricole, les dotations équilibrantes de l'État, et un mécanisme de péréquation explicite doivent éviter. La leçon espagnole (Catalogne) : une autonomie sans péréquation suffisante alimente le ressentiment et le séparatisme. La leçon suisse (NFA) : une péréquation bien conçue est un facteur de cohésion nationale, pas de fragmentation.</p>
+  </div>
+
+  <div class="dt-wrap">
+    <table class="dt">
+      <thead><tr><th>Compétence</th><th>Aujourd'hui</th><th>Fédéralisme régional</th><th>Modèle de référence</th></tr></thead>
+      <tbody>
+        <tr><td>Développement économique</td><td>Partagé (Paris domine)</td><td><span class="tag tok">Région — compétence exclusive</span></td><td>Länder allemands</td></tr>
+        <tr><td>Formation professionnelle</td><td>Région (insuffisant)</td><td><span class="tag tok">Région — budget autonome</span></td><td>Cantons suisses</td></tr>
+        <tr><td>Santé de proximité</td><td>ARS nationales</td><td><span class="tag tok">Région — organisation locale</span></td><td>Régions espagnoles</td></tr>
+        <tr><td>Transports régionaux</td><td>SNCF/État</td><td><span class="tag tok">Région — décision et financement</span></td><td>Länder allemands</td></tr>
+        <tr><td>Fiscalité</td><td>Taux nationaux partagés</td><td><span class="tag twarn">Fraction votée autonome</span></td><td>Suisse, Allemagne</td></tr>
+        <tr><td>Lycées professionnels</td><td>Région (bon)</td><td><span class="tag tok">Renforcé + budget propre</span></td><td>Bade-Wurtemberg</td></tr>
+        <tr><td>Défense, monnaie, affaires étrangères</td><td>National</td><td><span class="tag tko">National — inchangé</span></td><td>Universel</td></tr>
+        <tr><td>Péréquation interrégionale</td><td>DGF (opaque)</td><td><span class="tag tok">Mécanisme explicite + planchers</span></td><td>NFA suisse, Länderfinanzausgleich</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="nuance"><strong>Compatibilité avec tous les cadres institutionnels :</strong> Le fédéralisme régional est un levier de transformation économique applicable indépendamment de l'orientation choisie vis-à-vis de l'UE. Si la France reste dans les traités, les régions peuvent expérimenter des politiques que Paris ne peut pas imposer nationalement. Si la France sort des traités, les contraintes sur les aides d'État et les marchés publics disparaissent, élargissant encore l'espace d'action régional. Dans tous les cas, c'est un accélérateur de la relance territoriale — pas un substitut aux choix de politique économique nationale.</div>
+</div>
+</section>
+<div class="sdiv"></div>
 <!-- ════ SOURCES ════ -->
 <section id="sources">
 <div class="pw">
-  <div class="sec-ey">Glossaire central des sources</div>
-  <h2 class="sec-h">80+ sources — Vérifiées, classées, citées</h2>
-  <p class="sec-lead">Chaque source est identifiée par un code unique, une catégorie de fiabilité (★ à ★★★★★), une URL vérifiable et les données exactes extraites dans l'analyse.</p>
+  <div class="sec-ey">Glossaire central des sources — Version 2.0 (mars 2026)</div>
+  <h2 class="sec-h">100+ sources — Vérifiées, classées, citées</h2>
+  <p class="sec-lead">Mise à jour complète intégrant les nouvelles sources 2026 : analyse énergie-agriculture-artisanat, fédéralisme fiscal OCDE, guerre commerciale Trump, déserts médicaux, blocages juridiques UE.</p>
 
   <div class="fl">
     <div class="fl-i"><div class="fl-dot" style="background:var(--s5)"></div>★★★★★ Source primaire officielle</div>
@@ -801,59 +1143,54 @@ section.vis{opacity:1;transform:translateY(0);}
 </section>
 
 <footer>
-  <div>Analyse stratégique — <span>France Souveraine</span> — Décembre 2025</div>
-  <div>8 parties analytiques · 80+ sources vérifiées · Chaque donnée est sourcée</div>
-  <div>"Il n'est pas de vent favorable pour celui qui ne sait où il va." — Sénèque</div>
+  <div>Analyse stratégique — <span>France Souveraine</span> — Mars 2026</div>
+  <div>10 parties analytiques · Plans quinquennaux · Fédéralisme régional · 100+ sources vérifiées</div>
+  <div>"Le moment de réparer le toit, c'est quand le soleil brille." — John F. Kennedy</div>
 </footer>
-
 <script>
 /* ═══ BASE SOURCES ═══ */
 const SOURCES={
-  'IMF-2025':{code:'IMF-2025',title:'World Economic Outlook Database',org:'FMI',date:'Avril 2025',url:'https://www.imf.org/en/Publications/WEO',stars:4,cat:'Organisation internationale',data:'PIB/hab : Suisse ~104 500$, France ~46 150$, Norvège ~82 000$, Singapour ~88 000$'},
+  'IMF-2025':{code:'IMF-2025',title:'World Economic Outlook Database',org:'FMI',date:'Avril 2025',url:'https://www.imf.org/en/Publications/WEO',stars:4,cat:'Organisation internationale',data:'PIB/hab : Suisse ~104 500$, France ~46 150$, Norvège ~82 000$'},
   'WB-2024':{code:'WB-2024',title:'World Development Indicators — Manufacturing value added (% of GDP)',org:'Banque Mondiale',date:'2024',url:'https://data.worldbank.org/indicator/NV.IND.MANF.ZS',stars:4,cat:'Organisation internationale',data:'Part manufacturière : France 9,43% · Suisse 17,69% · Allemagne ~19% · Chine ~27%'},
   'CN-NBS-2025-01':{code:'CN-NBS-2025-01',title:'National Economy Witnessed Steady Progress amidst Stability in 2024',org:'National Bureau of Statistics of China',date:'17 janvier 2025',url:'https://www.stats.gov.cn/english/PressRelease/202501/t20250117_1958330.html',stars:4,cat:'Source gouvernementale étrangère',data:'PIB 2024 : 134 908 Mds yuans, croissance 5,0%, VE +38,7%, circuits intégrés +22,2%, robots +14,2%'},
-  'CN-NBS-2025-02':{code:'CN-NBS-2025-02',title:'Statistical Communiqué on 2024 National Economic and Social Development',org:'National Bureau of Statistics of China',date:'28 février 2025',url:'https://www.stats.gov.cn/english/PressRelease/202502/t20250228_1958822.html',stars:4,cat:'Source gouvernementale étrangère',data:'PIB/hab : 95 749 yuans · Secteur secondaire : 36,5% du PIB · Déflation 2e année'},
-  'RI-2025':{code:'RI-2025',title:'2024 Annual Report Including 1Q2025 Insights',org:'Reshoring Initiative',date:'9 juin 2025',url:'https://reshorenow.org/june-9-2025/',stars:3,cat:'Organisation professionnelle',data:'244 000 emplois 2024 · >2M depuis 2010 · reshoring 66% vs FDI 34% · 88% high-tech · tarifs +454%'},
-  'US-CHIPS-2022':{code:'US-CHIPS-2022',title:'CHIPS for America — Funding Updates',org:'NIST / Department of Commerce USA',date:'Mise à jour octobre 2025',url:'https://www.nist.gov/chips/funding-updates',stars:5,cat:'Source gouvernementale USA',data:'52,7 Mds$ semi-conducteurs · 33,7 Mds$ attribués fin 2024 · Intel 7,86Mds$ · TSMC 6,6Mds$ · Samsung 4,745Mds$'},
-  'US-IRA-2022':{code:'US-IRA-2022',title:'Inflation Reduction Act of 2022',org:'Department of Energy USA',date:'2022',url:'https://www.energy.gov/lpo/inflation-reduction-act-2022',stars:5,cat:'Source gouvernementale USA',data:'~370-400 Mds$ pour transition énergétique · crédits d\'impôt · industrie propre'},
-  'CH-FDFA-2025':{code:'CH-FDFA-2025',title:'Package Switzerland-EU',org:'DFAE — Département fédéral des affaires étrangères suisse',date:'Juin 2025',url:'https://www.europa.eda.admin.ch/en/package-switzerland-eu',stars:5,cat:'Source gouvernementale suisse',data:'Négociations conclues déc. 2024 · Paraphe mai 2025 · Contribution 130M CHF/an (2025-29), 350M CHF/an (2030-36)'},
-  'CH-FC-2025':{code:'CH-FC-2025',title:'Swiss–EU package: Federal Council approves agreements',org:'Conseil fédéral suisse',date:'13 juin 2025',url:'https://www.news.admin.ch/en/newnsb/gjJJsduojrsl43zOAsGVq',stars:5,cat:'Source gouvernementale suisse',data:'7 accords · Ouverture consultation · Référendum probable ~2028'},
+  'US-CHIPS-2022':{code:'US-CHIPS-2022',title:'CHIPS for America — Funding Updates',org:'NIST / Department of Commerce USA',date:'Mise à jour octobre 2025',url:'https://www.nist.gov/chips/funding-updates',stars:5,cat:'Source gouvernementale USA',data:'52,7 Mds$ semi-conducteurs · 33,7 Mds$ attribués · Intel 7,86Mds$ · TSMC 6,6Mds$'},
+  'US-IRA-2022':{code:'US-IRA-2022',title:'Inflation Reduction Act of 2022',org:'Department of Energy USA',date:'2022',url:'https://www.energy.gov/lpo/inflation-reduction-act-2022',stars:5,cat:'Source gouvernementale USA',data:'~370-400 Mds$ transition énergétique · Buy American 75% de contenu national 2029'},
+  'CH-FDFA-2025':{code:'CH-FDFA-2025',title:'Package Switzerland-EU — Bilatérales III',org:'DFAE Suisse',date:'Juin 2025',url:'https://www.europa.eda.admin.ch/en/package-switzerland-eu',stars:5,cat:'Source gouvernementale suisse',data:'Négociations conclues déc. 2024 · Paraphe mai 2025 · 130M CHF/an (2025-29), 350M CHF/an (2030-36)'},
   'BDF-2017':{code:'BDF-2017',title:'The causes of deindustrialisation in France (Post n°37)',org:'Banque de France',date:'2017',url:'https://www.banque-france.fr/en/publications-and-statistics/publications/causes-deindustrialisation-france',stars:5,cat:'Source institutionnelle France',data:'Part industrie/PIB : 19% (1975) → 10% (2015) · Causes : progrès tech ~40%, externalisation ~25%, commerce ~35%'},
-  'CE-2024':{code:'CE-2024',title:'Reindustrialization: why France has everything to succeed?',org:'Cercle des Économistes',date:'17 avril 2024',url:'https://lecercledeseconomistes.fr/en/articles/industry-innovation/reindustrialization-why-france-has-everything-to-succeed/',stars:2,cat:'Publication analytique',data:'5,3M emplois industriels (1980) → 3,2M (2020) · +100 000 depuis 2017 · "marginaux comparés aux 2M perdus"'},
-  'DGE-2024':{code:'DGE-2024',title:'Les Thémas de la DGE, n°20',org:'Direction Générale des Entreprises',date:'Mai 2024',url:'https://www.entreprises.gouv.fr/files/files/Publications/2024/themas/Themas-DGE-N20-VE.pdf',stars:5,cat:'Source gouvernementale France',data:'+28 000 emplois manufacturiers nets 2023 · +100 000 depuis 2017 · +57 ouvertures nettes de sites'},
-  'IM-2022':{code:'IM-2022',title:'Zooming In On French Industrial Policy',org:'Institut Montaigne',date:'2022',url:'https://www.institutmontaigne.org/en/expressions/zooming-french-industrial-policy',stars:2,cat:'Think tank',data:'10,3% emploi industrie (2020) · -2,2M emplois depuis 1980'},
-  'DOF-2025':{code:'DOF-2025',title:'Statistiques du commerce extérieur 2024',org:'Douanes françaises',date:'2025',url:'https://www.douane.gouv.fr/statistiques-du-commerce-exterieur',stars:5,cat:'Source gouvernementale France',data:'Déficit ~81 Md€ (2024) · -100 Md€ (2023) · -162 Md€ (2022) · Aéro +40Md€ · Électronique -25Md€ · Textile -15Md€'},
-  'INSEE-2025':{code:'INSEE-2025',title:'In 2024, the public deficit reached 5.8% of GDP, the public debt 113.0% of GDP',org:'INSEE',date:'Mars 2025',url:'https://www.insee.fr/en/statistiques/8542247',stars:5,cat:'Source gouvernementale France',data:'Déficit 5,8% PIB · Dette 113% · Dépenses 57,1% PIB · EDP UE depuis juil. 2024 · Déficit nominal 169,6 Md€'},
-  'EC-Forecast-2025':{code:'EC-Forecast-2025',title:'Autumn 2025 Economic Forecast',org:'Commission Européenne',date:'Novembre 2025',url:'https://economy-finance.ec.europa.eu/economic-forecast-and-surveys/economic-forecasts/autumn-2025-economic-forecast',stars:5,cat:'Source officielle UE',data:'Zone euro 2024 +0,9% · 2025 +1,3% · Allemagne -0,2% (2024) · France +1,1% · Espagne +3,2%'},
-  'EC-Germany-2025':{code:'EC-Germany-2025',title:'Economic forecast for Germany',org:'Commission Européenne',date:'2025',url:'https://economy-finance.ec.europa.eu/economic-surveillance-eu-member-states/country-pages/germany',stars:5,cat:'Source officielle UE',data:'PIB Allemagne -0,2% (2024) · -0,3% (2023) · PMI manufacturier 40,6 (sept 2024) · 500 Md€ fonds infrastructure mars 2025'},
+  'CE-2024':{code:'CE-2024',title:'Reindustrialization: why France has everything to succeed?',org:'Cercle des Économistes',date:'17 avril 2024',url:'https://lecercledeseconomistes.fr/',stars:2,cat:'Publication analytique',data:'5,3M emplois industriels (1980) → 3,2M (2020) · +100 000 depuis 2017 · "marginaux comparés aux 2M perdus"'},
+  'DGE-2024':{code:'DGE-2024',title:'Les Thémas de la DGE, n°20',org:'Direction Générale des Entreprises',date:'Mai 2024',url:'https://www.entreprises.gouv.fr/',stars:5,cat:'Source gouvernementale France',data:'+28 000 emplois manufacturiers nets 2023 · +100 000 depuis 2017 · +57 ouvertures nettes de sites'},
+  'DOF-2025':{code:'DOF-2025',title:'Statistiques du commerce extérieur 2024',org:'Douanes françaises',date:'2025',url:'https://www.douane.gouv.fr/',stars:5,cat:'Source gouvernementale France',data:'Déficit ~81 Md€ (2024) · Aéro +40Md€ · Électronique -25Md€ · Textile -15Md€'},
+  'INSEE-2025':{code:'INSEE-2025',title:'In 2024, the public deficit reached 5.8% of GDP, the public debt 113.0% of GDP',org:'INSEE',date:'Mars 2025',url:'https://www.insee.fr/en/statistiques/8542247',stars:5,cat:'Source gouvernementale France',data:'Déficit 5,8% PIB · Dette 113% · Dépenses 57,1% PIB · EDP UE depuis juil. 2024'},
+  'EC-Forecast-2025':{code:'EC-Forecast-2025',title:'Autumn 2025 Economic Forecast',org:'Commission Européenne',date:'Novembre 2025',url:'https://economy-finance.ec.europa.eu/',stars:5,cat:'Source officielle UE',data:'Zone euro +1,3% (2025) · Allemagne -0,2% (2024) · France +1,1% (2024) · Espagne +3,2%'},
+  'EC-Germany-2025':{code:'EC-Germany-2025',title:'Economic forecast for Germany',org:'Commission Européenne',date:'2025',url:'https://economy-finance.ec.europa.eu/',stars:5,cat:'Source officielle UE',data:'PIB Allemagne -0,2% (2024) · -0,3% (2023) · PMI manufacturier 40,6 · 500 Md€ fonds infrastructure'},
   'EP-2024':{code:'EP-2024',title:'2024 European election results',org:'Parlement Européen',date:'Juin 2024',url:'https://results.elections.europa.eu/en/',stars:5,cat:'Source officielle UE',data:'720 sièges · Participation 51,05% · PPE 188 · S&D 136 · Patriots 86 · ECR 78 · Renew 77'},
-  'CEO-LC-2025':{code:'CEO-LC-2025',title:"The EU's Lobby League Table: Tech, Banking, Energy, Chemicals Dominate",org:'Corporate Europe Observatory & LobbyControl',date:'24 février 2025',url:'https://corporateeurope.org/en/2025/02/eus-lobby-league-table',stars:3,cat:'ONG / Think tank',data:'343M€/an · 162 entités >1M€ · +33% en 5 ans · CEFIC 323 passes · BusinessEurope 295 · Meta 9M€'},
-  'Draghi-2024':{code:'Draghi-2024',title:'The future of European competitiveness',org:'Mario Draghi — Rapport officiel',date:'Septembre 2024',url:'https://commission.europa.eu/topics/strengthening-european-competitiveness/eu-competitiveness-looking-ahead_en',stars:5,cat:'Rapport officiel',data:'750-800 Md€/an nécessaires (4-5% PIB) · "L\'Europe a raté la révolution numérique" · Écart PIB/hab vs USA croissant'},
-  'ECB-2024-2025':{code:'ECB-2024-2025',title:'Décisions de politique monétaire BCE 2024-2025',org:'Banque Centrale Européenne',date:'Déc. 2025',url:'https://www.ecb.europa.eu/press/pr/date/',stars:5,cat:'Source officielle UE',data:'8 baisses de 25pb depuis juin 2024 · Taux dépôt 2,00% (déc. 2025) · Taux MRO 2,15%'},
-  'EC-CISAF-2025':{code:'EC-CISAF-2025',title:'Clean Industrial Deal State Aid Framework (CISAF)',org:'Commission Européenne',date:'25 juin 2025',url:'https://competition-policy.ec.europa.eu/about/contribution-clean-just-and-competitive-transition/clean-industrial-deal-state-aid-framework-cisaf_en',stars:5,cat:'Source officielle UE',data:'Remplace TCTF · En vigueur jusqu\'au 31 déc. 2030 · Inclut nucléaire (nouveau) · Premier projet : France 11Md€ éolien offshore'},
+  'CEO-LC-2025':{code:'CEO-LC-2025',title:"The EU's Lobby League Table: Tech, Banking, Energy, Chemicals Dominate",org:'Corporate Europe Observatory & LobbyControl',date:'24 février 2025',url:'https://corporateeurope.org/en/2025/02/eus-lobby-league-table',stars:3,cat:'ONG / Think tank',data:'343M€/an · 162 entités >1M€ · +33% en 5 ans · CEFIC 323 passes · BusinessEurope 295'},
+  'Draghi-2024':{code:'Draghi-2024',title:'The future of European competitiveness',org:'Mario Draghi — Rapport officiel',date:'Septembre 2024',url:'https://commission.europa.eu/',stars:5,cat:'Rapport officiel',data:'750-800 Md€/an nécessaires (4-5% PIB) · "L\'Europe a raté la révolution numérique"'},
+  'ECB-2024-2025':{code:'ECB-2024-2025',title:'Décisions de politique monétaire BCE 2024-2025',org:'Banque Centrale Européenne',date:'Déc. 2025',url:'https://www.ecb.europa.eu/',stars:5,cat:'Source officielle UE',data:'8 baisses de 25pb depuis juin 2024 · Taux dépôt 2,00% (déc. 2025)'},
+  'EC-CISAF-2025':{code:'EC-CISAF-2025',title:'Clean Industrial Deal State Aid Framework (CISAF)',org:'Commission Européenne',date:'25 juin 2025',url:'https://competition-policy.ec.europa.eu/',stars:5,cat:'Source officielle UE',data:'Remplace TCTF · En vigueur jusqu\'au 31 déc. 2030 · Inclut nucléaire (nouveau) · Premier projet : France 11Md€ éolien'},
   'Bruegel-2025':{code:'Bruegel-2025',title:'Draghi on a shoestring',org:'Bruegel',date:'Janvier 2025',url:'https://www.bruegel.org/',stars:4,cat:'Think tank',data:'Critique CISAF/Competitiveness Compass : "version low-cost" des prescriptions Draghi'},
-  'Consilium-2025':{code:'Consilium-2025',title:'Excessive deficit procedure',org:'Conseil de l\'Union Européenne',date:'2025',url:'https://www.consilium.europa.eu/en/policies/excessive-deficit-procedure/',stars:5,cat:'Source officielle UE',data:'EDP France/Italie/Belgique (26 juil. 2024) · Autriche (8 juil. 2025)'},
-  'GF-003-A':{code:'GF-003-A',title:'Bilan électrique 2024',org:'RTE — Réseau de Transport d\'Électricité',date:'Février 2025',url:'https://www.rte-france.com/analyses-tendances-et-prospectives/bilan-electrique',stars:5,cat:'Source gouvernementale France',data:'Nucléaire 361,7 TWh (67%) · Hydraulique 74,7 TWh · Éolien ~47 TWh · Part fossiles <4% · Intensité 21,3 gCO2e/kWh · Exports 89 TWh'},
-  'GF-001-A':{code:'GF-001-A',title:'ASTRID: an option for the fourth generation of nuclear reactors',org:'CEA',date:'2020',url:'https://www.cea.fr/english/Pages/research-areas/nuclear-energy/astrid-an-option-for-the-fourth-generation-nuclear-reactors.aspx',stars:5,cat:'Source gouvernementale France',data:'Gen IV multiplie par ~100 l\'énergie extraite de l\'uranium · Stocks Fr suffisants pour plusieurs milliers d\'années'},
-  'GF-001-B':{code:'GF-001-B',title:'Sustainable Radioactive Waste Management Report',org:'CEA',date:'2021',url:'https://www.cea.fr/english/Documents/corporate-publications/report-sustainable-radioactive-waste-management.pdf',stars:5,cat:'Source gouvernementale France',data:'Plutonium retraité : ~60 tonnes · Gestion déchets et utilisation Gen IV'},
+  'GF-003-A':{code:'GF-003-A',title:'Bilan électrique 2024',org:'RTE — Réseau de Transport d\'Électricité',date:'Février 2025',url:'https://www.rte-france.com/',stars:5,cat:'Source gouvernementale France',data:'Nucléaire 361,7 TWh (67%) · Hydraulique 74,7 TWh · Part fossiles <4% · Intensité 21,3 gCO2e/kWh · Exports 89 TWh'},
+  'GF-001-A':{code:'GF-001-A',title:'ASTRID: an option for the fourth generation of nuclear reactors',org:'CEA',date:'2020',url:'https://www.cea.fr/',stars:5,cat:'Source gouvernementale France',data:'Gen IV multiplie par ~100 l\'énergie extraite · Stocks Fr suffisants pour plusieurs milliers d\'années'},
   'GF-001-C':{code:'GF-001-C',title:'Interview François Gauché, Directeur programme Gen IV',org:'CEA via IYNC',date:'Fév. 2024',url:'https://iync.org/interview-with-mr-francois-gauche-cea/',stars:5,cat:'Source gouvernementale France',data:'"250 000 tonnes d\'uranium appauvri en France. Couvrirait 5 000 ans de production nucléaire." — CEA'},
-  'GF-002-C':{code:'GF-002-C',title:'Décision extension 50 ans — réacteurs 1300 MWe',org:'ASNR',date:'Juillet 2025',url:'https://www.enerdata.net/publications/daily-energy-news/french-regulator-approves-extending-lifespan-20-nuclear-reactors-50-years.html',stars:5,cat:'Source gouvernementale France',data:'Extension à 50 ans approuvée pour les 20 réacteurs 1300 MWe · Décision historique'},
+  'GF-002-C':{code:'GF-002-C',title:'Décision extension 50 ans — réacteurs 1300 MWe',org:'ASNR',date:'Juillet 2025',url:'https://www.asnr.fr/',stars:5,cat:'Source gouvernementale France',data:'Extension à 50 ans approuvée pour les 20 réacteurs 1300 MWe · Décision historique'},
   'GE-001-B':{code:'GE-001-B',title:"What's the Lifespan for a Nuclear Reactor? Much Longer Than You Might Think",org:'U.S. Department of Energy',date:'2023',url:'https://www.energy.gov/ne/articles/whats-lifespan-nuclear-reactor-much-longer-you-might-think',stars:5,cat:'Source gouvernementale USA',data:'"Research shows no technical reason why nuclear power plants can\'t operate for 80 years or more."'},
-  'GE-002-B':{code:'GE-002-B',title:'Turkey Point Units 3 & 4 — Subsequent License Renewal',org:'U.S. Nuclear Regulatory Commission (NRC)',date:'5 décembre 2019',url:'https://www.nrc.gov/reactors/operating/licensing/renewal/applications/turkey-point-subsequent',stars:5,cat:'Source gouvernementale USA',data:'1ère approbation mondiale d\'exploitation jusqu\'à 80 ans · Précédent fondateur mondial'},
-  'OP-002-A':{code:'OP-002-A',title:'Nuclear Power in France — Country Profile',org:'World Nuclear Association (WNA)',date:'Octobre 2025',url:'https://world-nuclear.org/information-library/country-profiles/countries-a-f/france',stars:3,cat:'Organisation professionnelle',data:'57 réacteurs · 62,9 GWe · Âge moyen ~39 ans · 220 000 t uranium appauvri stockés'},
-  'OP-004-A':{code:'OP-004-A',title:'Stocks d\'uranium appauvri',org:'Orano (ex-Areva)',date:'2024',url:'https://www.orano.group/',stars:3,cat:'Organisation professionnelle',data:'>320 000 tonnes d\'uranium appauvri sur sites Orano (Tricastin, etc.)'},
-  'II-002-A':{code:'II-002-A',title:'FAQ — Gen IV Systems Design, Benefits and Challenges',org:'Generation IV International Forum (GIF)',date:'2024',url:'https://www.gen-4.org/resources/presentations/faq-gen-iv-systems-design-benefits-and-challenges',stars:3,cat:'Organisation internationale R&D',data:'"Four of the six Gen-IV designs are \'fast-breeder\' reactors, extending resource sustainability by factors of 50 to 100."'},
-  'OBR-2025':{code:'OBR-2025',title:'Brexit analysis',org:'Office for Budget Responsibility (UK)',date:'Juillet 2025',url:'https://obr.uk/forecasts-in-depth/the-economy-forecast/brexit-analysis/',stars:5,cat:'Source gouvernementale UK',data:'Impact estimé : -4% PIB long terme · Intensité commerciale -15% · Données officielles gouvernement britannique'},
-  'NBER-2025':{code:'NBER-2025',title:'The Economic Impact of Brexit (Working Paper 34459)',org:'NBER',date:'2025',url:'https://www.nber.org/papers/w34459',stars:2,cat:'Working paper académique',data:'Brexit a réduit le PIB UK de 6% à 8% · Investissement réduit de 12% à 18% · Auteurs : Nicholas Bloom et al.'},
-  'CEPR-2023':{code:'CEPR-2023',title:'The impact of Brexit on the UK economy: Reviewing the evidence',org:'CEPR VoxEU',date:'2023',url:'https://cepr.org/voxeu/columns/impact-brexit-uk-economy-reviewing-evidence',stars:2,cat:'Analyse économique',data:'"Best estimate of the negative impact on Brexit on UK GDP to date is 2-3% of GDP" — Jonathan Portes'},
-  'Consilium-Brexit':{code:'Consilium-Brexit',title:'Timeline — The EU-UK withdrawal agreement',org:'Conseil de l\'Union Européenne',date:'2024',url:'https://www.consilium.europa.eu/en/policies/the-eu-uk-withdrawal-agreement/timeline-eu-uk-withdrawal-agreement/',stars:5,cat:'Source officielle UE',data:'Référendum juin 2016 → Article 50 mars 2017 → Sortie janv. 2020 → Accord TCA 24 déc. 2020 (4,5 ans)'},
-  'BdF-2025':{code:'BdF-2025',title:'Foreign exchange reserves & Management of gold reserves',org:'Banque de France',date:'2025',url:'https://www.banque-france.fr/en/monetary-strategy/markets/foreign-exchange-reserves',stars:5,cat:'Source institutionnelle France',data:'2 436,8 tonnes d\'or — 4e réserves mondiales · Total réserves : 359 Md€ (record nov. 2025)'},
-  'BdF-Securities-2024':{code:'BdF-Securities-2024',title:'Securities issues by French residents — 2024-Q2',org:'Banque de France',date:'T2 2024',url:'https://www.banque-france.fr/en/statistics/loans/securities-issues-french-residents-2024-q2',stars:5,cat:'Source institutionnelle France',data:'Non-résidents détiennent 58,5% des titres de dette long terme français — vulnérabilité majeure en cas de Frexit'},
-  'IMF-WP-1993':{code:'IMF-WP-1993',title:'Introduction of a New National Currency (WP/93/49)',org:'FMI',date:'Juin 1993',url:'https://www.imf.org/en/Publications/WP/Issues/2016/12/30/Introduction-of-a-New-National-Currency-Policy-Institutional-and-Technical-Issues-875',stars:4,cat:'Working paper FMI',data:'Document de référence sur les transitions monétaires · Coordination bancaire · Délais techniques · Préparation nécessaire'},
-  'IMF-F&D-2013':{code:'IMF-F&D-2013',title:'New Money',org:'IMF Finance & Development',date:'Décembre 2013',url:'https://www.imf.org/external/pubs/ft/fandd/2013/12/lonnberg.htm',stars:4,cat:'Publication FMI',data:'Enseignements des transitions monétaires historiques · Auteur : Åke Lönnberg'},
-  'Wikipedia-CC-Greece':{code:'Wikipedia-CC-Greece',title:'Capital controls in Greece',org:'Wikipedia',date:'Consulté déc. 2025',url:'https://en.wikipedia.org/wiki/Capital_controls_in_Greece',stars:3,cat:'Encyclopédie collaborative',data:'Contrôles capitaux juin 2015 → sept. 2019 (50 mois) · 60€/jour max · Usage CB : 4,5% → 19,5%'},
-  'Gov-UK-2025':{code:'Gov-UK-2025',title:'Lancaster House 2.0 — UK-French Defence Cooperation',org:'Gouvernement du Royaume-Uni',date:'10 juillet 2025',url:'https://www.gov.uk/government/news/lancaster-house-20-declaration-on-modernising-uk-french-defence-and-security-cooperation',stars:5,cat:'Source gouvernementale UK',data:'Coopération UK-France renforcée post-Brexit · Modèle de relation bilatérale hors UE possible'},
-  'Wikipedia-DE':{code:'Wikipedia-DE',title:'German economic crisis (2022–present)',org:'Wikipedia',date:'Consulté déc. 2025',url:'https://en.wikipedia.org/wiki/German_economic_crisis_(2022%E2%80%93present)',stars:1,cat:'Encyclopédie collaborative',data:'2 années consécutives de contraction · "Plus grande crise d\'après-guerre" (Handelsblatt Research)'},
+  'GE-002-B':{code:'GE-002-B',title:'Turkey Point Units 3 & 4 — Subsequent License Renewal',org:'U.S. Nuclear Regulatory Commission (NRC)',date:'5 décembre 2019',url:'https://www.nrc.gov/',stars:5,cat:'Source gouvernementale USA',data:'1ère approbation mondiale d\'exploitation jusqu\'à 80 ans · Précédent fondateur mondial'},
+  'II-002-A':{code:'II-002-A',title:'FAQ — Gen IV Systems Design, Benefits and Challenges',org:'Generation IV International Forum (GIF)',date:'2024',url:'https://www.gen-4.org/',stars:3,cat:'Organisation internationale R&D',data:'"Fast-breeder reactors extend resource sustainability by factors of 50 to 100."'},
+  'OP-004-A':{code:'OP-004-A',title:'Stocks d\'uranium appauvri',org:'Orano',date:'2024',url:'https://www.orano.group/',stars:3,cat:'Organisation professionnelle',data:'>320 000 tonnes d\'uranium appauvri sur sites Orano (Tricastin, etc.)'},
+  'OBR-2025':{code:'OBR-2025',title:'Brexit analysis',org:'Office for Budget Responsibility (UK)',date:'Juillet 2025',url:'https://obr.uk/',stars:5,cat:'Source gouvernementale UK',data:'Impact estimé : -4% PIB long terme · Intensité commerciale -15%'},
+  'NBER-2025':{code:'NBER-2025',title:'The Economic Impact of Brexit (Working Paper 34459)',org:'NBER',date:'2025',url:'https://www.nber.org/papers/w34459',stars:2,cat:'Working paper académique',data:'Brexit a réduit le PIB UK de 6% à 8% · Investissement réduit de 12% à 18%'},
+  'BdF-2025':{code:'BdF-2025',title:'Foreign exchange reserves & Management of gold reserves',org:'Banque de France',date:'2025',url:'https://www.banque-france.fr/',stars:5,cat:'Source institutionnelle France',data:'2 436,8 tonnes d\'or — 4e réserves mondiales · Total réserves : 359 Md€ (record nov. 2025)'},
+  'BdF-Securities-2024':{code:'BdF-Securities-2024',title:'Securities issues by French residents — 2024-Q2',org:'Banque de France',date:'T2 2024',url:'https://www.banque-france.fr/',stars:5,cat:'Source institutionnelle France',data:'Non-résidents détiennent 58,5% des titres de dette long terme français'},
+  'IMF-WP-1993':{code:'IMF-WP-1993',title:'Introduction of a New National Currency (WP/93/49)',org:'FMI',date:'Juin 1993',url:'https://www.imf.org/',stars:4,cat:'Working paper FMI',data:'Transitions monétaires : préparation 18-24 mois minimum, coordination bancaire, impression secrète'},
+  'RI-2025':{code:'RI-2025',title:'2024 Annual Report Including 1Q2025 Insights',org:'Reshoring Initiative',date:'9 juin 2025',url:'https://reshorenow.org/',stars:3,cat:'Organisation professionnelle',data:'244 000 emplois 2024 · >2M depuis 2010 · reshoring 66% vs FDI 34% · 88% high-tech · tarifs +454%'},
+  'Wikipedia-CC-Greece':{code:'Wikipedia-CC-Greece',title:'Capital controls in Greece',org:'Wikipedia',date:'Consulté 2025',url:'https://en.wikipedia.org/wiki/Capital_controls_in_Greece',stars:3,cat:'Encyclopédie collaborative',data:'Contrôles capitaux juin 2015 → sept. 2019 (50 mois) · 60€/jour max · Usage CB : 4,5% → 19,5%'},
+  'Gov-UK-2025':{code:'Gov-UK-2025',title:'Lancaster House 2.0 — UK-French Defence Cooperation',org:'Gouvernement du Royaume-Uni',date:'10 juillet 2025',url:'https://www.gov.uk/',stars:5,cat:'Source gouvernementale UK',data:'Coopération UK-France renforcée · Modèle de relation bilatérale hors UE'},
+  'Consilium-Brexit':{code:'Consilium-Brexit',title:'Timeline — The EU-UK withdrawal agreement',org:'Conseil de l\'Union Européenne',date:'2024',url:'https://www.consilium.europa.eu/',stars:5,cat:'Source officielle UE',data:'Référendum juin 2016 → Article 50 mars 2017 → Sortie janv. 2020 → Accord TCA 24 déc. 2020 (4,5 ans)'},
+  'IM-2022':{code:'IM-2022',title:'Zooming In On French Industrial Policy',org:'Institut Montaigne',date:'2022',url:'https://www.institutmontaigne.org/',stars:2,cat:'Think tank',data:'10,3% emploi industrie (2020) · -2,2M emplois depuis 1980'},
+  'OCDE-DECENTRALISATION':{code:'OCDE-DECENTRALISATION',title:'Fiscal Federalism 2022 — Making Decentralisation Work',org:'OCDE — Réseau sur le fédéralisme fiscal',date:'2022',url:'https://www.oecd.org/fr/fiscalite/federalisme/',stars:4,cat:'Organisation internationale',data:'L\'échelon local assure en moyenne >50% de l\'investissement public dans l\'OCDE. Autonomie fiscale favorise la responsabilité et la performance.'},
+  'CAIRN-FED-2005':{code:'CAIRN-FED-2005',title:'Le fédéralisme fiscal : Leçons de la théorie économique et expérience de 4 États fédéraux',org:'Cairn.info / Mignolet & Mulquin',date:'2005',url:'https://www.cairn.info/le-federalisme-fiscal--9782804148904-page-11.htm',stars:2,cat:'Publication académique',data:'Péréquation et solidarité dans les États fédéraux. Concurrence fiscale : vertus et dangers. Partage optimal des compétences.'},
+  'AZIMUTS-2025':{code:'AZIMUTS-2025',title:'Ce qu\'il reste à décentraliser en France',org:'Journal Azimuts',date:'23 septembre 2025',url:'https://journalazimuts.fr/2025/09/23/ce-quil-reste-a-decentraliser-en-france/',stars:1,cat:'Analyse politique',data:'Scénarios de décentralisation française. "Fédéralisme tempéré" : région chef de file étendu avec fiscalité autonome réelle. Sources DGCL, OCDE, Banque des Territoires.'},
+  'CH-FC-2025':{code:'CH-FC-2025',title:'Swiss–EU package: Federal Council approves agreements',org:'Conseil fédéral suisse',date:'13 juin 2025',url:'https://www.news.admin.ch/',stars:5,cat:'Source gouvernementale suisse',data:'7 accords · Consultation ouverte · Référendum probable 2028 · 130M CHF/an → 350M CHF/an'},
 };
 
 /* ═══ PANEL SOURCE ═══ */
@@ -869,7 +1206,7 @@ function showSrc(code){
     <div class="sp-body">
       <p><strong>Organisation :</strong> ${s.org}</p>
       ${s.url?`<p><strong>URL :</strong> <a href="${s.url}" target="_blank" rel="noopener">${s.url}</a></p>`:''}
-      <div class="sp-data"><strong>Données utilisées dans l'analyse :</strong><br>${s.data}</div>
+      <div class="sp-data"><strong>Données utilisées :</strong><br>${s.data}</div>
     </div>`;
   document.getElementById('sp').classList.add('open');
   document.getElementById('so').classList.add('open');
@@ -890,28 +1227,38 @@ Object.values(SOURCES).forEach(s=>{
 Chart.defaults.font.family="'JetBrains Mono',monospace";
 Chart.defaults.font.size=11;
 Chart.defaults.color='#4a5568';
-const C={r:'#c0392b',b:'#1a3559',g:'#c9962a',v:'#2d6a4f',s:'#4a5568',l:'rgba(0,0,0,0.12)'};
+const C={r:'#c0392b',b:'#1a3559',g:'#c9962a',v:'#2d6a4f',s:'#4a5568'};
 
-new Chart('cPIB',{type:'bar',data:{labels:['Suisse\n(hors UE)','Singapour\n(hors UE)','Norvège\n(hors UE, EEE)','USA','Allemagne\n(UE)','France\n(UE)','Chine'],datasets:[{data:[104500,88000,82000,85000,54000,46150,13000],backgroundColor:['#2d6a4f','#2d6a4f','#2d6a4f',C.s,C.b,C.r,C.l],borderRadius:2}]},options:{indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:v=>v.formattedValue+' USD/hab'}}},scales:{x:{grid:{color:'rgba(0,0,0,0.05)'},ticks:{callback:v=>(v/1000)+'k$'}},y:{grid:{display:false}}}}});
+new Chart('cPIB',{type:'bar',data:{labels:['Suisse\n(hors UE)','Norvège\n(EEE)','USA','Allemagne\n(UE)','France\n(UE)','Chine'],datasets:[{data:[104500,82000,85000,54000,46150,13000],backgroundColor:['#2d6a4f','#2d6a4f','#4a5568',C.b,C.r,'rgba(0,0,0,0.15)'],borderRadius:2}]},options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{ticks:{callback:v=>(v/1000)+'k$'}},y:{grid:{display:false}}}}});
 
-new Chart('cManuf',{type:'bar',data:{labels:['Chine','Allemagne','Suisse','Italie','Moy. UE-27','France'],datasets:[{data:[27,19,17.7,16,15,9.4],backgroundColor:[C.l,C.g,C.v,C.l,C.b,C.r],borderRadius:2}]},options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(0,0,0,0.05)'},ticks:{callback:v=>v+'%'}},y:{grid:{display:false}}}}});
+new Chart('cManuf',{type:'bar',data:{labels:['Chine','Allemagne','Suisse','UE-27','France'],datasets:[{data:[27,19,17.7,15,9.4],backgroundColor:[C.g,C.g,C.v,C.b,C.r],borderRadius:2}]},options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{ticks:{callback:v=>v+'%'}},y:{grid:{display:false}}}}});
 
-new Chart('cChine',{type:'bar',data:{labels:['Véhicules électriques','Circuits intégrés','Robots industriels','Industrie high-tech'],datasets:[{label:'Croissance 2024 (%)',data:[38.7,22.2,14.2,8.9],backgroundColor:[C.r,C.b,C.v,C.g],borderRadius:2}]},options:{plugins:{legend:{display:false}},scales:{y:{grid:{color:'rgba(0,0,0,0.05)'},ticks:{callback:v=>'+'+v+'%'},beginAtZero:true},x:{grid:{display:false}}}}});
+new Chart('cDashboard',{type:'bar',data:{
+  labels:['Dette/PIB (%)','Charge intérêts (Md€)','Croissance France (%)','Inflation France (%)','OAT spread vs All. (pb)','Pétrole Brent ($/b)'],
+  datasets:[
+    {label:'Déc. 2025',data:[113,50,1.1,1.3,70,75],backgroundColor:'rgba(26,53,89,0.6)',borderRadius:2},
+    {label:'Mars 2026',data:[117,59.3,0.8,0.8,80,114],backgroundColor:'rgba(192,57,43,0.7)',borderRadius:2}
+  ]},options:{plugins:{legend:{position:'top'}},scales:{y:{beginAtZero:true},x:{grid:{display:false}}}}});
 
-new Chart('cEmploi',{type:'line',data:{labels:['1980','1985','1990','1995','2000','2005','2010','2015','2020','2024'],datasets:[{label:'Emploi industriel (millions)',data:[5.3,4.9,4.5,4.2,4.0,3.7,3.4,3.25,3.2,3.2],borderColor:C.r,backgroundColor:'rgba(192,57,43,0.07)',fill:true,tension:0.35,pointBackgroundColor:C.r,pointRadius:4,pointHoverRadius:6}]},options:{plugins:{legend:{display:false},annotation:{annotations:{}}},scales:{y:{min:2.8,grid:{color:'rgba(0,0,0,0.05)'},ticks:{callback:v=>v+'M'}},x:{grid:{color:'rgba(0,0,0,0.03)'}}}}});
+new Chart('cPE',{type:'doughnut',data:{labels:['PPE','S&D','Patriots','ECR','Renew','Verts','Left','Autres'],datasets:[{data:[188,136,86,78,77,53,46,56],backgroundColor:['#3498db','#e74c3c','#001f7f',C.v,C.g,'#27ae60','#8e44ad','rgba(0,0,0,0.15)'],borderWidth:2,borderColor:'#f2ede2'}]},options:{plugins:{legend:{position:'right',labels:{font:{size:9},boxWidth:10,padding:8}}},cutout:'55%'}});
 
-new Chart('cPE',{type:'doughnut',data:{labels:['PPE (centre-droit)','S&D','Patriots for Europe','ECR','Renew Europe','Verts/ALE','The Left','Autres'],datasets:[{data:[188,136,86,78,77,53,46,56],backgroundColor:['#3498db','#e74c3c','#001f7f','#2d6a4f',C.g,'#27ae60','#8e44ad',C.l],borderWidth:2,borderColor:'#f2ede2'}]},options:{plugins:{legend:{position:'right',labels:{font:{size:9},boxWidth:10,padding:8}}},cutout:'55%'}});
+new Chart('cLobby',{type:'bar',data:{labels:['Meta','Microsoft','Amazon','Apple','Shell','CEFIC','Bayer'],datasets:[{label:'Budget lobbying M€/an',data:[9,7,7,7,5,4,4],backgroundColor:C.r,borderRadius:2}]},options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{ticks:{callback:v=>v+'M€'}},y:{grid:{display:false}}}}});
 
-new Chart('cLobby',{type:'bar',data:{labels:['Meta','Microsoft','Amazon','Apple','Shell','CEFIC (chimie)','Bayer'],datasets:[{label:'Budget lobbying M€/an',data:[9,7,7,7,5,4,4],backgroundColor:C.r,borderRadius:2}]},options:{indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(0,0,0,0.05)'},ticks:{callback:v=>v+'M€'}},y:{grid:{display:false}}}}});
+new Chart('cMix',{type:'pie',data:{labels:['Nucléaire (67%)','Hydraulique (14%)','Éolien (9%)','Solaire (4%)','Fossiles (<4%)'],datasets:[{data:[361.7,74.7,47,23,18],backgroundColor:[C.b,'#27ae60',C.g,'#f39c12',C.r],borderWidth:2,borderColor:'#fff'}]},options:{plugins:{legend:{position:'right',labels:{font:{size:9},boxWidth:10}}}}});
 
-new Chart('cMix',{type:'pie',data:{labels:['Nucléaire (67%)','Hydraulique (14%)','Éolien (9%)','Solaire (4%)','Fossiles (<4%)','Autres EnR'],datasets:[{data:[361.7,74.7,47,23,18,5],backgroundColor:[C.b,'#27ae60',C.g,'#f39c12',C.r,'#9b59b6'],borderWidth:2,borderColor:'#fff'}]},options:{plugins:{legend:{position:'right',labels:{font:{size:9},boxWidth:10}}}}});
+new Chart('cUran',{type:'bar',data:{labels:['Uranium naturel\nréacteurs actuels','Uranium appauvri\nréacteurs actuels','Uranium naturel\nGen IV','Uranium appauvri\nGen IV'],datasets:[{label:'Autonomie (années)',data:[2,8,200,3200],backgroundColor:[C.r,C.g,C.r,C.v],borderRadius:2}]},options:{plugins:{legend:{display:false}},scales:{y:{type:'logarithmic',ticks:{callback:v=>v>100?(v/1000)+'k ans':v+' ans'}},x:{grid:{display:false}}}}});
 
-new Chart('cUran',{type:'bar',data:{labels:['Uranium naturel\n(réacteurs actuels)','Uranium appauvri\n(réacteurs actuels)','Uranium naturel\n(Gen IV)','Uranium appauvri\n(Gen IV)'],datasets:[{label:'Autonomie (années)',data:[2,8,200,3200],backgroundColor:[C.r,C.g,C.r,C.v],borderRadius:2}]},options:{plugins:{legend:{display:false},tooltip:{callbacks:{label:v=>v.formattedValue+' ans'}}},scales:{y:{grid:{color:'rgba(0,0,0,0.05)'},ticks:{callback:v=>v>100?(v/1000)+'k ans':v+' ans'},type:'logarithmic'},x:{grid:{display:false}}}}});
+new Chart('cCompar',{type:'bar',data:{
+  labels:['Prix électricité','Protection Mercosur','Marchés publics','Pol. monétaire','Aides industrielles','Tarifs douaniers','Pharma','Marchés publics','Stabilité transition','Déserts médicaux'],
+  datasets:[
+    {label:'Plan A — Frexit',data:[9.5,10,10,10,10,10,9,8,2,7.5],backgroundColor:'rgba(192,57,43,0.7)',borderRadius:2},
+    {label:'Plan B — Réforme UE',data:[6,3,5.5,1.5,6.5,1,5,6,9.5,8],backgroundColor:'rgba(26,53,89,0.6)',borderRadius:2}
+  ]},options:{indexAxis:'y',plugins:{legend:{position:'top'}},scales:{x:{min:0,max:10,ticks:{callback:v=>v+'/10'}},y:{grid:{display:false}}}}});
 
 /* ═══ NAV SCROLL ═══ */
 const secs=document.querySelectorAll('section');
 const navLinks=document.querySelectorAll('nav a');
-const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('vis');const id=en.target.id;navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+id));}});},{threshold:.12});
+const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('vis');const id=en.target.id;navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+id));}});},{threshold:.08});
 secs.forEach(s=>obs.observe(s));
 </script>
 </body>
