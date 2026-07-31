@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="utf-8">
@@ -485,6 +485,135 @@
     }
     .card.model:nth-child(2) .model-label { background: var(--red); }
     .card.model:nth-child(3) .model-label { background: var(--green); }
+
+    .reading-guide {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      margin: 2rem 0 3.5rem;
+      background: var(--line);
+      border: 1px solid var(--line);
+    }
+    .reading-guide div {
+      padding: 1.15rem;
+      background: var(--paper-strong);
+    }
+    .reading-guide b {
+      display: block;
+      margin-bottom: .45rem;
+      color: var(--red);
+      font-family: var(--mono);
+      font-size: .66rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .reading-guide span {
+      color: var(--ink-soft);
+      font-size: .84rem;
+      line-height: 1.5;
+    }
+    .study-chapter {
+      margin-block: 2.5rem;
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      background: var(--paper-strong);
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 32px rgba(17,19,24,.035);
+    }
+    .study-chapter + .study-chapter { margin-top: 1.4rem; }
+    .study-chapter > h3 {
+      margin-top: 0;
+      max-width: 900px;
+    }
+    .study-chapter > p { max-width: 940px; }
+    .study-label {
+      display: inline-block;
+      margin-bottom: .8rem;
+      color: var(--red);
+      font-family: var(--mono);
+      font-size: .64rem;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+    .study-columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem 2.5rem;
+      margin-block: 1.5rem;
+    }
+    .study-columns h4 {
+      padding-bottom: .6rem;
+      color: var(--blue);
+      border-bottom: 1px solid var(--line);
+    }
+    .study-columns p,
+    .study-columns li {
+      color: var(--ink-soft);
+      font-size: .91rem;
+    }
+    .study-columns ul {
+      margin: .8rem 0 0;
+      padding-left: 1.2rem;
+    }
+    .study-columns li { margin-bottom: .5rem; }
+    .study-verdict {
+      margin: 1.5rem 0 0;
+      padding: 1rem 1.2rem;
+      color: var(--ink-soft);
+      background: var(--blue-soft);
+      border-left: 4px solid var(--blue);
+    }
+    .study-verdict b { color: var(--blue); }
+    .chronology {
+      display: grid;
+      gap: 0;
+      margin-block: 2rem;
+      border: 1px solid var(--line);
+      background: var(--paper-strong);
+    }
+    .period {
+      display: grid;
+      grid-template-columns: 170px minmax(0, 1fr);
+      gap: 1.5rem;
+      padding: 1.5rem;
+      border-top: 1px solid var(--line);
+    }
+    .period:first-child { border-top: 0; }
+    .period time {
+      color: var(--red);
+      font-family: var(--mono);
+      font-size: .72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .period h3 {
+      margin: 0 0 .7rem;
+      font-size: 1.5rem;
+    }
+    .period p { margin: .45rem 0; }
+    .analysis-list {
+      max-width: 930px;
+      padding-left: 1.25rem;
+      color: var(--ink-soft);
+    }
+    .analysis-list li { margin-bottom: .65rem; }
+    .scenario-study {
+      display: grid;
+      grid-template-columns: 190px minmax(0, 1fr);
+      gap: 2rem;
+      padding: 1.6rem 0;
+      border-top: 1px solid var(--line);
+    }
+    .scenario-study:first-of-type { border-top: 0; }
+    .scenario-code {
+      color: var(--red);
+      font-family: var(--mono);
+      font-size: .68rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .scenario-study h3 { margin: .25rem 0 .8rem; }
+    .scenario-study p { margin-top: 0; }
+    .scenario-study .study-columns { margin-bottom: 0; }
 
     .table-wrap {
       margin-block: 2rem;
@@ -1007,6 +1136,7 @@
       .criteria { grid-template-columns: repeat(2, 1fr); }
       .criterion:last-child { grid-column: 1 / -1; }
       .status-grid { grid-template-columns: repeat(3, 1fr); }
+      .reading-guide { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 820px) {
       body { font-size: 16px; }
@@ -1023,7 +1153,9 @@
       .conclusion-grid { grid-template-columns: repeat(2, 1fr); }
       .cluster-grid,
       .proposal-split,
-      .target-grid { grid-template-columns: 1fr; }
+      .target-grid,
+      .study-columns { grid-template-columns: 1fr; }
+      .scenario-study { grid-template-columns: 1fr; gap: .5rem; }
       .part-banner .wrap {
         display: block;
       }
@@ -1060,6 +1192,8 @@
       .docs,
       .status-grid,
       .criteria { grid-template-columns: 1fr; }
+      .reading-guide { grid-template-columns: 1fr; }
+      .period { grid-template-columns: 1fr; gap: .5rem; }
       .scenario:last-child,
       .criterion:last-child { grid-column: auto; }
       .hero-metric { min-height: auto; }
@@ -1097,7 +1231,7 @@
           ou hors de l’Union.
         </p>
       </div>
-      <aside class="hero-note">
+      <aside class="hero-note" aria-label="Règle éditoriale">
         <strong>Règle éditoriale</strong>
         <p>
           Les faits, calculs, hypothèses, propositions et éléments non évalués sont distingués.
@@ -1106,7 +1240,7 @@
         </p>
       </aside>
 
-      <div class="hero-metrics" aria-label="Repères 2026">
+      <div class="hero-metrics" role="group" aria-label="Repères 2026">
         <div class="hero-metric">
           <b>117,5 %</b>
           <span>Dette publique / PIB au T1 2026</span>
@@ -1130,8 +1264,10 @@
   <nav class="nav" aria-label="Navigation principale">
     <a href="#methode">Méthode</a>
     <a href="#modeles">Modèles</a>
+    <a href="#histoire">Histoire</a>
     <a href="#diagnostic">France 2026</a>
     <a href="#ue">Cadre UE</a>
+    <a href="#ue-scenarios">Évolution UE</a>
     <a href="#capacites">24 capacités</a>
     <a href="#electricite">Électricité</a>
     <a href="#risques">Risques</a>
@@ -1166,7 +1302,7 @@
           </div>
         </div>
 
-        <div class="status-grid" aria-label="Statuts des affirmations">
+        <div class="status-grid" role="group" aria-label="Statuts des affirmations">
           <div class="status"><b>F · Fait</b><span>Donnée ou règle reliée à une source primaire identifiable.</span></div>
           <div class="status"><b>C · Calcul</b><span>Résultat reproductible à partir d’une formule et de données publiées.</span></div>
           <div class="status"><b>H · Hypothèse</b><span>Évolution possible dépendant de conditions explicitement indiquées.</span></div>
@@ -1222,67 +1358,282 @@
     <section id="modeles" class="alt">
       <div class="wrap">
         <div class="section-head">
-          <div class="section-index">01 · Comparaisons</div>
+          <div class="section-index">01 · Étude comparée</div>
           <div>
-            <h2>Ce que montrent les modèles étrangers — et ce qu’ils ne prouvent pas</h2>
+            <h2>Les modèles étrangers ne sont pas trois slogans : ce sont des systèmes complets</h2>
             <p class="section-lead">
-              La Chine, les États-Unis et la Suisse illustrent des instruments différents.
-              Aucun cas ne peut être copié intégralement : échelle, monnaie, institutions,
-              histoire industrielle et rapport de force commercial diffèrent.
+              La Chine, les États-Unis et la Suisse combinent différemment planification, marché,
+              monnaie, protection commerciale, commande publique et coopération extérieure.
+              L’analyse cherche les mécanismes utiles, leurs conditions de réussite et leurs coûts,
+              sans présenter un pays comme un modèle intégral à copier.
             </p>
           </div>
         </div>
 
-        <h3>Trois références à lire comme des ensembles d’instruments</h3>
-        <div class="card-grid">
-          <article class="card model">
-            <span class="model-label">Chine · planification productive</span>
-            <h4>Continuité, volume et chaînes complètes</h4>
-            <p>
-              Le modèle chinois montre la puissance d’objectifs industriels stables, d’un financement
-              orienté et d’une montée en série. Il montre aussi les risques de surcapacité,
-              d’allocation politique du capital et de dépendance aux débouchés extérieurs.
-            </p>
-            <ul>
-              <li>Leçon utile : coordonner infrastructures, fournisseurs, formation et débouchés.</li>
-              <li>Non transposable : structure politique, échelle et contrôle du capital.</li>
-            </ul>
-          </article>
-          <article class="card model">
-            <span class="model-label">États-Unis · puissance du marché protégé</span>
-            <h4>Subventions, commandes et contenu local</h4>
-            <p>
-              CHIPS Act, Inflation Reduction Act, marchés fédéraux et restrictions technologiques
-              montrent qu’une économie libérale peut recourir à une politique industrielle massive
-              lorsqu’elle identifie un enjeu stratégique.
-            </p>
-            <ul>
-              <li>Leçon utile : l’aide est liée à des capacités et sites précis.</li>
-              <li>Non transposable : rôle international du dollar et profondeur des marchés financiers.</li>
-            </ul>
-          </article>
-          <article class="card model">
-            <span class="model-label">Suisse · coopération hors UE</span>
-            <h4>Accès sectoriel contre obligations continues</h4>
-            <p>
-              Le paquet Suisse–UE signé le 2 mars 2026 confirme qu’une relation dense hors adhésion
-              reste possible, mais implique reprise sectorielle de règles, contributions, mécanismes
-              de règlement et négociation permanente.
-              <a class="src" href="https://www.europa.eda.admin.ch/en/package-switzerland-eu">source</a>
-            </p>
-            <ul>
-              <li>Leçon utile : séparer les accords par fonction et intérêt.</li>
-              <li>Non prouvé : un accès identique au marché sans contreparties.</li>
-            </ul>
-          </article>
+        <div class="reading-guide" role="group" aria-label="Questions posées à chaque modèle">
+          <div><b>Organisation</b><span>Qui fixe les priorités et qui finance le risque initial ?</span></div>
+          <div><b>Transmission</b><span>Comment l’aide devient-elle usine, emploi, série et chaîne de fournisseurs ?</span></div>
+          <div><b>Protection</b><span>Quels outils réservent une partie de la demande ou protègent l’investissement ?</span></div>
+          <div><b>Limites</b><span>Quels coûts, dépendances ou institutions empêchent la transposition mécanique ?</span></div>
+        </div>
+
+        <article class="study-chapter">
+          <span class="study-label">A.1 · Chine — planification et profondeur de chaîne</span>
+          <h3>La performance industrielle vient de la coordination sur la durée, pas d’une subvention isolée</h3>
+          <p>
+            Le système chinois associe plans quinquennaux, entreprises publiques dans les secteurs stratégiques,
+            secteur privé exportateur, financement orienté, politique technologique et contrôle des capitaux.
+            En 2024, le secteur secondaire représentait 36,5 % du PIB ; la production officielle progressait
+            fortement dans les véhicules électriques, les circuits intégrés et les robots industriels.
+            Ces chiffres décrivent une capacité de montée en série, tout en restant soumis aux limites connues
+            des statistiques officielles chinoises.
+            <a class="src" href="https://www.stats.gov.cn/english/PressRelease/202502/t20250228_1958822.html">NBS 2024</a>
+          </p>
+          <div class="study-columns">
+            <div>
+              <h4>Mécanismes observés</h4>
+              <ul>
+                <li>Des priorités stables relient recherche, infrastructures, crédit, fournisseurs et débouchés.</li>
+                <li>La commande et le volume intérieur permettent d’amortir les investissements avant l’exportation.</li>
+                <li>Les entreprises publiques conservent des capacités dans l’énergie, les réseaux et les infrastructures.</li>
+                <li>La politique industrielle vise des chaînes complètes : matériaux, composants, machines, assemblage et logistique.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Coûts et limites</h4>
+              <ul>
+                <li>Surcapacités, allocation politique du capital et endettement local peuvent dégrader l’efficacité.</li>
+                <li>La faiblesse de la consommation intérieure accroît la dépendance aux débouchés étrangers.</li>
+                <li>Le vieillissement démographique et la crise immobilière modifient la trajectoire future.</li>
+                <li>Le régime politique et l’ampleur du contrôle administratif ne sont pas transposables dans une démocratie française.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Enseignement possible</th><th>Adaptation française nécessaire</th><th>Erreur à éviter</th></tr></thead>
+              <tbody>
+                <tr><td>Planification productive pluriannuelle</td><td>Objectifs votés, budgets consolidés et évaluation indépendante.</td><td>Confondre annonce de plan et capacité réellement installée.</td></tr>
+                <tr><td>Sécurisation des chaînes</td><td>Cartographier machines, intrants, logiciels, maintenance et compétences.</td><td>Subventionner seulement l’assemblage final.</td></tr>
+                <tr><td>Montée en série</td><td>Commande initiale et débouchés conditionnés à des résultats mesurables.</td><td>Maintenir sans limite une filière incapable d’atteindre ses objectifs.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="study-verdict"><b>Ce que ce cas établit :</b> une politique industrielle peut construire rapidement une chaîne lorsqu’elle coordonne tous ses maillons. Il n’établit pas qu’un pilotage centralisé garantit une bonne allocation du capital ni que ses institutions soient souhaitables en France.</p>
+        </article>
+
+        <article class="study-chapter">
+          <span class="study-label">A.2 · États-Unis — marché intérieur, commande et contenu local</span>
+          <h3>Une économie libérale peut suspendre le laisser-faire lorsqu’une capacité devient stratégique</h3>
+          <p>
+            Le CHIPS and Science Act, les crédits de l’Inflation Reduction Act, les prêts garantis,
+            les achats fédéraux et les règles de contenu local forment un ensemble. L’aide ne finance pas
+            seulement une technologie abstraite : elle cible des sites, des lignes de production, des calendriers,
+            des volumes et parfois des restrictions sur les investissements futurs.
+            <a class="src" href="https://www.nist.gov/chips">NIST · CHIPS</a>
+            <a class="src" href="https://www.energy.gov/lpo/inflation-reduction-act-2022">DOE · IRA</a>
+          </p>
+          <div class="study-columns">
+            <div>
+              <h4>Chaîne d’intervention</h4>
+              <ul>
+                <li>Subventions directes pour réduire le risque de construction.</li>
+                <li>Crédits d’impôt liés à la production et à l’investissement local.</li>
+                <li>Prêts et garanties pour abaisser le coût du capital.</li>
+                <li>Commande publique et Buy American pour créer une demande prévisible.</li>
+                <li>Contrôle technologique et commercial pour protéger certains avantages.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Limites du précédent américain</h4>
+              <ul>
+                <li>Le dollar et la profondeur des marchés américains réduisent une partie de la contrainte financière.</li>
+                <li>La pénurie de main-d’œuvre qualifiée et les retards de projets limitent la vitesse d’exécution.</li>
+                <li>Les changements d’administration rendent la continuité moins certaine.</li>
+                <li>La course aux subventions peut déplacer l’investissement entre alliés sans augmenter autant la capacité mondiale.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Instrument américain</th><th>Fonction économique</th><th>Question pour la France</th></tr></thead>
+              <tbody>
+                <tr><td>CHIPS Act</td><td>Réduire le risque initial des usines de semi-conducteurs.</td><td>Quels maillons européens ou français doivent être sécurisés plutôt que dupliqués ?</td></tr>
+                <tr><td>Crédits IRA</td><td>Récompenser la production locale pendant la montée en cadence.</td><td>Comment conditionner l’aide à la valeur ajoutée, aux emplois et aux impôts maintenus en France ?</td></tr>
+                <tr><td>Commande fédérale</td><td>Donner un premier marché aux producteurs nationaux.</td><td>Quelle préférence de résilience est possible dans l’UE et laquelle exigerait un changement de cadre ?</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="study-verdict"><b>Ce que ce cas établit :</b> marché et politique industrielle ne sont pas incompatibles. L’effet dépend de la combinaison entre financement, demande, conditions locales et protection ; le montant brut annoncé ne suffit pas à prouver le succès.</p>
+        </article>
+
+        <article class="study-chapter">
+          <span class="study-label">A.3 · Suisse — souveraineté formelle et interdépendance négociée</span>
+          <h3>Être hors de l’Union ne supprime ni les règles reprises ni la négociation permanente</h3>
+          <p>
+            La Suisse conserve sa monnaie, sa politique commerciale, ses institutions fédérales et sa démocratie directe,
+            tout en étant très intégrée économiquement à l’Union. Le paquet Suisse–UE signé le 2 mars 2026 stabilise
+            l’accès sectoriel mais associe celui-ci à la reprise de certaines évolutions du droit, à des contributions
+            et à des mécanismes de règlement des différends.
+            <a class="src" href="https://www.europa.eda.admin.ch/en/package-switzerland-eu">Confédération suisse</a>
+          </p>
+          <div class="study-columns">
+            <div>
+              <h4>Autonomies conservées</h4>
+              <ul>
+                <li>Franc suisse et politique monétaire nationale.</li>
+                <li>Politique commerciale et réseau d’accords propres.</li>
+                <li>Fédéralisme fiscal et capacité de décision cantonale.</li>
+                <li>Référendums permettant de contester ou valider les accords structurants.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Interdépendances acceptées</h4>
+              <ul>
+                <li>Reprise sectorielle de règles pour conserver certains accès au marché.</li>
+                <li>Contributions financières et participation à des programmes communs.</li>
+                <li>Arbitrage et mesures compensatoires en cas de différend.</li>
+                <li>Négociations longues, techniques et régulièrement rouvertes.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Question</th><th>Leçon du cas suisse</th><th>Différence française</th></tr></thead>
+              <tbody>
+                <tr><td>Accès au marché</td><td>Il peut être organisé secteur par secteur, avec contreparties.</td><td>Le volume et la centralité de l’économie française modifieraient fortement le rapport de force.</td></tr>
+                <tr><td>Règles communes</td><td>La non-adhésion ne signifie pas l’absence de reprise normative.</td><td>La France devrait décider quelles règles communes restent utiles et lesquelles bloquent son programme.</td></tr>
+                <tr><td>Stabilité politique</td><td>Les mécanismes démocratiques donnent une légitimité aux compromis durables.</td><td>Les institutions et l’échelle françaises exigeraient leur propre procédure de validation.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="study-verdict"><b>Ce que ce cas établit :</b> une coopération dense hors adhésion est possible. Il ne prouve ni qu’elle serait automatiquement proposée à la France, ni qu’elle préserverait un accès identique sans obligations.</p>
+        </article>
+
+        <h3>Les modèles secondaires complètent la comparaison</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Cas</th><th>Instrument principal observé</th><th>Enseignement</th><th>Limite de comparaison</th></tr></thead>
+            <tbody>
+              <tr><td>Norvège</td><td>EEE, ressources énergétiques et fonds souverain.</td><td>L’accès au marché peut être très large hors UE.</td><td>Reprise importante du droit européen sans vote, économie pétrolière et population très inférieure.</td></tr>
+              <tr><td>Corée du Sud</td><td>Crédit orienté, export, formation et montée technologique.</td><td>La continuité industrielle sur plusieurs décennies transforme la spécialisation.</td><td>Contexte géopolitique, groupes industriels et trajectoire historique propres.</td></tr>
+              <tr><td>Singapour</td><td>État investisseur, logistique et attraction ciblée du capital.</td><td>Ouverture commerciale et politique industrielle peuvent se renforcer.</td><td>Cité-État de petite taille, position de hub et régime institutionnel non comparable.</td></tr>
+            </tbody>
+          </table>
         </div>
 
         <div class="notice blue">
-          <strong>Constat comparatif</strong>
+          <strong>Synthèse de l’étude comparée</strong>
           <p>
-            La variable décisive n’est pas seulement le niveau de dépense publique. Ce sont la durée,
-            la cohérence de la chaîne, la commande, les compétences, la protection des investissements
-            et la capacité à arrêter ou corriger les programmes inefficaces.
+            Les invariants les plus solides ne sont ni « plus d’État » ni « plus de marché » pris isolément.
+            Ce sont la continuité des objectifs, la maîtrise de la demande initiale, le financement patient,
+            la formation, la profondeur des fournisseurs, la protection des investissements et l’évaluation des résultats.
+            Chaque pays combine ces instruments avec des avantages que la France ne possède pas nécessairement.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="histoire">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-index">02 · Diagnostic historique</div>
+          <div>
+            <h2>La désindustrialisation française résulte d’une succession de transformations, pas d’une cause unique</h2>
+            <p class="section-lead">
+              L’après-guerre, les chocs énergétiques, les choix monétaires, les privatisations,
+              l’ouverture commerciale, les gains de productivité et l’externalisation des services
+              ont modifié ensemble la structure productive. La chronologie permet de distinguer faits,
+              décisions et interprétations causales.
+            </p>
+          </div>
+        </div>
+
+        <div class="chronology">
+          <article class="period">
+            <time>1945—1975</time>
+            <div>
+              <h3>Reconstruction, planification indicative et montée de la production</h3>
+              <p>La reconstruction associe aide extérieure, nationalisations, crédit administré, protection commerciale, commande publique, planification et création de la Sécurité sociale.</p>
+              <p>La croissance proche de 5 % par an se déroule aussi dans un contexte exceptionnel : rattrapage technologique, démographie favorable, urbanisation, énergie relativement bon marché et forte demande d’équipement. Réutiliser certains instruments ne recréerait donc pas automatiquement les mêmes taux de croissance.</p>
+            </div>
+          </article>
+          <article class="period">
+            <time>1973—1992</time>
+            <div>
+              <h3>Chocs pétroliers, inflation et changement de régime économique</h3>
+              <p>Les chocs pétroliers ferment la période d’énergie bon marché et installent chômage de masse et inflation. La France répond notamment par le programme nucléaire, puis choisit en 1983 la désinflation compétitive et le maintien dans le Système monétaire européen.</p>
+              <p>Les privatisations à partir de 1986 réduisent le périmètre des entreprises publiques ; Maastricht inscrit ensuite la monnaie unique, la banque centrale indépendante et les critères budgétaires dans un nouveau cadre institutionnel.</p>
+            </div>
+          </article>
+          <article class="period">
+            <time>1992—2010</time>
+            <div>
+              <h3>Marché unique, euro, mondialisation et fragmentation des chaînes</h3>
+              <p>Les entreprises accèdent à un marché européen plus intégré, tandis que les chaînes de valeur se mondialisent. Une partie des activités industrielles est externalisée vers les services ou déplacée vers des pays à coûts plus faibles.</p>
+              <p>L’euro supprime le risque de change interne et réduit certains coûts de transaction, mais retire l’ajustement monétaire national. Ses effets ne peuvent être séparés simplement de la spécialisation productive, du commerce mondial, de la fiscalité et des décisions des entreprises.</p>
+            </div>
+          </article>
+          <article class="period">
+            <time>2010—2026</time>
+            <div>
+              <h3>Crises successives et retour partiel de la politique industrielle</h3>
+              <p>Crise de la zone euro, pandémie, pénuries, guerre en Ukraine, choc énergétique et rivalités technologiques remettent la résilience au centre. France Relance, France 2030, les PIIEC et le CISAF réouvrent des marges d’intervention.</p>
+              <p>Les créations de sites et d’emplois observées depuis la fin des années 2010 restent toutefois modestes par rapport aux pertes cumulées et ne prouvent pas que les chaînes amont sont reconstituées.</p>
+            </div>
+          </article>
+        </div>
+
+        <h3>Mesurer la désindustrialisation avec plusieurs indicateurs</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Indicateur</th><th>Évolution documentée</th><th>Ce qu’il mesure</th><th>Ce qu’il ne mesure pas seul</th></tr></thead>
+            <tbody>
+              <tr><td>Emploi industriel</td><td>Environ 5,3 millions en 1980 contre près de 3,2 millions au début des années 2020.</td><td>Le nombre de postes directement classés dans l’industrie.</td><td>L’externalisation vers les services et le contenu technologique.</td></tr>
+              <tr><td>Valeur ajoutée manufacturière</td><td>Environ 19 % en 1975, autour de 10 % aujourd’hui.</td><td>Le poids économique relatif de la fabrication.</td><td>La propriété, les dépendances amont et la capacité de crise.</td></tr>
+              <tr><td>Commerce de biens</td><td>Déficit persistant, −69,2 Md€ en 2025 après le pic énergétique de 2022.</td><td>Le solde des échanges physiques.</td><td>Les excédents de services et la criticité de chaque produit.</td></tr>
+              <tr><td>Sites ouverts ou fermés</td><td>Retour de soldes nets parfois positifs depuis la fin des années 2010.</td><td>La dynamique d’implantation.</td><td>La taille, la valeur ajoutée et les importations incorporées.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Les causes sont multiples et leurs poids varient selon la période</h3>
+        <p>
+          La Banque de France attribuait, pour 1980-2007, une partie du recul de l’emploi industriel aux gains de productivité
+          et au déplacement de la demande vers les services, une autre à l’externalisation statistique d’activités auparavant internes,
+          et une autre au commerce international, particulièrement entre 2000 et 2007.
+          <a class="src" href="https://www.banque-france.fr/en/publications-and-statistics/publications/causes-deindustrialisation-france">Banque de France</a>
+          Cette décomposition interdit deux raccourcis : attribuer tout le recul à l’Union européenne, ou considérer que les choix
+          institutionnels, commerciaux et industriels n’ont joué aucun rôle.
+        </p>
+
+        <div class="study-columns">
+          <div>
+            <h4>Atouts effectivement conservés</h4>
+            <ul>
+              <li>Nucléaire, aéronautique, défense, spatial, agriculture, luxe et recherche publique.</li>
+              <li>Réseaux de transport, façades maritimes, outre-mer et deuxième zone économique exclusive mondiale.</li>
+              <li>Épargne nationale importante et établissements de formation de haut niveau.</li>
+              <li>Groupes capables d’exporter et de diriger des programmes complexes.</li>
+            </ul>
+          </div>
+          <div>
+            <h4>Fragilités accumulées</h4>
+            <ul>
+              <li>Moins d’entreprises intermédiaires industrielles et chaînes de sous-traitance amincies.</li>
+              <li>Dépendance aux machines-outils, composants, logiciels, chimie et principes actifs.</li>
+              <li>Difficulté à passer du prototype à la production de masse.</li>
+              <li>Concurrence entre filières pour les mêmes compétences rares.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="notice">
+          <strong>Conclusion historique limitée</strong>
+          <p>
+            L’étude historique identifie des instruments qui ont accompagné le rattrapage français et des capacités perdues depuis.
+            Elle ne permet pas de conclure qu’un retour institutionnel aux années 1950 reproduirait leurs résultats : la démographie,
+            la technologie, les échanges, les finances publiques et la contrainte climatique sont différents.
           </p>
         </div>
       </div>
@@ -1291,7 +1642,7 @@
     <section id="diagnostic">
       <div class="wrap">
         <div class="section-head">
-          <div class="section-index">02 · Diagnostic</div>
+          <div class="section-index">03 · Diagnostic actuel</div>
           <div>
             <h2>La France de 2026 : des atouts puissants, mais une profondeur productive et budgétaire réduite</h2>
             <p class="section-lead">
@@ -1354,46 +1705,137 @@
           </article>
         </div>
 
-        <h3>La désindustrialisation ne se résume pas au nombre d’usines</h3>
-        <p>
-          La valeur ajoutée manufacturière représente environ 10 % de la valeur ajoutée française.
-          La France conserve des groupes et sites de rang mondial dans l’aéronautique, la défense,
-          le nucléaire, le luxe, l’agriculture, la pharmacie et la recherche. Mais une capacité finale
-          peut dépendre de machines-outils, logiciels, composants, chimie, métrologie ou maintenance importés.
-          La localisation d’un siège ou d’un atelier d’assemblage ne prouve donc pas la maîtrise d’une chaîne.
-        </p>
+        <article class="study-chapter">
+          <span class="study-label">3.1 · Production — le problème de profondeur</span>
+          <h3>Une usine finale n’est souveraine que si elle peut continuer à produire</h3>
+          <p>
+            La valeur ajoutée manufacturière représente environ 10 % de la valeur ajoutée française.
+            La France conserve des groupes et sites de rang mondial dans l’aéronautique, la défense,
+            le nucléaire, le luxe, l’agriculture, la pharmacie et la recherche. Mais une capacité finale
+            peut dépendre de machines-outils, logiciels, composants, chimie, métrologie, énergie ou maintenance importés.
+            La localisation d’un siège ou d’un atelier d’assemblage ne démontre donc pas la maîtrise de la chaîne.
+          </p>
+          <div class="study-columns">
+            <div>
+              <h4>Ce qu’il faut mesurer</h4>
+              <ul>
+                <li>Capacité annuelle réellement disponible et délai de montée en cadence.</li>
+                <li>Origine des équipements de production, pièces de rechange et logiciels.</li>
+                <li>Stocks d’intrants et délai de qualification d’un fournisseur alternatif.</li>
+                <li>Capacité de réparer, modifier et redémarrer sans autorisation étrangère.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Ce que les indicateurs usuels masquent</h4>
+              <ul>
+                <li>Le chiffre d’affaires consolidé peut provenir d’activités réalisées hors de France.</li>
+                <li>Un site récent peut importer l’essentiel de sa valeur ajoutée.</li>
+                <li>Un excédent sectoriel peut dépendre d’un seul champion ou d’une seule gamme.</li>
+                <li>Une chaîne rentable en temps normal peut s’arrêter faute d’un composant peu coûteux.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
 
-        <div class="card-grid">
-          <article class="card">
-            <span class="kicker">Atouts conservés</span>
-            <h4>Une base à renforcer</h4>
-            <ul>
-              <li>Parc électrique bas-carbone et compétences nucléaires.</li>
-              <li>Agriculture, infrastructures et position géographique.</li>
-              <li>Défense, dissuasion, aéronautique et spatial.</li>
-              <li>Épargne, recherche publique et grandes écoles.</li>
-            </ul>
-          </article>
-          <article class="card">
-            <span class="kicker">Fragilités</span>
-            <h4>Des chaînes trop minces</h4>
-            <ul>
-              <li>Machines-outils, électronique, cloud et logiciels critiques.</li>
-              <li>Principes actifs et précurseurs chimiques.</li>
-              <li>Capacité de montée en cadence et stocks.</li>
-              <li>Transmission des compétences rares.</li>
-            </ul>
-          </article>
-          <article class="card">
-            <span class="kicker">Contrainte lente</span>
-            <h4>Le capital humain</h4>
-            <ul>
-              <li>Formateurs et experts proches de la retraite.</li>
-              <li>Concurrence entre nucléaire, défense, spatial et numérique.</li>
-              <li>Délais incompressibles de formation et d’habilitation.</li>
-              <li>Logement et mobilité dans les bassins industriels.</li>
-            </ul>
-          </article>
+        <article class="study-chapter">
+          <span class="study-label">3.2 · Finances publiques — contrainte immédiate</span>
+          <h3>La reconstruction doit produire avant que son financement ne devienne insoutenable</h3>
+          <p>
+            La dette atteint 3 536,1 Md€ au premier trimestre 2026, soit 117,5 % du PIB.
+            Le besoin de financement publié pour 2026 est de 305,7 Md€ ; il inclut notamment 175,8 Md€
+            d’amortissements de titres et 124,4 Md€ de déficit à financer. Il ne faut pas additionner de nouveau
+            ces flux aux émissions nettes pour fabriquer un chiffre artificiellement plus élevé.
+            <a class="src" href="https://www.insee.fr/fr/statistiques/9010340">Insee</a>
+            <a class="src" href="https://www.aft.gouv.fr/fr/publications/communiques-presse/14102025-besoins-et-ressources-financement-letat-en-2026-et-point">AFT</a>
+          </p>
+          <p>
+            Le scénario central n’est pas une faillite certaine, mais une croissance faible associée à des besoins d’investissement élevés
+            et à des conditions de crédit moins favorables. Une dépense de souveraineté n’est soutenable que si son calendrier,
+            son coût de fonctionnement futur et son effet sur la production ou la continuité sont documentés.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Type de dépense</th><th>Question obligatoire</th><th>Risque si elle n’est pas traitée</th></tr></thead>
+              <tbody>
+                <tr><td>Investissement productif</td><td>Quand la capacité entre-t-elle en service et quelle valeur remplace-t-elle ou exporte-t-elle ?</td><td>La charge d’intérêt arrive avant le rendement économique.</td></tr>
+                <tr><td>Fonctionnement</td><td>Qui paie durablement salaires, maintenance, énergie et renouvellement ?</td><td>L’équipement existe mais devient inutilisable.</td></tr>
+                <tr><td>Compensation</td><td>Est-elle ciblée, temporaire et liée à la transition ?</td><td>La dépense protège le revenu sans créer la capacité qui doit réduire le coût.</td></tr>
+                <tr><td>Garantie publique</td><td>Quel risque contingent l’État reprend-il et dans quel scénario se matérialise-t-il ?</td><td>Une dette privée réapparaît tardivement dans les comptes publics.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="study-chapter">
+          <span class="study-label">3.3 · Contrainte extérieure — commerce, dette et confiance</span>
+          <h3>La dépendance n’est pas seulement commerciale : elle concerne aussi le financement</h3>
+          <p>
+            Le déficit de biens atteignait 69,2 Md€ en 2025. Les services apportent un excédent utile,
+            mais ne remplacent pas physiquement une molécule, un transformateur, une machine ou un combustible.
+            La position extérieure nette française atteignait −885,4 Md€ en 2025, et une part importante des titres
+            de dette publique restait détenue par des non-résidents. Cela n’annonce pas une faillite automatique,
+            mais accroît la sensibilité aux taux et à la confiance en période de confrontation ou de transition monétaire.
+            <a class="src" href="https://www.banque-france.fr/fr/publications-et-statistiques/publications/la-balance-des-paiements-et-la-position-exterieure-de-la-france-2025">Banque de France</a>
+          </p>
+          <p>Le suivi doit séparer l’énergie, l’aéronautique, l’armement, l’automobile, les équipements, la pharmacie, l’agroalimentaire et les services. Un solde global amélioré peut masquer l’aggravation d’une dépendance critique.</p>
+        </article>
+
+        <article class="study-chapter">
+          <span class="study-label">3.4 · Énergie — force électrique, dépendance fossile</span>
+          <h3>L’excédent électrique ne vaut souveraineté énergétique que s’il remplace pétrole et gaz</h3>
+          <p>
+            Le solde exportateur de 92,3 TWh confirme que le parc électrique constitue un avantage majeur.
+            Pourtant, les combustibles fossiles représentaient encore 58 % de l’énergie finale en 2024,
+            et la facture énergétique extérieure restait élevée. Le redressement énergétique ne consiste donc pas seulement
+            à produire davantage d’électricité : il faut aussi électrifier les usages, adapter les réseaux, construire les équipements
+            et sécuriser les matériaux nécessaires.
+          </p>
+          <ul class="analysis-list">
+            <li>Le chauffage, la mobilité et certains procédés industriels peuvent remplacer des importations fossiles.</li>
+            <li>D’autres usages exigent molécules, carburants ou chaleur haute température et demandent des solutions propres.</li>
+            <li>Les interconnexions européennes fournissent à la fois des débouchés, de l’équilibrage et une assurance lors des indisponibilités.</li>
+            <li>Le prix doit rester compatible avec la sûreté, la maintenance, les réseaux et le renouvellement du parc.</li>
+          </ul>
+        </article>
+
+        <article class="study-chapter">
+          <span class="study-label">3.5 · Capital humain — la contrainte la plus lente</span>
+          <h3>Les mêmes métiers sont déjà promis au nucléaire, à la défense, au spatial et au numérique</h3>
+          <p>
+            La feuille de route industrielle 2026 vise 600 000 recrutements durables. Ce chiffre décrit l’ampleur du besoin,
+            pas l’existence de 600 000 personnes immédiatement disponibles. Former un soudeur nucléaire, un automaticien,
+            un opérateur de chimie, un électronicien ou un ingénieur habilité demande du temps, des formateurs et des sites d’apprentissage.
+            <a class="src" href="https://www.entreprises.gouv.fr/la-dge/actualites/une-feuille-de-route-nationale-pour-renforcer-lattractivite-et-lemploi-dans">DGE</a>
+          </p>
+          <div class="study-columns">
+            <div>
+              <h4>Goulots d’étranglement</h4>
+              <ul>
+                <li>Départs à la retraite d’experts et nombre limité de formateurs.</li>
+                <li>Délais d’habilitation, de pratique et de transmission du geste professionnel.</li>
+                <li>Concurrence entre filières stratégiques pour les mêmes profils.</li>
+                <li>Logement, transport et services insuffisants dans certains bassins industriels.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Indicateurs réellement utiles</h4>
+              <ul>
+                <li>Vivier formé comparé aux départs et aux besoins consolidés de toutes les filières.</li>
+                <li>Taux de réussite, insertion durable et temps avant autonomie professionnelle.</li>
+                <li>Capacité des écoles, plateaux techniques et entreprises formatrices.</li>
+                <li>Écart entre emplois annoncés, offres ouvertes et postes effectivement pourvus.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <div class="notice blue">
+          <strong>Diagnostic d’ensemble</strong>
+          <p>
+            La France dispose encore de capacités de rang mondial, mais manque de profondeur dans plusieurs chaînes et de temps budgétaire.
+            Le problème n’est donc ni l’absence totale d’atouts ni un simple manque de dépenses : il faut ordonner les investissements,
+            consolider les besoins communs et transformer rapidement l’avantage électrique, les compétences et la recherche en production durable.
+          </p>
         </div>
       </div>
     </section>
@@ -1401,165 +1843,227 @@
     <section id="ue" class="alt">
       <div class="wrap">
         <div class="section-head">
-          <div class="section-index">03 · Union européenne</div>
+          <div class="section-index">04 · Union européenne actuelle</div>
           <div>
-            <h2>Un cadre qui apporte des ressources communes et limite certains instruments nationaux</h2>
+            <h2>Le cadre européen fournit des capacités communes tout en retirant certains instruments du niveau national</h2>
             <p class="section-lead">
-              L’analyse doit identifier la règle et la procédure exactes. « Tout est interdit par Bruxelles »
-              et « tout est possible dans l’UE » sont deux formulations insuffisantes.
+              L’analyse doit identifier l’institution, la compétence, la règle et la procédure exactes.
+              « Tout est interdit par Bruxelles » et « tout est possible dans l’UE » sont deux formulations fausses
+              dès que l’on examine concrètement l’énergie, les aides, la commande, le commerce et la monnaie.
             </p>
           </div>
         </div>
 
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Instrument</th>
-                <th>Dans le cadre actuel</th>
-                <th>Limite principale</th>
-                <th>Changement nécessaire pour une autonomie complète</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Propriété publique</td>
-                <td>Nationaliser ou posséder une entreprise est permis.</td>
-                <td>L’entreprise reste soumise aux règles applicables à son activité.</td>
-                <td>Dérogation ou changement des règles de marché si des droits exclusifs sont recherchés.</td>
-              </tr>
-              <tr>
-                <td>Aides d’État</td>
-                <td>CISAF, PIIEC, exemptions et régimes autorisés offrent des marges réelles.</td>
-                <td>Contrôle, secteurs ciblés, conditions et durée.</td>
-                <td>Protocole, réforme des règles ou régime national autonome.</td>
-              </tr>
-              <tr>
-                <td>Commande publique</td>
-                <td>Critères sociaux, environnementaux, de sécurité et de résilience possibles.</td>
-                <td>Non-discrimination et accès au marché intérieur.</td>
-                <td>Droit explicite de préférence nationale ou règles européennes de contenu local.</td>
-              </tr>
-              <tr>
-                <td>Politique commerciale</td>
-                <td>La France participe au mandat et au vote européens.</td>
-                <td>Compétence exclusive de l’Union.</td>
-                <td>Révision des traités, statut différencié ou sortie.</td>
-              </tr>
-              <tr>
-                <td>Monnaie</td>
-                <td>Politique conduite par l’Eurosystème pour la zone euro.</td>
-                <td>Pas de procédure simple de sortie de l’euro seul.</td>
-                <td>Accord inédit, révision des traités ou reconstruction monétaire après retrait.</td>
-              </tr>
-              <tr>
-                <td>Électricité</td>
-                <td>Propriété publique, contrats de long terme et interventions encadrées possibles.</td>
-                <td>Ouverture à la concurrence, séparation, aides et non-discrimination.</td>
-                <td>Droit d’organiser un service public intégré avec régime tarifaire national.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        <article class="study-chapter">
+          <span class="study-label">4.1 · Architecture — qui décide de quoi ?</span>
+          <h3>L’Union n’est ni un État unique ni une simple organisation internationale</h3>
+          <p>
+            La Commission propose la plupart des textes et contrôle notamment les aides d’État ; le Parlement et le Conseil
+            exercent ensemble une grande partie du pouvoir législatif ; le Conseil européen fixe les grandes orientations ;
+            la Cour de justice interprète le droit ; la BCE conduit la politique monétaire de la zone euro.
+            Les gouvernements nationaux participent donc aux décisions européennes, mais ne peuvent pas ensuite modifier seuls
+            une règle commune qu’ils ont contribué à adopter.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Institution</th><th>Rôle principal</th><th>Influence française</th><th>Limite nationale</th></tr></thead>
+              <tbody>
+                <tr><td>Commission</td><td>Initiative législative, exécution, concurrence, surveillance des traités.</td><td>Un commissaire français et influence dans les consultations et négociations.</td><td>La France ne contrôle pas seule l’agenda ni la décision finale.</td></tr>
+                <tr><td>Conseil / Conseil européen</td><td>Représentation des gouvernements, législation et orientations.</td><td>Vote français, coalitions, majorité qualifiée ou unanimité selon le domaine.</td><td>Un veto n’existe que dans les matières qui exigent l’unanimité.</td></tr>
+                <tr><td>Parlement européen</td><td>Colégislateur, budget, contrôle politique de la Commission.</td><td>Députés élus en France au sein de groupes transnationaux.</td><td>La représentation française ne constitue qu’une fraction de l’assemblée.</td></tr>
+                <tr><td>BCE / Eurosystème</td><td>Politique monétaire, liquidité et stabilité des prix.</td><td>Banque de France au sein de l’Eurosystème.</td><td>Le taux et la monnaie ne répondent pas à la seule conjoncture française.</td></tr>
+                <tr><td>Cour de justice</td><td>Interprétation et primauté du droit de l’Union dans son champ.</td><td>Participation française à la nomination des juges.</td><td>Une loi nationale contraire peut être écartée dans les matières européennes.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            L’article 3 du TFUE attribue notamment à l’Union la compétence exclusive sur l’union douanière,
+            la politique commerciale commune et, pour les États de la zone euro, la politique monétaire.
+            <a class="src" href="https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX%3A12008E003">art. 3 TFUE</a>
+            L’article 17 du TUE décrit le rôle de la Commission.
+            <a class="src" href="https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX%3A12016M017">art. 17 TUE</a>
+          </p>
+        </article>
 
-        <p>
-          L’article 3 du TFUE attribue notamment à l’Union la compétence exclusive sur l’union douanière,
-          la politique commerciale commune et, pour les États de la zone euro, la politique monétaire.
-          <a class="src" href="https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX%3A12008E003">art. 3 TFUE</a>
-          Les aides industrielles ont été assouplies par le CISAF, mais restent encadrées.
-          <a class="src" href="https://competition-policy.ec.europa.eu/about/contribution-clean-just-and-competitive-transition/clean-industrial-deal-state-aid-framework-cisaf_en">CISAF</a>
-        </p>
+        <article class="study-chapter">
+          <span class="study-label">4.2 · Constitution économique — marges réelles et lignes de conflit</span>
+          <h3>Posséder publiquement une entreprise ne permet pas de l’extraire automatiquement du marché commun</h3>
+          <p>
+            Les traités sont neutres sur le régime de propriété : un État peut nationaliser une entreprise.
+            En revanche, celle-ci reste soumise aux règles de son secteur, à la concurrence, aux aides d’État,
+            aux libertés de circulation et aux obligations de non-discrimination. La différence entre propriété
+            et fonction économique est déterminante pour EDF : l’État possède déjà 100 % du capital, mais ne dispose
+            pas pour autant de tous les droits nécessaires à un monopole public intégré et prioritairement national.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>Instrument</th><th>Ce qui est possible maintenant</th><th>Limite principale</th><th>Autonomie complète recherchée</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Propriété publique</td><td>Nationaliser, recapitaliser ou détenir une entreprise.</td><td>L’activité reste soumise au droit applicable.</td><td>Droits exclusifs et mission hors concurrence si nécessaires.</td></tr>
+                <tr><td>Aides d’État</td><td>CISAF, PIIEC, exemptions, recherche, défense et régimes notifiés.</td><td>Contrôle européen, secteurs, proportionnalité, durée et effet de concurrence.</td><td>Décider nationalement des aides productives sous contrôle budgétaire français.</td></tr>
+                <tr><td>Commande publique</td><td>Critères sociaux, environnementaux, de sécurité, cycle de vie et résilience.</td><td>Non-discrimination entre opérateurs admissibles et règles des marchés.</td><td>Préférence française ou contenu national explicite pour les filières retenues.</td></tr>
+                <tr><td>Commerce</td><td>Influence française sur le mandat et le vote européens.</td><td>Compétence exclusive de l’Union.</td><td>Tarifs, sauvegardes et accords décidés au niveau national.</td></tr>
+                <tr><td>Capitaux</td><td>Contrôles ciblés pour sécurité et investissements étrangers.</td><td>Libre circulation interne et avec certains pays tiers.</td><td>Contrôle plus large en crise ou pour réorganiser le financement.</td></tr>
+                <tr><td>Monnaie</td><td>Participation à l’Eurosystème et dispositifs communs de liquidité.</td><td>Pas de politique monétaire nationale ni de procédure simple de sortie de l’euro seul.</td><td>Accord inédit, révision ou reconstruction monétaire après retrait.</td></tr>
+                <tr><td>Électricité</td><td>Propriété publique, contrats longs et interventions tarifaires encadrées.</td><td>Ouverture, séparation, aides et non-discrimination.</td><td>Service intégré au coût complet avec régime national stable.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Le CISAF adopté en 2025 élargit les aides possibles, y compris à certaines technologies nucléaires,
+            aux renouvelables, à l’hydrogène, aux batteries et aux matières critiques. Il constitue une marge d’action réelle,
+            mais temporaire et sectorielle, non un droit général de préférence nationale.
+            <a class="src" href="https://competition-policy.ec.europa.eu/about/contribution-clean-just-and-competitive-transition/clean-industrial-deal-state-aid-framework-cisaf_en">Commission · CISAF</a>
+          </p>
+        </article>
 
-        <h3>Les coopérations européennes ont aussi une valeur matérielle</h3>
-        <div class="card-grid">
-          <article class="card">
-            <h4>Marché et chaînes</h4>
-            <p>Accès sans formalités douanières internes, chaînes de sous-traitance, mobilité des personnes et reconnaissance juridique facilitent la production et les services.</p>
-          </article>
-          <article class="card">
-            <h4>Science et infrastructures</h4>
-            <p>Recherche, spatial, interconnexions électriques, normes et projets multinationaux peuvent mutualiser des coûts qu’un pays supporterait difficilement seul.</p>
-          </article>
-          <article class="card">
-            <h4>Poids commercial</h4>
-            <p>La négociation collective offre un poids important, mais le compromis obtenu ne correspond pas nécessairement aux intérêts sectoriels de chaque État.</p>
-          </article>
-        </div>
+        <article class="study-chapter">
+          <span class="study-label">4.3 · Ressources communes — ce qu’une stratégie de sortie devrait remplacer ou conserver</span>
+          <h3>Le coût d’un changement de cadre dépend des coopérations que l’on sait reproduire</h3>
+          <div class="study-columns">
+            <div>
+              <h4>Valeur matérielle de l’intégration</h4>
+              <ul>
+                <li>Circulation sans formalités douanières internes et chaînes de sous-traitance intégrées.</li>
+                <li>Reconnaissance de règles, qualifications et décisions dans de nombreux secteurs.</li>
+                <li>Programmes de recherche, spatial, infrastructures et financements mutualisés.</li>
+                <li>Interconnexions électriques, coordination des réseaux et mécanismes de solidarité.</li>
+                <li>Poids collectif dans les négociations commerciales et normatives.</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Coûts de la décision commune</h4>
+              <ul>
+                <li>Le compromis européen ne correspond pas toujours à l’intérêt de chaque filière française.</li>
+                <li>Une coalition peut empêcher ou ralentir un instrument national jugé nécessaire.</li>
+                <li>Les grands États disposant de davantage de ressources utilisent parfois mieux les mêmes régimes d’aide.</li>
+                <li>La règle commune peut privilégier une chaîne européenne alors que le projet français vise une capacité nationale.</li>
+                <li>Les responsabilités deviennent difficiles à attribuer entre gouvernements et institutions.</li>
+              </ul>
+            </div>
+          </div>
+          <p class="study-verdict"><b>Test décisif :</b> une autonomie juridique supplémentaire n’est un gain net que si la France sait remplacer les fonctions européennes utiles — douanes, reconnaissance, recherche, données, énergie, aviation, médicaments — ou négocier leur continuité.</p>
+        </article>
 
-        <h3>Cinq évolutions possibles de l’environnement européen</h3>
-        <div class="card-grid">
-          <article class="card">
-            <span class="kicker">E1 · Statu quo</span>
-            <h4>Intégration inchangée, croissance faible</h4>
-            <p>Les compromis actuels persistent, avec des réponses sectorielles aux crises mais sans modification importante de la répartition des compétences.</p>
-          </article>
-          <article class="card">
-            <span class="kicker">E2 · Fédéralisation</span>
-            <h4>Capacités communes accrues</h4>
-            <p>Budget, dette, défense ou industrie sont davantage mutualisés. Le poids collectif augmente, tandis que la liberté de divergence nationale diminue.</p>
-          </article>
-          <article class="card">
-            <span class="kicker">E3 · Plusieurs cercles</span>
-            <h4>Intégration différenciée</h4>
-            <p>Des groupes d’États approfondissent certaines politiques et d’autres obtiennent des statuts distincts, au prix d’une architecture plus complexe.</p>
-          </article>
-          <article class="card">
-            <span class="kicker">E4 · Fragmentation</span>
-            <h4>Blocages et reprises nationales</h4>
-            <p>Les crises, vétos ou divergences conduisent à des suspensions, coalitions ad hoc et retours partiels de compétences sans cadre général stabilisé.</p>
-          </article>
-          <article class="card">
-            <span class="kicker">E5 · Réforme pragmatique</span>
-            <h4>Assouplissements sous pression</h4>
-            <p>Les règles évoluent par secteurs — aides, énergie, défense, achats — sans refondation complète des traités.</p>
-          </article>
-        </div>
-
-        <p>
-          Ces scénarios décrivent l’environnement dans lequel une stratégie française devrait agir.
-          Aucune probabilité numérique ne leur est attribuée : les élections, crises extérieures,
-          coalitions nationales, finances publiques et choix allemands peuvent modifier leur trajectoire.
-        </p>
-
-        <h3>Les accords de 2026 doivent être évalués par filière française</h3>
-        <div class="card-grid">
-          <article class="card">
-            <span class="kicker">UE–Mercosur</span>
-            <h4>Application provisoire depuis le 1er mai</h4>
-            <p>
-              L’étude doit suivre volumes, prix, contingents, sauvegardes, effets territoriaux,
-              conformité sanitaire et gains industriels, plutôt que traiter l’accord comme un symbole unique.
-              <a class="src" href="https://www.consilium.europa.eu/en/policies/eu-mercosur-agreements-explained/">Conseil UE</a>
-            </p>
-          </article>
-          <article class="card">
-            <span class="kicker">UE–États-Unis</span>
-            <h4>Cadre commercial depuis le 1er juillet</h4>
-            <p>
-              Le plafond américain de 15 % pour la plupart des produits européens et les concessions européennes
-              n’affectent pas de la même façon aéronautique, luxe, vins, automobile, pharmacie et composants.
-              <a class="src" href="https://commission.europa.eu/topics/trade/eu-us-trade-deal_en">Commission</a>
-            </p>
-          </article>
-          <article class="card">
-            <span class="kicker">Énergie mondiale</span>
-            <h4>Ne pas prolonger un pic à l’infini</h4>
-            <p>
-              Le Brent moyen est revenu à 84,4 dollars en juin 2026 après le choc du printemps.
-              Le plan doit tester plusieurs scénarios de prix sans transformer le pic ni le reflux en constante.
-              <a class="src" href="https://www.insee.fr/fr/statistiques/9031115">Insee</a>
-            </p>
-          </article>
-        </div>
+        <article class="study-chapter">
+          <span class="study-label">4.4 · Commerce 2026 — juger les accords par filière</span>
+          <h3>Un accord ne produit pas un gagnant national unique</h3>
+          <p>
+            Les accords UE–Mercosur et UE–États-Unis modifient simultanément des droits, contingents, normes,
+            sauvegardes et accès sectoriels. Leur bilan français doit distinguer les producteurs, les consommateurs,
+            les territoires, les importateurs d’intrants et les exportateurs ; une moyenne nationale peut masquer
+            des pertes concentrées et des gains dispersés.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Dossier</th><th>Situation au 30 juillet 2026</th><th>Indicateurs français à suivre</th><th>Erreur d’analyse</th></tr></thead>
+              <tbody>
+                <tr><td>UE–Mercosur</td><td>Accord commercial intérimaire appliqué provisoirement depuis le 1er mai.</td><td>Volumes et prix agricoles, contingents, sauvegardes, normes, gains industriels et effets territoriaux.</td><td>Le réduire à un symbole favorable ou défavorable à toute l’économie.</td></tr>
+                <tr><td>UE–États-Unis</td><td>Cadre de Turnberry en vigueur depuis le 1er juillet ; plafond américain de 15 % sur la plupart des biens européens.</td><td>Aéronautique, luxe, vins, automobile, pharmacie, composants et concessions européennes.</td><td>Appliquer un taux uniforme fictif à toutes les filières.</td></tr>
+                <tr><td>Suisse–UE</td><td>Paquet signé le 2 mars et transmis au Parlement suisse.</td><td>Règles reprises, contributions, accès sectoriels, règlement des différends et calendrier de ratification.</td><td>Présenter la relation bilatérale comme un accès sans obligations.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            <a class="src" href="https://www.consilium.europa.eu/en/policies/eu-mercosur-agreements-explained/">Conseil UE · Mercosur</a>
+            <a class="src" href="https://commission.europa.eu/topics/trade/eu-us-trade-deal_en">Commission · États-Unis</a>
+            <a class="src" href="https://www.europa.eda.admin.ch/en/package-switzerland-eu">Suisse–UE</a>
+          </p>
+        </article>
 
         <div class="notice red">
           <strong>Contradiction centrale à tester</strong>
           <p>
-            L’Union peut faciliter des usines situées en France dans une chaîne européenne.
-            Elle accepte plus difficilement qu’électricité, aides et marchés soient organisés pour
-            procurer un avantage prioritaire aux seuls ménages et producteurs français.
-            Le désaccord porte donc moins sur l’existence d’une politique industrielle que sur son bénéficiaire,
-            sa gouvernance et la liberté de la réserver.
+            L’Union peut financer et faciliter des usines situées en France dans une chaîne européenne.
+            Elle accepte beaucoup plus difficilement qu’électricité, aides et marchés soient organisés pour procurer
+            un avantage prioritaire aux seuls ménages et producteurs français. Le désaccord porte donc moins sur
+            l’existence d’une politique industrielle que sur son bénéficiaire, sa gouvernance et la liberté de la réserver.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="ue-scenarios">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-index">05 · Évolution possible de l’UE</div>
+          <div>
+            <h2>La stratégie française doit rester robuste dans cinq environnements européens distincts</h2>
+            <p class="section-lead">
+              Ces scénarios ne sont ni des prédictions ni des préférences. Ils décrivent des cadres possibles
+              à partir des crises, coalitions, règles budgétaires et divergences économiques. Aucune probabilité chiffrée
+              n’est retenue faute de modèle suffisamment robuste.
+            </p>
+          </div>
+        </div>
+
+        <article class="scenario-study">
+          <div class="scenario-code">E1 · Statu quo adaptatif</div>
+          <div>
+            <h3>Les crises sont traitées par exceptions sectorielles sans refonte des traités</h3>
+            <p>Le marché intérieur, l’euro et la répartition des compétences restent stables. Des assouplissements ciblés apparaissent pour l’énergie, la défense, les aides ou les achats, mais ils demeurent négociés et souvent temporaires.</p>
+            <div class="study-columns">
+              <div><h4>Effet possible pour la France</h4><p>Utiliser plus agressivement les marges existantes peut accélérer certains investissements sans coût de rupture institutionnelle.</p></div>
+              <div><h4>Limite</h4><p>Les instruments de préférence nationale, de politique commerciale et de monopole électrique intégré restent hors de portée ou contestables.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="scenario-study">
+          <div class="scenario-code">E2 · Fédéralisation</div>
+          <div>
+            <h3>Davantage de dette, budget, défense ou politique industrielle au niveau commun</h3>
+            <p>Une crise majeure ou une coalition politique pourrait conduire à mutualiser davantage le financement et la décision. La capacité collective augmenterait, mais une stratégie française divergente deviendrait plus difficile.</p>
+            <div class="study-columns">
+              <div><h4>Opportunité</h4><p>Financer à l’échelle continentale des infrastructures, technologies et défenses qu’un État supporte difficilement seul.</p></div>
+              <div><h4>Question décisive</h4><p>La gouvernance, la répartition géographique des capacités et le contrôle démocratique correspondent-ils aux intérêts français ?</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="scenario-study">
+          <div class="scenario-code">E3 · Plusieurs cercles</div>
+          <div>
+            <h3>Des niveaux d’intégration différents deviennent permanents</h3>
+            <p>Un noyau approfondit certaines politiques tandis que d’autres États conservent le marché ou des accords sectoriels. Cette architecture pourrait ouvrir la voie à un statut français spécifique sans rupture complète.</p>
+            <div class="study-columns">
+              <div><h4>Opportunité</h4><p>Négocier un cercle compatible avec davantage d’autonomie énergétique, industrielle ou budgétaire.</p></div>
+              <div><h4>Risque</h4><p>Superposition de règles, incertitude juridique et statut qui reprend les obligations essentielles sans pouvoir de vote équivalent.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="scenario-study">
+          <div class="scenario-code">E4 · Fragmentation</div>
+          <div>
+            <h3>Les blocages et crises provoquent des reprises nationales non coordonnées</h3>
+            <p>Des coalitions ad hoc, suspensions, contrôles et accords bilatéraux remplacent progressivement certaines règles communes. La liberté d’action augmente, mais dans un contexte commercial et financier dégradé.</p>
+            <div class="study-columns">
+              <div><h4>Opportunité</h4><p>La renégociation générale devient plus plausible lorsque plusieurs États demandent simultanément de nouvelles règles.</p></div>
+              <div><h4>Risque</h4><p>Subir une désintégration avant d’avoir préparé douanes, paiements, stocks, droit transitoire et coopération sectorielle.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <article class="scenario-study">
+          <div class="scenario-code">E5 · Réforme pragmatique</div>
+          <div>
+            <h3>Les résultats s’obtiennent par protocoles et exceptions plutôt que par une constitution nouvelle</h3>
+            <p>Les États conservent l’architecture générale mais négocient des régimes particuliers pour l’énergie, la défense, l’industrie, les déficits ou les achats. C’est le scénario le plus proche d’une renégociation française ciblée.</p>
+            <div class="study-columns">
+              <div><h4>Condition de crédibilité</h4><p>Les exceptions doivent être permanentes, juridiquement opposables et suffisamment larges pour rendre le programme exécutable.</p></div>
+              <div><h4>Risque</h4><p>Obtenir des promesses politiques ou des cadres temporaires présentés comme une récupération durable des instruments.</p></div>
+            </div>
+          </div>
+        </article>
+
+        <div class="notice blue">
+          <strong>Conséquence stratégique</strong>
+          <p>
+            Le socle matériel — compétences, stocks, systèmes, énergie, administrations et chaînes critiques — est utile dans les cinq scénarios.
+            Plus la France le construit tôt, moins elle dépend d’une prévision correcte sur l’avenir de l’Union et plus elle dispose d’un rapport de force réel.
           </p>
         </div>
       </div>
@@ -1568,7 +2072,7 @@
     <section id="capacites">
       <div class="wrap">
         <div class="section-head">
-          <div class="section-index">04 · Cartographie</div>
+          <div class="section-index">06 · Cartographie systémique</div>
           <div>
             <h2>Vingt-quatre domaines à auditer comme un système</h2>
             <p class="section-lead">
@@ -1577,6 +2081,27 @@
               le coût complet et la solution de remplacement.
             </p>
           </div>
+        </div>
+
+        <p>
+          La cartographie n’est pas une liste de secteurs à subventionner. Elle sert à vérifier qu’une fonction peut continuer
+          en cas de rupture et à choisir le mode de sécurisation le moins coûteux. Pour chaque domaine, le rapport complet exige
+          un inventaire quantifié ; les accordéons ci-dessous résument la fonction et le périmètre d’audit, tandis que le document
+          source conserve la grille détaillée.
+          <a class="src" href="documentation/updates/2026-08/02_CARTOGRAPHIE_DES_CAPACITES.md">cartographie complète</a>
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Étape d’audit</th><th>Question</th><th>Preuve attendue</th><th>Décision possible</th></tr></thead>
+            <tbody>
+              <tr><td>Fonction</td><td>Quel service essentiel doit continuer et pendant combien de temps ?</td><td>Volume minimal, population couverte et délai maximal d’interruption.</td><td>Classer la criticité.</td></tr>
+              <tr><td>Chaîne</td><td>Quels intrants, machines, logiciels, données, personnels et transports sont nécessaires ?</td><td>Nomenclature, sites, propriétaires, fournisseurs et dépendances croisées.</td><td>Identifier le maillon limitant.</td></tr>
+              <tr><td>Rupture</td><td>Combien de jours avant l’arrêt et combien de mois pour substituer ?</td><td>Stocks testés, consommation, contrats, alternatives qualifiées et exercices.</td><td>Fixer stocks et redondances.</td></tr>
+              <tr><td>Mode d’autonomie</td><td>Faut-il produire nationalement, coopérer, diversifier ou stocker ?</td><td>Comparaison de coût complet, délai, sécurité et réversibilité.</td><td>Choisir le niveau utile, pas l’autarcie.</td></tr>
+              <tr><td>Contrôle</td><td>Qui mesure la capacité et peut arrêter un programme inefficace ?</td><td>Indicateur physique, audit indépendant, jalons et clauses de remboursement.</td><td>Poursuivre, corriger ou fermer.</td></tr>
+            </tbody>
+          </table>
         </div>
 
         <div class="cluster-grid">
@@ -1702,7 +2227,7 @@
         </div>
 
         <h3>Les dépendances transversales empêchent d’additionner les plans sectoriels</h3>
-        <div class="table-wrap" aria-label="Matrice de dépendances transversales">
+        <div class="table-wrap" role="group" aria-label="Matrice de dépendances transversales">
           <div class="dependency">
             <div class="head">Maillon</div><div class="head">Défense</div><div class="head">Spatial</div><div class="head">Santé</div><div class="head">Énergie</div><div class="head">Numérique</div><div class="head">Agriculture</div>
             <div>Électricité fiable</div><div class="check">✓</div><div class="check">✓</div><div class="check">✓</div><div class="check">✓</div><div class="check">✓</div><div class="check">✓</div>
@@ -1728,7 +2253,7 @@
     <section id="electricite" class="alt">
       <div class="wrap">
         <div class="section-head">
-          <div class="section-index">05 · Cas systémique</div>
+          <div class="section-index">07 · Étude énergétique</div>
           <div>
             <h2>Électricité et EDF : distinguer propriété, monopoles de réseau et organisation du marché</h2>
             <p class="section-lead">
@@ -1767,7 +2292,7 @@
             </div>
           </div>
 
-          <aside class="system-map">
+          <aside class="system-map" aria-label="Chaîne physique du système électrique">
             <span class="kicker">Chaîne physique unique</span>
             <h3>Un système coordonné à chaque instant</h3>
             <div class="system-row"><span>Production pilotable et variable</span><b>Planifier</b></div>
@@ -1779,21 +2304,81 @@
           </aside>
         </div>
 
-        <h3>Ce que l’électricité peut déclencher — sous conditions</h3>
-        <div class="card-grid">
-          <article class="card">
-            <h4>Ménages</h4>
-            <p>Un prix stable peut soutenir le revenu disponible, le chauffage et la mobilité électrique. Le gain varie selon la consommation et la structure des taxes.</p>
-          </article>
-          <article class="card">
-            <h4>Industrie</h4>
-            <p>Des contrats longs peuvent améliorer la visibilité des secteurs électro-intensifs. Sans contreparties, la baisse peut rester dans les marges ou profiter à une production délocalisée.</p>
-          </article>
-          <article class="card">
-            <h4>État et système</h4>
-            <p>Moins de volatilité peut réduire le besoin de boucliers tarifaires, mais un prix inférieur au coût complet recréerait le sous-investissement et la dette d’EDF.</p>
-          </article>
-        </div>
+        <article class="study-chapter">
+          <span class="study-label">7.1 · Monopole naturel et système intégré</span>
+          <h3>La définition économique stricte ne suffit pas à trancher l’organisation politique souhaitable</h3>
+          <p>
+            Le transport et la distribution sont des monopoles naturels : dupliquer les réseaux pour créer une concurrence
+            serait techniquement et économiquement inefficace. La production peut, elle, être assurée par plusieurs opérateurs ;
+            elle n’est donc pas un monopole naturel au sens strict. Mais l’équilibre physique instantané, le nucléaire amorti
+            sur plusieurs décennies, les moyens de secours, les réseaux et la sûreté forment un système indissociable dans son exploitation.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Niveau d’analyse</th><th>Constat</th><th>Ce qu’il justifie</th><th>Ce qu’il ne justifie pas automatiquement</th></tr></thead>
+              <tbody>
+                <tr><td>Réseau</td><td>Infrastructure unique, coûts fixes élevés et besoin d’accès égal.</td><td>Monopole régulé ou public pour transport et distribution.</td><td>La propriété de toutes les centrales.</td></tr>
+                <tr><td>Production</td><td>Plusieurs opérateurs peuvent techniquement produire.</td><td>Concurrence ou contrats encadrés possibles.</td><td>Que la concurrence fournisse spontanément le niveau optimal d’investissement de long terme.</td></tr>
+                <tr><td>Système</td><td>Production, réserves, réseau, consommation et sûreté doivent être planifiés ensemble.</td><td>Planification commune et responsabilité publique de continuité.</td><td>Qu’un opérateur intégré doive échapper à tout contrôle de coût ou de sûreté.</td></tr>
+                <tr><td>Patrimoine</td><td>Le nucléaire et l’hydraulique historiques ont été construits sur plusieurs générations.</td><td>Affecter leur avantage à la population, à l’industrie et au renouvellement.</td><td>Vendre sous le coût complet ou différer les investissements.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="study-verdict"><b>Formulation robuste pour la négociation :</b> les réseaux sont des monopoles naturels ; le parc historique est un patrimoine productif national ; l’ensemble électrique est un service essentiel systémique qui doit pouvoir être planifié et exploité au coût complet sans recherche de rente distribuable.</p>
+        </article>
+
+        <article class="study-chapter">
+          <span class="study-label">7.2 · Formation du coût et soutenabilité</span>
+          <h3>Le coût du nucléaire historique n’est ni le prix de tout le système ni la facture du client</h3>
+          <p>
+            L’évaluation de 60,3 €2026/MWh porte sur le périmètre du nucléaire historique défini par la CRE.
+            Le système doit également financer les autres productions, l’équilibrage, le transport, la distribution,
+            les pertes, la sûreté, les déchets, le démantèlement, les réserves et les investissements futurs.
+            La fiscalité relève encore d’une décision distincte. Une comparaison honnête doit donc publier chaque couche du prix.
+          </p>
+          <div class="equation">
+            <strong>Tarif soutenable</strong> = production complète + réseaux + sûreté + réserves + démantèlement + renouvellement + investissements − recettes d’exportation affectées
+          </div>
+          <div class="study-columns">
+            <div>
+              <h4>Prix artificiellement trop haut</h4>
+              <p>Il réduit le revenu disponible, dégrade la compétitivité, ralentit l’électrification et peut transformer un avantage national en rente captée ailleurs.</p>
+            </div>
+            <div>
+              <h4>Prix artificiellement trop bas</h4>
+              <p>Il reporte entretien et investissement, augmente la dette, fragilise la sûreté et oblige finalement l’État ou les clients futurs à payer le manque.</p>
+            </div>
+          </div>
+          <p>
+            L’ordre de grandeur de 460 Md€ d’investissements possibles entre 2025 et 2040 montre pourquoi le tarif ne peut
+            couvrir seulement l’exploitation courante. La question institutionnelle est l’affectation du surplus : dividende,
+            budget général, baisse tarifaire ou financement transparent du système.
+            <a class="src" href="https://www.ccomptes.fr/fr/publications/le-modele-economique-delectricite-de-france-edf">Cour des comptes</a>
+          </p>
+        </article>
+
+        <article class="study-chapter">
+          <span class="study-label">7.3 · Transmission économique</span>
+          <h3>L’électricité peut amorcer le redressement, mais le gain ne se diffuse pas automatiquement</h3>
+          <div class="study-columns">
+            <div>
+              <h4>Ménages et pouvoir d’achat</h4>
+              <p>Un tarif plus stable réduit l’exposition aux crises et soutient les ménages chauffés à l’électricité ou utilisant un véhicule électrique. Le gain dépend de la consommation, des taxes, du logement et de l’efficacité des équipements.</p>
+              <p>La baisse indirecte du prix des biens n’est pas garantie : elle dépend de la part d’électricité dans les coûts et de la concurrence entre vendeurs.</p>
+            </div>
+            <div>
+              <h4>Entreprises et relocalisation</h4>
+              <p>Des contrats longs améliorent la visibilité des industries électro-intensives et des investissements d’électrification. Ils peuvent attirer ou maintenir des capacités en France.</p>
+              <p>Sans obligation de production, d’emploi et d’investissement, l’avantage peut rester dans les marges, financer une activité étrangère ou disparaître lors d’une revente.</p>
+            </div>
+          </div>
+          <ul class="analysis-list">
+            <li>Pour l’État, la stabilité peut réduire le besoin de boucliers tarifaires, sans supprimer le coût des réseaux ni de la fiscalité.</li>
+            <li>Pour l’industrie, l’impact est maximal lorsque l’électricité remplace une importation fossile et soutient une chaîne produite localement.</li>
+            <li>Pour l’agriculture et l’artisanat, l’énergie directe n’est qu’une partie du coût : engrais, carburants, emballages, loyers et machines restent déterminants.</li>
+            <li>Pour EDF, l’absence de dividende distribuable ne signifie pas l’absence d’excédent : celui-ci doit financer réserve, maintenance et nouveaux actifs.</li>
+          </ul>
+        </article>
 
         <h3>La transmission du prix dépasse la seule facture électrique</h3>
         <div class="table-wrap">
@@ -1815,7 +2400,7 @@
     <section id="risques">
       <div class="wrap">
         <div class="section-head">
-          <div class="section-index">06 · Contraintes de transition</div>
+          <div class="section-index">08 · Contraintes de transition</div>
           <div>
             <h2>Récupérer un pouvoir juridique ne crée pas automatiquement une capacité matérielle</h2>
             <p class="section-lead">
@@ -1853,6 +2438,29 @@
           </article>
         </div>
 
+        <h3>Du risque général au dispositif vérifiable</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Risque</th><th>Mécanisme de crise</th><th>Signal précoce</th><th>Préparation minimale</th><th>Capacité qui prouve la maîtrise</th></tr></thead>
+            <tbody>
+              <tr><td>Budgétaire</td><td>Les intérêts et dépenses courantes évinceraient l’investissement avant son rendement.</td><td>Hausse durable du coût d’émission, dérive du déficit primaire.</td><td>Priorités consolidées, programmes arrêtables, financement par actif.</td><td>Dette stabilisée et coûts futurs publiés.</td></tr>
+              <tr><td>Bancaire</td><td>Fuite des dépôts, pénurie de collatéral ou rupture de liquidité.</td><td>Transferts de dépôts, écarts de taux, tension sur refinancement.</td><td>Garantie crédible, liquidité, résolution, contrôle temporaire préparé.</td><td>Test de crise réussi sans arrêt des paiements.</td></tr>
+              <tr><td>Monétaire</td><td>Conversion désordonnée des contrats, inflation importée et défiance.</td><td>Dollarisation des prix, sorties de capitaux, tensions de change.</td><td>Base légale, unité de compte, billets, systèmes, réserves et communication.</td><td>Salaires, impôts, marchés et contrats exécutés dans la nouvelle unité.</td></tr>
+              <tr><td>Commercial</td><td>Contrôles, origine et divergence normative ralentissent les chaînes.</td><td>Stocks en baisse, délais douaniers, refus de certification.</td><td>Accords sectoriels, douanes testées, stocks et fournisseurs alternatifs.</td><td>Flux essentiels maintenus dans les délais fixés.</td></tr>
+              <tr><td>Administratif</td><td>La compétence revient sans agents, systèmes ni procédures.</td><td>Textes non adoptés, recrutements tardifs, logiciels non testés.</td><td>Inventaire des fonctions, budgets, autorités et lois à effet différé.</td><td>Simulation complète puis fonctionnement réel au jour de transition.</td></tr>
+              <tr><td>Industriel</td><td>La demande arrive avant machines, intrants et personnels.</td><td>Prix, délais d’équipement, vacances de postes et dépendance unique.</td><td>Ordonnancement, contrats longs, formation et sécurisation des maillons amont.</td><td>Cadence, qualité, maintenance et capacité de secours mesurées.</td></tr>
+              <tr><td>Social</td><td>Les coûts sont concentrés sur certains ménages, métiers ou territoires.</td><td>Inflation ciblée, fermetures, pénuries, opposition locale.</td><td>Compensation temporaire, logement, mobilité, partage des gains et information.</td><td>Services essentiels continus et soutien démocratique maintenu.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>
+          Les risques ne justifient ni l’inaction ni une rupture rapide. Ils déterminent l’ordre des travaux.
+          Par exemple, préparer une administration douanière ou un système de paiements améliore le rapport de force
+          même si la sortie n’a finalement pas lieu ; à l’inverse, annoncer une liberté juridique sans ces capacités
+          peut accélérer la crise que la politique voulait éviter.
+        </p>
+
         <div class="notice blue">
           <strong>Règle de comparaison</strong>
           <p>
@@ -1873,7 +2481,7 @@
     <section id="propositions" class="alt">
       <div class="wrap">
         <div class="section-head">
-          <div class="section-index">07 · Socle commun S0</div>
+          <div class="section-index">09 · Socle commun S0</div>
           <div>
             <h2>Commencer le redressement avant de trancher le cadre institutionnel final</h2>
             <p class="section-lead">
@@ -2011,7 +2619,7 @@
     <section id="edf-proposition">
       <div class="wrap">
         <div class="section-head">
-          <div class="section-index">08 · Option structurante</div>
+          <div class="section-index">10 · Option structurante</div>
           <div>
             <h2>Évaluer un service public électrique intégré, au coût complet et sans rente distribuable</h2>
             <p class="section-lead">
@@ -2083,7 +2691,7 @@
     <section id="trajectoires" class="alt">
       <div class="wrap">
         <div class="section-head">
-          <div class="section-index">09 · Cinq trajectoires</div>
+          <div class="section-index">11 · Cinq trajectoires</div>
           <div>
             <h2>Comparer des chemins cohérents, pas un duel binaire « rester ou sortir »</h2>
             <p class="section-lead">
@@ -2093,67 +2701,70 @@
           </div>
         </div>
 
-        <div class="scenario-grid">
-          <article class="scenario">
-            <span class="scenario-code">T1 · Cadre actuel</span>
-            <h3>Souverainisation maximale dans l’UE</h3>
-            <p>Utiliser davantage aides, marchés, services publics, coalitions et instruments de défense commerciale existants.</p>
-            <span class="label">Atout</span>
-            <p>Continuité monétaire, juridique et commerciale élevée.</p>
-            <span class="label">Limite</span>
-            <p>Commerce, monnaie et préférence nationale restent contraints.</p>
-            <span class="score">risque transition : faible</span>
-            <span class="score">autonomie : limitée</span>
-          </article>
+        <article class="scenario-study">
+          <div class="scenario-code">T1 · Cadre actuel</div>
+          <div>
+            <h3>Souverainisation maximale dans l’Union existante</h3>
+            <p>Cette trajectoire exploite toutes les marges disponibles avant de demander une modification des traités : CISAF, PIIEC, services d’intérêt économique général, critères de résilience, participation publique, contrôle des investissements, coopérations renforcées et instruments européens de défense commerciale.</p>
+            <div class="study-columns">
+              <div><h4>Ce qu’elle peut produire</h4><ul><li>Investissements immédiats sans rupture juridique.</li><li>Continuité de l’euro, des paiements, des chaînes et des qualifications.</li><li>Coalitions européennes sur l’énergie, la défense ou les matières critiques.</li></ul></div>
+              <div><h4>Test d’insuffisance</h4><ul><li>Les capacités créées sont-elles réellement situées et maintenues en France ?</li><li>Les marchés publics peuvent-ils fournir une demande suffisante ?</li><li>Le système électrique proposé reste-t-il interdit malgré les marges utilisées ?</li></ul></div>
+            </div>
+            <p class="study-verdict"><b>Verdict conditionnel :</b> risque de transition faible, mais autonomie limitée si les instruments centraux — préférence, commerce et organisation électrique — demeurent indisponibles.</p>
+          </div>
+        </article>
 
-          <article class="scenario">
-            <span class="scenario-code">T2 · Renégociation</span>
-            <h3>Europe différenciée ou confédérale</h3>
-            <p>Obtenir protocoles, exemptions ou révision des traités sur l’énergie, les aides, les marchés, le commerce et les actifs stratégiques.</p>
-            <span class="label">Atout</span>
-            <p>Récupération ciblée de pouvoirs avec continuité des coopérations.</p>
-            <span class="label">Limite</span>
-            <p>Résultat dépendant des partenaires et des ratifications.</p>
-            <span class="score">risque : modéré</span>
-            <span class="score">faisabilité politique : incertaine</span>
-          </article>
+        <article class="scenario-study">
+          <div class="scenario-code">T2 · Renégociation</div>
+          <div>
+            <h3>Europe différenciée, protocoles permanents ou organisation confédérale</h3>
+            <p>La France demande un ensemble juridiquement précis : service public électrique intégré, régime national d’aides conditionnées, commande publique de résilience, protection des actifs stratégiques et traitement spécifique de l’investissement productif. Elle propose en échange de maintenir les coopérations et garanties utiles.</p>
+            <div class="study-columns">
+              <div><h4>Conditions</h4><ul><li>Mandat publié et hiérarchisé avant la négociation.</li><li>Texte opposable plutôt que déclaration politique.</li><li>Coalition d’États partageant au moins une partie des demandes.</li><li>Procédure de ratification et calendrier identifiés.</li></ul></div>
+              <div><h4>Risques</h4><ul><li>Unanimité pour une révision complète des traités.</li><li>Accord temporaire présenté comme une réforme durable.</li><li>Concessions françaises sans restitution des instruments essentiels.</li><li>Négociation prolongée pour empêcher toute décision finale.</li></ul></div>
+            </div>
+            <p class="study-verdict"><b>Verdict conditionnel :</b> meilleure combinaison théorique entre continuité et autonomie, mais résultat entièrement dépendant d’un accord extérieur vérifiable.</p>
+          </div>
+        </article>
 
-          <article class="scenario">
-            <span class="scenario-code">T3 · Confrontation</span>
-            <h3>Sauvegardes nationales et désobéissance ciblée</h3>
-            <p>Appliquer dans des domaines vitaux des mesures incompatibles ou contestables pour créer un rapport de force.</p>
-            <span class="label">Atout</span>
-            <p>Action rapide sur un objet précis et test de négociabilité.</p>
-            <span class="label">Limite</span>
-            <p>Contentieux, sanctions, incertitude et rétorsion.</p>
-            <span class="score">destination stable : non</span>
-            <span class="score">plan de sortie : nécessaire</span>
-          </article>
+        <article class="scenario-study">
+          <div class="scenario-code">T3 · Confrontation</div>
+          <div>
+            <h3>Sauvegardes nationales et application ciblée de mesures contestables</h3>
+            <p>La France applique dans un domaine vital une mesure qu’elle estime nécessaire malgré un conflit probable avec le droit de l’Union, puis cherche une régularisation politique. Cette trajectoire peut tester une ligne rouge ou accélérer la négociation ; elle ne constitue pas un régime stable.</p>
+            <div class="study-columns">
+              <div><h4>Conditions minimales</h4><ul><li>Objet étroit, justification publique et bénéfice mesurable.</li><li>Analyse contentieuse et dispositif de continuité.</li><li>Mesures de rétorsion possibles cartographiées.</li><li>Point de décision : compromis, retrait de la mesure ou article 50.</li></ul></div>
+              <div><h4>Dangers</h4><ul><li>Incertitude durable pour les entreprises et les administrations.</li><li>Sanctions financières ou contentieux en cascade.</li><li>Isolement politique sans préparation de sortie.</li><li>Extension opportuniste de la désobéissance à des sujets non vitaux.</li></ul></div>
+            </div>
+            <p class="study-verdict"><b>Verdict conditionnel :</b> instrument de rapport de force ponctuel ; il exige dès le départ une porte de sortie et ne doit pas devenir une improvisation permanente.</p>
+          </div>
+        </article>
 
-          <article class="scenario">
-            <span class="scenario-code">T4 · Retrait négocié</span>
-            <h3>Sortie de l’UE avec coopération dense</h3>
-            <p>Notifier l’article 50 puis négocier retrait, commerce, énergie, recherche, défense, données, aviation et droits des citoyens.</p>
-            <span class="label">Atout</span>
-            <p>Récupération de la politique commerciale et d’un régime national d’aides.</p>
-            <span class="label">Limite</span>
-            <p>Formalités, règles d’origine, services, investissement et administration.</p>
-            <span class="score">autonomie : élevée</span>
-            <span class="score">préparation : très élevée</span>
-          </article>
+        <article class="scenario-study">
+          <div class="scenario-code">T4 · Retrait négocié</div>
+          <div>
+            <h3>Sortie de l’Union avec coopération sectorielle dense</h3>
+            <p>Après préparation et constat d’échec de la renégociation, la France notifie l’article 50. Elle négocie simultanément le retrait et la relation future : commerce, énergie, recherche, aviation, nucléaire, médicaments, données, défense, pêche, droits des citoyens et reconnaissance des qualifications.</p>
+            <div class="study-columns">
+              <div><h4>Capacités préalables</h4><ul><li>Douanes, règles d’origine et systèmes informatiques testés.</li><li>Droit transitoire et autorités de remplacement prêtes.</li><li>Stocks, contrats et aides aux secteurs exposés.</li><li>Continuité bancaire, des paiements et du financement de l’État.</li></ul></div>
+              <div><h4>Gains et coûts</h4><ul><li>Politique commerciale et aides nationales récupérées.</li><li>Possibilité d’un service électrique intégré selon le droit français.</li><li>Formalités et frictions nouvelles même avec un accord sans droits.</li><li>Risque sur les services, l’investissement et les chaînes juste-à-temps.</li></ul></div>
+            </div>
+            <p class="study-verdict"><b>Verdict conditionnel :</b> autonomie juridique élevée ; rationalité dépendante du niveau réel de préparation et de la qualité des accords sectoriels obtenus.</p>
+          </div>
+        </article>
 
-          <article class="scenario">
-            <span class="scenario-code">T5 · Retrait + monnaie</span>
-            <h3>Sortie et reconstruction monétaire nationale</h3>
-            <p>Ajouter politique monétaire et de change nationale à T4, avec conversion, liquidité, paiements et traitement des contrats.</p>
-            <span class="label">Atout</span>
-            <p>Plus grand nombre d’instruments formels.</p>
-            <span class="label">Limite</span>
-            <p>Risque bancaire, inflation importée, capitaux et dette sous droit étranger.</p>
-            <span class="score">autonomie juridique : maximale</span>
-            <span class="score">risque systémique : maximal</span>
-          </article>
-        </div>
+        <article class="scenario-study">
+          <div class="scenario-code">T5 · Retrait + monnaie</div>
+          <div>
+            <h3>Sortie de l’Union et reconstruction d’une politique monétaire nationale</h3>
+            <p>Cette trajectoire ajoute à T4 une unité monétaire, une politique de change et un prêteur en dernier ressort national. Elle offre davantage d’instruments formels, mais concentre les risques les plus rapides : liquidité, dépôts, conversion des contrats, dette de droit étranger et inflation importée.</p>
+            <div class="study-columns">
+              <div><h4>Chantiers indispensables</h4><ul><li>Base légale de conversion et cartographie du droit des contrats.</li><li>Billets, pièces, comptes, cartes, virements et prélèvements.</li><li>Réserves, collatéral, contrôle temporaire et garantie des dépôts.</li><li>Doctrine de change, financement public et supervision bancaire.</li></ul></div>
+              <div><h4>Questions non résolues par le slogan</h4><ul><li>Quelle dette est convertie et laquelle reste en euro ?</li><li>Quel régime de change et quelle cible monétaire ?</li><li>Comment limiter l’inflation sans étouffer le crédit productif ?</li><li>Comment protéger l’épargne et les importations essentielles ?</li></ul></div>
+            </div>
+            <p class="study-verdict"><b>Verdict conditionnel :</b> autonomie monétaire maximale, mais risque systémique maximal ; l’étude ne la confond pas avec la seule sortie de l’Union.</p>
+          </div>
+        </article>
 
         <div class="table-wrap">
           <table>
@@ -2193,7 +2804,7 @@
     <section id="horloges">
       <div class="wrap">
         <div class="section-head">
-          <div class="section-index">10 · Doctrine des deux horloges</div>
+          <div class="section-index">12 · Doctrine des deux horloges</div>
           <div>
             <h2>Jusqu’à deux ans de négociation avant l’article 50, puis jusqu’à deux ans de retrait</h2>
             <p class="section-lead">
@@ -2233,6 +2844,21 @@
           <a class="src" href="https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX%3A12008M048">article 48</a>
         </p>
 
+        <h3>Jalons vérifiables des quatre années possibles</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Échéance</th><th>Négociation</th><th>Préparation française</th><th>Condition de passage</th></tr></thead>
+            <tbody>
+              <tr><td>Mois 0</td><td>Dépôt du mandat, des demandes juridiques et d’une proposition de procédure.</td><td>Audit des dépendances, gouvernance, budgets et projets compatibles avec l’UE.</td><td>Mandat démocratique et responsables nommés.</td></tr>
+              <tr><td>Mois 6</td><td>Vérifier que les partenaires discutent des textes et pas seulement du principe.</td><td>Recrutement douanier, cartographie bancaire, stocks et premiers projets de lois.</td><td>Ouverture effective ou possibilité de notification anticipée.</td></tr>
+              <tr><td>Mois 12</td><td>Premières formulations opposables sur énergie, aides et commande.</td><td>Tests informatiques, accords de secours et consolidation des besoins industriels.</td><td>Progrès mesurable, sinon préparation accélérée.</td></tr>
+              <tr><td>Mois 18</td><td>Projet presque final et procédure de ratification identifiée.</td><td>Administrations, droit transitoire, banques et paiements en test grandeur nature.</td><td>Accord crédible ou constat d’échec imminent.</td></tr>
+              <tr><td>Mois 24</td><td>Texte garanti, accord partiel soumis au choix, ou échec.</td><td>Seuils minimaux de continuité atteints.</td><td>Acceptation démocratique ou notification immédiate de l’article 50.</td></tr>
+              <tr><td>Mois 24—48</td><td>Retrait et relation future : commerce, énergie, données, aviation, santé, recherche et citoyens.</td><td>Finalisation des lois, systèmes, stocks, soutiens sectoriels et accords opérationnels.</td><td>Sortie à l’accord ou au terme ; prolongation seulement sur nouveau mandat.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
         <h3>Cinq tests pour juger une renégociation</h3>
         <div class="criteria">
           <div class="criterion"><b>Service public électrique intégré au coût complet, sans rente distribuable.</b></div>
@@ -2256,7 +2882,7 @@
     <section id="programmes" class="alt">
       <div class="wrap">
         <div class="section-head">
-          <div class="section-index">11 · Programmes politiques</div>
+          <div class="section-index">13 · Programmes politiques</div>
           <div>
             <h2>Comparer les promesses à leurs moyens, pas les partis à une étiquette</h2>
             <p class="section-lead">
@@ -2330,7 +2956,7 @@
     <section id="sources">
       <div class="wrap">
         <div class="section-head">
-          <div class="section-index">12 · Sources et corpus</div>
+          <div class="section-index">14 · Sources et corpus</div>
           <div>
             <h2>Sources institutionnelles prioritaires et documents de travail conservés</h2>
             <p class="section-lead">
@@ -2395,7 +3021,15 @@
           <a class="doc-link" href="documentation/updates/2026-08/04_GRILLE_PROGRAMMES_POLITIQUES.md"><b>04</b> Grille des programmes politiques</a>
           <a class="doc-link" href="documentation/updates/2026-08/05_REGISTRE_DES_SOURCES.md"><b>05</b> Registre des sources</a>
           <a class="doc-link" href="documentation/updates/2026-08/06_PLAN_REDRESSEMENT_FRANCE.md"><b>06</b> Plan détaillé de redressement</a>
-          <a class="doc-link" href="documentation/mainfiles/readme.txt"><b>Archives</b> Étude initiale, parties A à H</a>
+          <a class="doc-link" href="documentation/mainfiles/Partie_A_SOURCEE.md"><b>Partie A</b> Modèles économiques comparés</a>
+          <a class="doc-link" href="documentation/mainfiles/Partie_B_SOURCEE.md"><b>Partie B</b> Diagnostic historique français</a>
+          <a class="doc-link" href="documentation/mainfiles/Partie_C_SOURCEE.md"><b>Partie C</b> Analyse de l’Union actuelle</a>
+          <a class="doc-link" href="documentation/mainfiles/Partie_D_SOURCEE.md"><b>Partie D</b> Scénarios d’évolution de l’Union</a>
+          <a class="doc-link" href="documentation/mainfiles/Partie_E_SOURCEE.md"><b>Partie E</b> Politique industrielle</a>
+          <a class="doc-link" href="documentation/mainfiles/Partie_F_SOURCEE.md"><b>Partie F</b> Politique énergétique</a>
+          <a class="doc-link" href="documentation/mainfiles/Partie_G_SOURCEE.md"><b>Partie G</b> Architecture institutionnelle et monétaire</a>
+          <a class="doc-link" href="documentation/mainfiles/Partie_H_SOURCEE.md"><b>Partie H</b> Transition et gestion des risques</a>
+          <a class="doc-link" href="documentation/mainfiles/CONCLUSION_GENERALE.md"><b>Archive</b> Conclusion générale de l’étude initiale</a>
         </div>
       </div>
     </section>
@@ -2403,7 +3037,7 @@
     <section id="conclusion" class="conclusion">
       <div class="wrap">
         <div class="section-head">
-          <div class="section-index">13 · Conclusion finale</div>
+          <div class="section-index">15 · Conclusion finale</div>
           <div>
             <h2>Le redressement commence avant le choix « avec ou sans l’UE », mais ce choix détermine les instruments disponibles</h2>
             <p class="section-lead">
