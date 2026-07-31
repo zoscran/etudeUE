@@ -2,9 +2,10 @@
 
 Étude factuelle des capacités souveraines françaises, des contraintes du cadre européen et de plusieurs trajectoires de redressement comparables.
 
+> 🌐 **Site public hébergé sur GitHub Pages :** [https://zoscran.github.io/etudeUE/](https://zoscran.github.io/etudeUE/)
+
 ## Lire l'étude
 
-- [Synthèse HTML complète](https://zoscran.github.io/etudeUE/)
 - [Index de l'actualisation d'août 2026](documentation/updates/2026-08/00_INDEX.md)
 - [Actualisation factuelle au 30 juillet 2026](documentation/updates/2026-08/01_ACTUALISATION_FACTUELLE.md)
 - [Cartographie des 24 capacités souveraines](documentation/updates/2026-08/02_CARTOGRAPHIE_DES_CAPACITES.md)
